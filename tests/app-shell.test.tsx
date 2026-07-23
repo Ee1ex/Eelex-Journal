@@ -14,7 +14,7 @@ describe("应用壳", () => {
     const markup = renderToStaticMarkup(
       <RootLayout>
         <p>内容</p>
-      </RootLayout>
+      </RootLayout>,
     );
 
     expect(markup).toContain('<html lang="zh-CN">');

@@ -44,23 +44,82 @@ describe("工程配置契约", () => {
     ).toBeDefined();
   });
 
-  it("提供格式化与 CI 入口", () => {
+  it("提供确定性的格式化、CI 与依赖维护入口", () => {
     expect(packageJson.scripts.format).toBe("prettier --write .");
     expect(packageJson.scripts["format:check"]).toBe("prettier --check .");
-    expect(packageJson.scripts.check.startsWith("pnpm format:check")).toBe(
-      true,
+    expect(packageJson.scripts.check).toBe(
+      "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build",
     );
 
-    const workflow = readFileSync(".github/workflows/ci.yml", "utf8");
-    expect(workflow).toContain("permissions:");
-    expect(workflow).toContain("contents: read");
-    expect(workflow).toContain("pnpm install --frozen-lockfile");
-    expect(workflow).toContain("pnpm check");
-    expect(workflow).toContain("pnpm audit --prod");
+    const workflow = readFileSync(".github/workflows/ci.yml", "utf8").replace(
+      /\r\n/g,
+      "\n",
+    );
+    expect(workflow).toBe(`name: CI
 
-    const dependabot = readFileSync(".github/dependabot.yml", "utf8");
-    expect(dependabot).toContain('package-ecosystem: "npm"');
-    expect(dependabot).toContain('package-ecosystem: "github-actions"');
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm peers check
+      - run: pnpm audit --prod
+`);
+    expect(workflow).not.toMatch(/^\s*\w+:\s*write/m);
+
+    const dependabot = readFileSync(".github/dependabot.yml", "utf8").replace(
+      /\r\n/g,
+      "\n",
+    );
+    expect(dependabot).toBe(`version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: weekly
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: weekly
+`);
+    expect(dependabot).not.toMatch(/auto-merge|automerge/i);
+
+    const prettierIgnore = readFileSync(".prettierignore", "utf8")
+      .replace(/\r\n/g, "\n")
+      .trim()
+      .split("\n");
+    expect(prettierIgnore).toEqual([
+      ".next/",
+      ".worktrees/",
+      ".superpowers/",
+      "node_modules/",
+      "out/",
+      "build/",
+      "coverage/",
+      "test-results/",
+      "pnpm-lock.yaml",
+      "next-env.d.ts",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "README.md",
+      "docs/**/*.md",
+    ]);
   });
 
   it("只允许 TypeScript 与 MDX 页面扩展名", async () => {

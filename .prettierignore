@@ -12,9 +12,3 @@ AGENTS.md
 CLAUDE.md
 README.md
 docs/**/*.md
-next.config.mjs
-postcss.config.mjs
-src/app/layout.tsx
-tests/app-shell.test.tsx
-tsconfig.json
-vitest.config.ts

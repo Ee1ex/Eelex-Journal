@@ -5,10 +5,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Eelex Code Hub",
-  description: "一个关于代码、设计与学习的个人空间。"
+  description: "一个关于代码、设计与学习的个人空间。",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="zh-CN">
       <body>{children}</body>
