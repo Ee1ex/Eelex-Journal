@@ -15,7 +15,7 @@
     "build": "next build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+    "check": "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

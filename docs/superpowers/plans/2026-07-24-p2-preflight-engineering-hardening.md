@@ -38,7 +38,7 @@
 - Consumes: existing Phase 1 package/config files and `tests/app-shell.test.tsx`.
 - Produces: secure dependency graph, deterministic `typecheck`, TypeScript-aware ESLint, TS/MDX-only Next extensions, and an engineering contract test used by Task 2.
 
-- [ ] **Step 1: Write the failing engineering contract tests**
+- [x] **Step 1: Write the failing engineering contract tests**
 
 Create `tests/engineering-config.test.ts` with tests that:
 
@@ -55,7 +55,9 @@ describe("工程配置契约", () => {
     expect(packageJson.devDependencies["@types/node"]).toBe("24.13.3");
     expect(packageJson.scripts.start).toBe("next start");
     expect(packageJson.scripts.typecheck).toBe("next typegen && tsc --noEmit");
-    expect(packageJson.scripts.check).toContain("pnpm typecheck");
+    expect(packageJson.scripts.check).toBe(
+      "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build",
+    );
   });
 
   it("不跟踪 Next.js 生成的类型入口", () => {
@@ -91,7 +93,7 @@ describe("工程配置契约", () => {
 });
 ```
 
-- [ ] **Step 2: Run RED**
+- [x] **Step 2: Run RED**
 
 Run:
 
@@ -101,7 +103,7 @@ corepack pnpm test tests/engineering-config.test.ts
 
 Expected: FAIL because pnpm is `11.9.0`, `@types/node` is `26.1.1`, scripts are missing, `next-env.d.ts` is tracked, TypeScript rules are absent, and JavaScript extensions remain.
 
-- [ ] **Step 3: Apply the minimal hardening**
+- [x] **Step 3: Apply the minimal hardening**
 
 Update `package.json` to:
 
@@ -115,7 +117,7 @@ Update `package.json` to:
     "lint": "eslint .",
     "test": "vitest run",
     "build": "next build",
-    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+    "check": "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build"
   },
   "devDependencies": {
     "@types/node": "24.13.3"
@@ -156,7 +158,7 @@ pageExtensions: ["ts", "tsx", "md", "mdx"]
 
 Run `corepack pnpm install` to regenerate `pnpm-lock.yaml`.
 
-- [ ] **Step 4: Run GREEN and dependency validation**
+- [x] **Step 4: Run GREEN and dependency validation**
 
 Run:
 
@@ -173,7 +175,7 @@ corepack pnpm build
 
 Expected: contract tests pass; `sharp@0.35.3`; Next resolves `postcss@8.5.22`; audit and all engineering commands exit zero.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add .gitignore package.json pnpm-workspace.yaml pnpm-lock.yaml eslint.config.mjs next.config.mjs tests/engineering-config.test.ts next-env.d.ts
@@ -197,7 +199,7 @@ git commit -m "chore: harden core engineering configuration"
 - Consumes: Task 1 `check` script and engineering contract test.
 - Produces: deterministic formatting, one-step quality gate, GitHub CI, and automated dependency update entry points.
 
-- [ ] **Step 1: Extend the contract test and run RED**
+- [x] **Step 1: Extend the contract test and run RED**
 
 Add tests asserting:
 
@@ -205,7 +207,9 @@ Add tests asserting:
 it("提供格式化与 CI 入口", () => {
   expect(packageJson.scripts.format).toBe("prettier --write .");
   expect(packageJson.scripts["format:check"]).toBe("prettier --check .");
-  expect(packageJson.scripts.check.startsWith("pnpm format:check")).toBe(true);
+  expect(packageJson.scripts.check).toBe(
+    "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build",
+  );
 
   const workflow = readFileSync(".github/workflows/ci.yml", "utf8");
   expect(workflow).toContain("permissions:");
@@ -224,7 +228,7 @@ Run `corepack pnpm test tests/engineering-config.test.ts`.
 
 Expected: FAIL because formatting and GitHub files do not exist.
 
-- [ ] **Step 2: Add formatting dependencies and configuration**
+- [x] **Step 2: Add formatting dependencies and configuration**
 
 Add exact dev dependencies:
 
@@ -239,7 +243,7 @@ Add scripts:
 ```json
 "format": "prettier --write .",
 "format:check": "prettier --check .",
-"check": "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+"check": "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build"
 ```
 
 Create `prettier.config.mjs`:
@@ -260,7 +264,7 @@ Create `.prettierignore` excluding `.next/`, `.worktrees/`, `.superpowers/`, `no
 
 Load `eslint-config-prettier/flat` after `nextTs` and before `globalIgnores`.
 
-- [ ] **Step 3: Add GitHub automation**
+- [x] **Step 3: Add GitHub automation**
 
 Create `.github/workflows/ci.yml` with:
 
@@ -294,7 +298,7 @@ jobs:
 
 Create `.github/dependabot.yml` with weekly npm and GitHub Actions checks rooted at `/`, without auto-merge configuration.
 
-- [ ] **Step 4: Format, run GREEN, and verify**
+- [x] **Step 4: Format, run GREEN, and verify**
 
 Run:
 
@@ -310,7 +314,7 @@ corepack pnpm audit --prod
 
 Expected: all commands exit zero, both test files pass, and formatting creates no governance-document rewrite.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add .editorconfig .prettierignore prettier.config.mjs .github package.json pnpm-lock.yaml eslint.config.mjs tests/engineering-config.test.ts
@@ -331,7 +335,7 @@ git commit -m "ci: add deterministic quality gates"
 - Consumes: verified versions, commands, security results, CI files, and Task 1–2 commits.
 - Produces: durable current-state documentation and the Phase 2 handoff.
 
-- [ ] **Step 1: Update live documentation**
+- [x] **Step 1: Update live documentation**
 
 Update README versions and commands to pnpm `11.17.0`, aligned Node types, `format:check`, `check`, `start`, CI, and the new REQ/DEV links.
 
@@ -339,13 +343,13 @@ Update PRD current requirement to `REQ-20260724-03` and append a change record s
 
 Update `docs/README.md` current REQ and add the new DEV and implementation plan references.
 
-- [ ] **Step 2: Run runtime checks**
+- [x] **Step 2: Run runtime checks**
 
 Start development mode on `127.0.0.1:3101`, request `/`, assert HTTP 200 and `<main>`, then stop the exact listener and confirm port release.
 
 Build, start production mode on `127.0.0.1:3102`, request `/`, assert HTTP 200 and `<main>`, then stop the exact listener and confirm port release.
 
-- [ ] **Step 3: Execute final verification**
+- [x] **Step 3: Execute final verification**
 
 Run:
 
@@ -371,7 +375,7 @@ git diff --check
 
 Expected: all commands exit zero; `next-env.d.ts` has no tracked output and is ignored.
 
-- [ ] **Step 4: Close documentation**
+- [x] **Step 4: Close documentation**
 
 Set `REQ-20260724-03` to `Done` and append exact command outputs, test counts, audit result, runtime evidence, CI local-only limitation, remaining risks, and the next task: create Phase 2 REQ.
 
@@ -381,7 +385,7 @@ Record exact final dependency resolutions and override-removal condition in DEV.
 
 Validate all project Markdown relative links.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add README.md docs

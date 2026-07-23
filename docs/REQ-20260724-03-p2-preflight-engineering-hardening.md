@@ -147,7 +147,7 @@
 - `corepack pnpm lint`：通过。
 - `corepack pnpm test`：Vitest `2` 个测试文件、`8` 个测试全部通过。
 - `corepack pnpm build`：Next.js `16.2.11` 生产构建通过，`/` 与 `/_not-found` 均为静态路由。
-- `corepack pnpm check`：格式、类型、Lint、测试和构建全部通过；其内部使用裸 `pnpm`，在嵌套 worktree 中会继承父目录工具链并提示 Node `24.14.0` / pnpm `11.9.0` 的 engine warning，但命令仍为零退出码。该警告只反映本地嵌套 worktree 的父级 `pnpm-workspace.yaml` 解析；合入目标分支后仍应从仓库根目录重新运行检查。
+- `corepack pnpm check`：格式、类型、Lint、测试和构建全部通过。最终审查已将该脚本改为直接串联底层工具，消除了内部裸 `pnpm` 在嵌套 worktree 中继承父目录工具链并产生 engine warning 的风险；嵌套 worktree 的 Next 多锁文件 warning 仍单独保留。
 - `corepack pnpm peers check`：`No peer dependency issues found`。
 - `corepack pnpm audit --prod`：`No known vulnerabilities found`。
 - `git diff --check`：无输出、零退出码。
@@ -169,3 +169,9 @@
 - 本地嵌套 `.worktrees/` 会使 Next.js 在构建时检测到父目录和 worktree 的两个锁文件，并提示 `turbopack.root` 推断风险；该提示未阻止构建或 HTTP 验证。不要将 `.worktrees/` 纳入提交、CI 或部署上下文；在目标分支根目录再次执行构建后再决定是否需要显式配置 `turbopack.root`。
 - GitHub Actions 与 Dependabot 已配置，但其真实远程执行、Netlify OpenNext、跨地区访问、计费和生产部署均仍待相应阶段和授权验证。
 - 下一项任务：创建并批准独立的 Phase 2 REQ；在此之前不得开始页面、组件或设计 token 实施。
+
+### 最终审查修正（2026-07-24）
+
+- `check` 的最终契约为 `prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build`，保持既有格式、类型、Lint、测试与构建顺序，同时不再从脚本内部调用裸 `pnpm`。
+- 工程契约测试已收紧为上述精确命令，并验证 `@typescript-eslint/no-unused-vars` 的规则级别不是 `0` 或 `off`。
+- 内部裸 `pnpm` 的 engine warning 风险已消除；仍需在目标分支根目录复验嵌套 `.worktrees/` 引发的 Next 多锁文件 `turbopack.root` warning，且 GitHub Actions 的真实远程运行仍待推送授权后验证。

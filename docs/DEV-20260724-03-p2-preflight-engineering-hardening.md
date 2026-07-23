@@ -127,3 +127,4 @@
 - `next>sharp: 0.35.3` 与 `next>postcss: 8.5.22` 仍是仅作用于 Next.js 依赖边的安全 override。Next.js 发布声明安全版本并原生解析这些依赖后，移除两条 override、重新生成锁文件，并重新执行冻结安装、`pnpm why`、生产审计、`pnpm check`、开发/生产 HTTP 验证；在此之前不得静默删除或用审计忽略规则替代。
 - GitHub Actions CI 已配置为只读权限、冻结安装、`check`、peer 检查和生产审计；Dependabot 已配置为每周检查 npm 与 GitHub Actions。二者尚无 GitHub 远程运行记录，因为本任务未获推送授权。
 - 在嵌套 `.worktrees/` 内执行构建时，Next.js 会检测到父目录与 worktree 的两个 `pnpm-workspace.yaml`，并发出 `turbopack.root` 推断 warning；生产构建、开发/生产 HTTP 验证均已通过。该 warning 是本地隔离 worktree 风险，后续应从目标分支根目录复验，避免把 `.worktrees/` 引入 CI 或部署上下文。
+- 最终审查将 `check` 固定为直接串联 `prettier --check .`、`next typegen`、`tsc --noEmit`、`eslint .`、`vitest run` 与 `next build`。因此脚本内部不再调用裸 `pnpm`，嵌套 worktree 中父级工具链继承导致的 engine warning 风险已消除；保留 Next 多锁文件 warning 与远程 CI 未验证两项风险。

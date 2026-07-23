@@ -10,7 +10,9 @@ describe("工程配置契约", () => {
     expect(packageJson.devDependencies["@types/node"]).toBe("24.13.3");
     expect(packageJson.scripts.start).toBe("next start");
     expect(packageJson.scripts.typecheck).toBe("next typegen && tsc --noEmit");
-    expect(packageJson.scripts.check).toContain("pnpm typecheck");
+    expect(packageJson.scripts.check).toBe(
+      "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build",
+    );
   });
 
   it("不跟踪 Next.js 生成的类型入口", () => {
@@ -39,16 +41,22 @@ describe("工程配置契约", () => {
     );
     const eslintConfig = JSON.parse(eslintOutput);
 
-    expect(
-      eslintConfig.rules["@typescript-eslint/no-unused-vars"],
-    ).toBeDefined();
+    const noUnusedVarsRule =
+      eslintConfig.rules["@typescript-eslint/no-unused-vars"];
+    const noUnusedVarsLevel = Array.isArray(noUnusedVarsRule)
+      ? noUnusedVarsRule[0]
+      : noUnusedVarsRule;
+
+    expect(noUnusedVarsRule).toBeDefined();
+    expect(noUnusedVarsLevel).not.toBe(0);
+    expect(noUnusedVarsLevel).not.toBe("off");
   });
 
   it("提供确定性的格式化、CI 与依赖维护入口", () => {
     expect(packageJson.scripts.format).toBe("prettier --write .");
     expect(packageJson.scripts["format:check"]).toBe("prettier --check .");
     expect(packageJson.scripts.check).toBe(
-      "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build",
+      "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build",
     );
 
     const workflow = readFileSync(".github/workflows/ci.yml", "utf8").replace(
