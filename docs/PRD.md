@@ -7,7 +7,7 @@
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 关联决策：[`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md)
-- 当前需求：[`REQ-20260724-01-phase-0-foundation.md`](REQ-20260724-01-phase-0-foundation.md)
+- 当前需求：[`REQ-20260724-02-phase-1-git-engineering-foundation.md`](REQ-20260724-02-phase-1-git-engineering-foundation.md)
 
 ## 产品定位
 
@@ -204,3 +204,4 @@ Phase 0 的根目录 README 先准确呈现项目目标、范围、状态和文�
 ## 变更记录
 
 - 2026-07-24：建立 Eelex Code Hub v1 产品基线，关联 `BIZ-20260724-01`。
+- 2026-07-24：当前实施需求切换为已批准的 `REQ-20260724-02`；产品范围未变化。

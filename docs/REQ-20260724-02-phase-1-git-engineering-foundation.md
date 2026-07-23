@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260724-02
-- 状态：Draft
+- 状态：In Progress
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 产品基线：[`PRD.md`](PRD.md)
@@ -19,7 +19,7 @@
 
 - 在初始化前复核并保留工作区既有文件；仅在确认 `.git` 仍为空且不含仓库元数据后，将其初始化为本项目 Git 仓库。
 - 建立 `main` 默认分支、适合 Node/Next.js 项目的 `.gitignore`，并确认密钥、依赖目录、构建产物和本地缓存不被提交。
-- 在用户明确授权并提供远程仓库平台、地址和可见性后，连接远程仓库；不推送、不发布、不部署。
+- 连接已验证的公开远程仓库 `https://github.com/Ee1ex/Eelex-Journal.git`；不部署，且只在用户已确认的功能分支完成验证后发起推送与 PR。
 - 使用 Node.js `24.18.0` 与 pnpm `11.9.0`，通过 `.nvmrc` 和 `package.json` 的 `packageManager` 字段固定本地与 Netlify 构建所需版本。
 - 建立 Next.js App Router、TypeScript、Tailwind CSS、MDX 和 ESLint 工程基础；MDX 使用 `@next/mdx`，并提供 App Router 所需的 `mdx-components.tsx`。
 - 建立下列 `package.json` 脚本并验证：`dev`、`typecheck`、`lint`、`test`、`build`。
@@ -35,13 +35,12 @@
 - 不创建视觉稿、Logo、公开截图或最终展示版 GitHub README。
 - 不推送远程仓库、不发布版本、不创建任何虚构 BUG 记录。
 
-## 实施前确认门槛
+## 实施基线确认
 
-本 REQ 处于 `Draft`，在以下事项明确前不得进入实施：
-
-- 用户确认采用 Node.js `24.18.0`、pnpm `11.9.0`、ESLint 和 Vitest 的工程组合，或给出替代要求。
-- 用户确认远程仓库的平台、目标地址、公开性，以及是否授权创建或关联该远程仓库。
-- 创建 `DEV-20260724-02-phase-1-engineering-foundation.md`，并将已核验的最终依赖版本、命令、目录和兼容性结论记录为可审查方案。
+- 用户已于 2026-07-24 确认采用 Node.js `24.18.0`、pnpm `11.9.0`、ESLint 和 Vitest。
+- GitHub 插件账号与本机 Git Credential Manager 均已验证为 `Ee1ex`；该账号对 `Ee1ex/Eelex-Journal` 具有 `admin` 与 `push` 权限，远程默认分支为 `main`。
+- 用户已确认以本地已批准的 `README.md` / PRD 为准，替换远程初始 README 的冲突内容；并确认在隔离工作树的 `phase-1-engineering-foundation` 分支实施，通过 PR 合入 `main`。
+- Phase 1 的具体版本、目录、命令和兼容性结论由 `DEV-20260724-02-phase-1-engineering-foundation.md` 记录。
 
 ## 交付文件
 
@@ -51,6 +50,7 @@
 - `.nvmrc`
 - `package.json`
 - `pnpm-lock.yaml`
+- `pnpm-workspace.yaml`
 - `next.config.mjs`
 - `mdx-components.tsx`
 - `postcss.config.mjs`
@@ -102,6 +102,13 @@
 
 - 草案创建前工作区检查：当前不是 Git 仓库；`.git` 和 `.agents` 均为空目录，`.git/config` 不存在。
 - 草案创建前工程检查：不存在应用代码、依赖目录、`package.json`、锁文件或工程配置。
+- GitHub 访问验证：插件账号为 `Ee1ex`；`Ee1ex/Eelex-Journal` 为公开仓库，默认分支为 `main`，且账号具备 `admin`、`push` 权限。
+- 本机 Git 凭据验证：Git Credential Manager 已保存 `Ee1ex` 凭据；`git ls-remote --symref https://github.com/Ee1ex/Eelex-Journal.git HEAD` 成功返回 `refs/heads/main`。
+- 仓库基线整合：远程初始 README 与本地 v1 基线发生 add/add 冲突；已按用户明确确认在本地合并提交中保留本地 README，远程尚未被推送修改。
+- 依赖安装：`corepack pnpm install` 与 `corepack pnpm install --frozen-lockfile` 成功；Corepack 使用 Node.js `v24.18.0`。`sharp` 与 `unrs-resolver` 的必要构建脚本已在 `pnpm-workspace.yaml` 中显式批准。
+- TDD 证据：应用壳测试先因 `src/app/layout.tsx` 缺失而失败；写入最小应用壳后，`corepack pnpm test` 通过 3/3 测试。
+- 最终工程验证：`corepack pnpm typecheck`、`corepack pnpm lint`、`corepack pnpm test`、`corepack pnpm build` 和 `corepack pnpm peers check` 均以零退出码完成。
+- 本地运行验证：`corepack pnpm dev` 成功启动；请求 `http://localhost:3000` 返回 HTTP 200，响应包含 `<main>`；验证后已停止开发服务器并释放端口 `3000`。
 - 实施完成后，在本节追加每条验收标准对应的命令、退出码、关键输出和文档检查结果。
 
 ## 遗留问题

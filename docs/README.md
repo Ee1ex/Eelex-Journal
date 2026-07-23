@@ -7,9 +7,10 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ | [`REQ-20260724-01-phase-0-foundation.md`](REQ-20260724-01-phase-0-foundation.md) | Done | Phase 0 交付合同 |
+| REQ | [`REQ-20260724-02-phase-1-git-engineering-foundation.md`](REQ-20260724-02-phase-1-git-engineering-foundation.md) | Approved | Phase 1 交付合同 |
 | BIZ | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | Phase 0 产品与技术选择 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
+| DEV（Phase 1） | [`DEV-20260724-02-phase-1-engineering-foundation.md`](DEV-20260724-02-phase-1-engineering-foundation.md) | Approved | Phase 1 工程基线与实施方案 |
 | PROG | [`PROG-20260724.md`](PROG-20260724.md) | Active | 当前进度、证据和下一步 |
 | BUG | 当前无记录 | Not Applicable | 项目尚未进入实现阶段 |
 
@@ -132,3 +133,4 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 
 - 2026-07-24：建立 Phase 0 文档治理、权威索引和自动收尾门禁，关联 `REQ-20260724-01`。
 - 2026-07-24：Phase 0 验证通过，将当前 REQ 状态更新为 `Done`。
+- 2026-07-24：创建并批准 Phase 1 REQ 与工程基线 DEV，关联 `REQ-20260724-02`。

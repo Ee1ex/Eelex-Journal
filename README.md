@@ -6,7 +6,7 @@ Eelex Code Hub 是一个用于发布学习思考、分享前端实践与工具�
 
 ## 当前状态
 
-**Phase 0：文档体系与范围基线** 已完成。下一阶段是 Git 与工程基础；当前尚未创建应用工程或公开站点。
+**Phase 1：Git 与工程基础** 已完成本地验证。项目已具备可复现的应用工程、类型检查、Lint、测试和生产构建命令；公开站点尚未部署。
 
 ## v1 概览
 
@@ -23,21 +23,40 @@ v1 将提供：
 
 ## 技术方向
 
-- Next.js
-- TypeScript
-- Tailwind CSS
+- Node.js `24.18.0`
+- pnpm `11.9.0`
+- Next.js `16.2.11`
+- TypeScript `6.0.3`
+- Tailwind CSS `4.3.3`
 - MDX
-- Netlify
+- ESLint `9.39.5` 与 Vitest `4.1.10`
+- Netlify（部署阶段接入）
 
-具体版本将在 Phase 1 创建工程前完成兼容性核验并锁定。
+## 本地运行
+
+```bash
+corepack pnpm install
+corepack pnpm dev
+```
+
+工程检查：
+
+```bash
+corepack pnpm typecheck
+corepack pnpm lint
+corepack pnpm test
+corepack pnpm build
+```
 
 ## 项目文档
 
 - [产品需求](docs/PRD.md)
 - [文档治理与当前索引](docs/README.md)
 - [Phase 0 需求](docs/REQ-20260724-01-phase-0-foundation.md)
+- [Phase 1 需求](docs/REQ-20260724-02-phase-1-git-engineering-foundation.md)
 - [Phase 0 决策](docs/BIZ-20260724-01-phase-0-baseline.md)
 - [v1 技术方案与路线](docs/DEV-20260724-01-v1-architecture-roadmap.md)
+- [Phase 1 工程方案](docs/DEV-20260724-02-phase-1-engineering-foundation.md)
 - [当前进度](docs/PROG-20260724.md)
 
 ## GitHub 展示
