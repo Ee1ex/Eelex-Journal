@@ -1,5 +1,6 @@
 # Local agent worktrees
 .worktrees/
+.superpowers/
 
 # Dependencies and generated output
 node_modules/
@@ -7,8 +8,10 @@ node_modules/
 out/
 coverage/
 test-results/
+build/
 .pnpm-store/
 *.tsbuildinfo
+next-env.d.ts
 
 # Local configuration and diagnostics
 .env*
