@@ -7,12 +7,12 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ | [`REQ-20260724-03-p2-preflight-engineering-hardening.md`](REQ-20260724-03-p2-preflight-engineering-hardening.md) | In Progress | Phase 2 前置工程加固合同 |
+| REQ | [`REQ-20260724-03-p2-preflight-engineering-hardening.md`](REQ-20260724-03-p2-preflight-engineering-hardening.md) | Done | Phase 2 前置工程加固完成记录 |
 | BIZ | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | Phase 0 产品与技术选择 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
 | DEV（Phase 1） | [`DEV-20260724-02-phase-1-engineering-foundation.md`](DEV-20260724-02-phase-1-engineering-foundation.md) | Approved | Phase 1 工程基线与实施方案 |
 | DEV（P2 前置） | [`DEV-20260724-03-p2-preflight-engineering-hardening.md`](DEV-20260724-03-p2-preflight-engineering-hardening.md) | Approved | 依赖安全、工具链、CI 与格式化方案 |
-| PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Active | P2 前置工程加固逐任务实施计划 |
+| PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PROG | [`PROG-20260724.md`](PROG-20260724.md) | Active | 当前进度、证据和下一步 |
 | BUG | 当前无记录 | Not Applicable | 项目尚未进入实现阶段 |
 
@@ -138,3 +138,4 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-24：创建并批准 Phase 1 REQ 与工程基线 DEV，关联 `REQ-20260724-02`。
 - 2026-07-24：Phase 1 合入 `main` 并完成根目录复验；将 `REQ-20260724-02` 更新为 `Done`，关联 PR #1。
 - 2026-07-24：创建并批准 `REQ-20260724-03` 与 `DEV-20260724-03`，开始 Phase 2 前置工程加固；产品范围未变化。
+- 2026-07-24：完成 `REQ-20260724-03`，并将其状态更新为 `Done`；验证证据、工程版本、安全 override、CI/Dependabot 的本地配置状态和 Phase 2 交接已记录于 REQ、DEV 与 PROG。下一项任务是创建并批准独立的 Phase 2 REQ。

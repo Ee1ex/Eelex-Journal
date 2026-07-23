@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260724-03
-- 状态：In Progress
+- 状态：Done
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 产品基线：[`PRD.md`](PRD.md)
@@ -122,3 +122,50 @@
 - CI 的真实 GitHub 运行状态只有在用户授权推送后才能确认。
 - Netlify OpenNext、地区访问、计费和生产部署仍按 Phase 7 验证。
 - Phase 2 仍需单独创建并批准 REQ；本任务完成不会自动开始 Phase 2 产品实施。
+
+## 完成记录与验收证据
+
+### 状态变更
+
+- 2026-07-24：本 REQ 从 `In Progress` 更新为 `Done`。产品范围、页面、内容模型、Netlify 配置和部署状态均未改变。
+
+### 最终工程状态
+
+- Node.js 固定并实测为 `24.18.0`；`packageManager` 与 `corepack pnpm --version` 均为 `pnpm@11.17.0`；`@types/node` 为 `24.13.3`。
+- `pnpm why sharp` 只解析 `next@16.2.11 > sharp@0.35.3`；`pnpm why postcss` 中包含 `next@16.2.11 > postcss@8.5.22`，且仅发现该版本。
+- `pnpm-workspace.yaml` 的定向安全 override 保持为 `next>sharp: 0.35.3` 与 `next>postcss: 8.5.22`。它们是等待 Next.js 上游原生修复的临时安全边界，不能通过降低审计等级或忽略公告替代。
+- `next-env.d.ts` 的 `git ls-files next-env.d.ts` 无输出；`git check-ignore -v --no-index next-env.d.ts` 命中 `.gitignore:14:next-env.d.ts`。
+- GitHub Actions CI 与 Dependabot 配置文件已由工程契约测试覆盖；由于未经授权推送，当前没有 GitHub Actions 远程运行记录，首次远程结果仍待验证。
+
+### 命令与运行时证据
+
+以下命令均以零退出码完成：
+
+- `corepack pnpm install --frozen-lockfile`：依赖已是最新锁定状态，使用 pnpm `11.17.0`。
+- `corepack pnpm format:check`：`All matched files use Prettier code style!`。
+- `corepack pnpm typecheck`：`next typegen` 成功生成路由类型，随后 `tsc --noEmit` 通过。
+- `corepack pnpm lint`：通过。
+- `corepack pnpm test`：Vitest `2` 个测试文件、`8` 个测试全部通过。
+- `corepack pnpm build`：Next.js `16.2.11` 生产构建通过，`/` 与 `/_not-found` 均为静态路由。
+- `corepack pnpm check`：格式、类型、Lint、测试和构建全部通过；其内部使用裸 `pnpm`，在嵌套 worktree 中会继承父目录工具链并提示 Node `24.14.0` / pnpm `11.9.0` 的 engine warning，但命令仍为零退出码。该警告只反映本地嵌套 worktree 的父级 `pnpm-workspace.yaml` 解析；合入目标分支后仍应从仓库根目录重新运行检查。
+- `corepack pnpm peers check`：`No peer dependency issues found`。
+- `corepack pnpm audit --prod`：`No known vulnerabilities found`。
+- `git diff --check`：无输出、零退出码。
+
+运行时验证在本机回环地址完成：
+
+- 开发服务器 `127.0.0.1:3101`：`GET /` 返回 HTTP `200`，响应包含 `<main>`；停止监听 PID `36728` 后确认端口已释放。
+- 生产服务器 `127.0.0.1:3102`：构建后以 `next start` 启动，`GET /` 返回 HTTP `200`，响应包含 `<main>`；停止监听 PID `21024` 后确认端口已释放。
+
+### 验收结论
+
+- 依赖、安全 override、生成类型、TypeScript Lint、格式化、统一质量命令、CI、Dependabot 和工程契约测试：通过。
+- 开发与生产 HTTP 验证及端口释放：通过。
+- 文档索引、PRD、README、DEV、PROG 与本 REQ 的状态和下一步：已同步。
+- 未创建 Phase 2 产品实现、Netlify 配置、部署、远程推送或 Pull Request：符合范围。
+
+### 后续与风险
+
+- 本地嵌套 `.worktrees/` 会使 Next.js 在构建时检测到父目录和 worktree 的两个锁文件，并提示 `turbopack.root` 推断风险；该提示未阻止构建或 HTTP 验证。不要将 `.worktrees/` 纳入提交、CI 或部署上下文；在目标分支根目录再次执行构建后再决定是否需要显式配置 `turbopack.root`。
+- GitHub Actions 与 Dependabot 已配置，但其真实远程执行、Netlify OpenNext、跨地区访问、计费和生产部署均仍待相应阶段和授权验证。
+- 下一项任务：创建并批准独立的 Phase 2 REQ；在此之前不得开始页面、组件或设计 token 实施。

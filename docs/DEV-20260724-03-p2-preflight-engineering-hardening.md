@@ -119,3 +119,11 @@
 - GitHub Actions 首次远程结果待推送后验证。
 - Next.js 上游原生依赖升级需要后续周期检查。
 - Phase 2 设计 token 应使用 Tailwind CSS v4 `@theme` 与 `:root` 分层，但不在本方案实施。
+
+## 实施完成记录
+
+- 2026-07-24：`packageManager`、Corepack 实测版本和冻结安装均确认使用 `pnpm@11.17.0`；Node.js 为 `24.18.0`，`@types/node` 为 `24.13.3`。
+- 最终解析图中，`next@16.2.11` 的 `sharp` 唯一解析为 `0.35.3`，`postcss`（含 Next.js 边）唯一解析为 `8.5.22`；`pnpm audit --prod` 返回 `No known vulnerabilities found`。
+- `next>sharp: 0.35.3` 与 `next>postcss: 8.5.22` 仍是仅作用于 Next.js 依赖边的安全 override。Next.js 发布声明安全版本并原生解析这些依赖后，移除两条 override、重新生成锁文件，并重新执行冻结安装、`pnpm why`、生产审计、`pnpm check`、开发/生产 HTTP 验证；在此之前不得静默删除或用审计忽略规则替代。
+- GitHub Actions CI 已配置为只读权限、冻结安装、`check`、peer 检查和生产审计；Dependabot 已配置为每周检查 npm 与 GitHub Actions。二者尚无 GitHub 远程运行记录，因为本任务未获推送授权。
+- 在嵌套 `.worktrees/` 内执行构建时，Next.js 会检测到父目录与 worktree 的两个 `pnpm-workspace.yaml`，并发出 `turbopack.root` 推断 warning；生产构建、开发/生产 HTTP 验证均已通过。该 warning 是本地隔离 worktree 风险，后续应从目标分支根目录复验，避免把 `.worktrees/` 引入 CI 或部署上下文。
