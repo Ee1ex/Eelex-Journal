@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
@@ -13,6 +13,14 @@ describe("工程配置契约", () => {
     expect(packageJson.scripts.check).toBe(
       "prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build",
     );
+  });
+
+  it("在所有平台统一使用 LF 换行", () => {
+    const attributes = existsSync(".gitattributes")
+      ? readFileSync(".gitattributes", "utf8").replace(/\r\n/g, "\n")
+      : "";
+
+    expect(attributes).toBe("* text=auto eol=lf\n");
   });
 
   it("不跟踪 Next.js 生成的类型入口", () => {

@@ -59,6 +59,7 @@
 ### 新增
 
 - `.editorconfig`
+- `.gitattributes`
 - `.prettierignore`
 - `prettier.config.mjs`
 - `.github/workflows/ci.yml`
@@ -175,3 +176,10 @@
 - `check` 的最终契约为 `prettier --check . && next typegen && tsc --noEmit && eslint . && vitest run && next build`，保持既有格式、类型、Lint、测试与构建顺序，同时不再从脚本内部调用裸 `pnpm`。
 - 工程契约测试已收紧为上述精确命令，并验证 `@typescript-eslint/no-unused-vars` 的规则级别不是 `0` 或 `off`。
 - 内部裸 `pnpm` 的 engine warning 风险已消除；仍需在目标分支根目录复验嵌套 `.worktrees/` 引发的 Next 多锁文件 `turbopack.root` warning，且 GitHub Actions 的真实远程运行仍待推送授权后验证。
+
+### 合入验证补充（2026-07-24）
+
+- 本地 `main` fast-forward 后首次完整检查稳定复现 Windows CRLF 格式失败，已登记为 [`BUG-20260724-01`](BUG-20260724-01-windows-line-endings-break-format-check.md)。
+- 根因是仓库缺少 Git checkout 级换行约束，系统 `core.autocrlf=true` 将索引 LF 转为工作区 CRLF；`.editorconfig` 不能覆盖该环节。
+- 修复分支已新增 `.gitattributes` 的 `* text=auto eol=lf` 契约，并先观察到工程配置测试 RED，再验证 6/6 GREEN 与 `format:check` 通过。
+- 本 REQ 的最终关闭状态保持 `Done`；BUG 在重新合入 `main` 并完成根目录验证后由 `Verified` 更新为 `Closed`。

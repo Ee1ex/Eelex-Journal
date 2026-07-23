@@ -61,6 +61,7 @@
 ### 格式化
 
 - `.editorconfig` 统一 UTF-8、LF、2 空格、末尾换行和去除行尾空白；Markdown 保留必要尾随空格。
+- `.gitattributes` 使用 `* text=auto eol=lf` 约束 Git checkout，避免 Windows `core.autocrlf` 将工作区文本转换为 CRLF 并破坏 Prettier 门禁。
 - Prettier 使用 `src/app/globals.css` 作为 Tailwind CSS v4 `tailwindStylesheet`。
 - `.prettierignore` 排除依赖、生成目录、worktree、锁文件和治理文档，避免首次接入产生无关重写。
 - `format` 只负责写入格式化；`format:check` 用于 CI 和统一 `check`。
@@ -128,3 +129,4 @@
 - GitHub Actions CI 已配置为只读权限、冻结安装、`check`、peer 检查和生产审计；Dependabot 已配置为每周检查 npm 与 GitHub Actions。二者尚无 GitHub 远程运行记录，因为本任务未获推送授权。
 - 在嵌套 `.worktrees/` 内执行构建时，Next.js 会检测到父目录与 worktree 的两个 `pnpm-workspace.yaml`，并发出 `turbopack.root` 推断 warning；生产构建、开发/生产 HTTP 验证均已通过。该 warning 是本地隔离 worktree 风险，后续应从目标分支根目录复验，避免把 `.worktrees/` 引入 CI 或部署上下文。
 - 最终审查将 `check` 固定为直接串联 `prettier --check .`、`next typegen`、`tsc --noEmit`、`eslint .`、`vitest run` 与 `next build`。因此脚本内部不再调用裸 `pnpm`，嵌套 worktree 中父级工具链继承导致的 engine warning 风险已消除；保留 Next 多锁文件 warning 与远程 CI 未验证两项风险。
+- 合入验证发现 Windows 系统级 `core.autocrlf=true` 会把根工作区文本检出为 CRLF；`.editorconfig` 不能控制 Git checkout。已按 [`BUG-20260724-01`](BUG-20260724-01-windows-line-endings-break-format-check.md) 增加 `.gitattributes` 与工程契约，仓库级固定 LF。
