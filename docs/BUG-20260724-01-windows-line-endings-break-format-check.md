@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：BUG-20260724-01
-- 状态：Verified
+- 状态：Closed
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 来源需求：[`REQ-20260724-03-p2-preflight-engineering-hardening.md`](REQ-20260724-03-p2-preflight-engineering-hardening.md)
@@ -62,3 +62,14 @@ P2 前置工程加固分支在隔离 worktree 内通过 `format:check`，但 fas
 - `main` 根工作区的受管文件显示 `w/lf`。
 - `corepack pnpm check`、`peers check`、`audit --prod` 与 `git diff --check` 全部通过。
 - 完成后将状态从 `Verified` 更新为 `Closed`，并在当日 PROG 追加证据。
+
+## 关闭记录
+
+- 2026-07-24：修复提交 `c72d854` 已 fast-forward 合入本地 `main`。
+- 按 Git 官方规范执行 `git add --renormalize .` 后，索引无 staged diff，工作树干净。
+- `git ls-files --eol` 确认关键 workflow、配置和源码为 `i/lf w/lf attr/text=auto eol=lf`。
+- `corepack pnpm install --frozen-lockfile` 使用 pnpm `11.17.0` 并通过。
+- `corepack pnpm check` 通过：Prettier、Next 类型生成、TypeScript、ESLint、Vitest（2 个文件、9 个测试）与生产构建全部成功。
+- 根目录生产构建不再出现嵌套 worktree 的多 workspace warning。
+- `corepack pnpm peers check` 返回 `No peer dependency issues found`；`corepack pnpm audit --prod` 返回 `No known vulnerabilities found`；`git diff --check` 通过。
+- 关闭结论：缺陷已修复并完成来源环境复验，状态更新为 `Closed`。

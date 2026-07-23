@@ -14,7 +14,7 @@
 | DEV（P2 前置） | [`DEV-20260724-03-p2-preflight-engineering-hardening.md`](DEV-20260724-03-p2-preflight-engineering-hardening.md) | Approved | 依赖安全、工具链、CI 与格式化方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PROG | [`PROG-20260724.md`](PROG-20260724.md) | Active | 当前进度、证据和下一步 |
-| BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Verified | Windows Git checkout 换行导致格式门禁失败；修复待 `main` 根目录终验关闭 |
+| BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 
 ## 文档分类
 
@@ -141,3 +141,4 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-24：完成 `REQ-20260724-03`，并将其状态更新为 `Done`；验证证据、工程版本、安全 override、CI/Dependabot 的本地配置状态和 Phase 2 交接已记录于 REQ、DEV 与 PROG。下一项任务是创建并批准独立的 Phase 2 REQ。
 - 2026-07-24：最终工程审查修正 `check` 为直接串联底层工具，并补强工程契约与文档收尾一致性；Phase 1 应用壳及 P2 前置工程加固均已完成，Phase 2 产品实现仍待独立 REQ 批准。
 - 2026-07-24：本地合入验证确认 Windows `core.autocrlf` 可使 Prettier 门禁失败；创建 `BUG-20260724-01`，新增 `.gitattributes` 与工程契约。修复待 `main` 根目录终验后关闭。
+- 2026-07-24：`BUG-20260724-01` 已在本地 `main` 根目录完成 LF、完整质量门禁、peer 与生产审计复验，状态更新为 `Closed`。

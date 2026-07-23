@@ -396,4 +396,4 @@ git commit -m "docs: close P2 preflight hardening"
 
 - [x] Windows `core.autocrlf=true` exposed a missing repository checkout contract after the first local fast-forward merge.
 - [x] Added `.gitattributes` with `* text=auto eol=lf` and a failing-then-passing engineering configuration contract.
-- [ ] Re-merge the fix into `main`, refresh the confirmed no-content-diff files, run the full root verification, and close `BUG-20260724-01`.
+- [x] Re-merge the fix into `main`, refresh the confirmed no-content-diff files, run the full root verification, and close `BUG-20260724-01`.

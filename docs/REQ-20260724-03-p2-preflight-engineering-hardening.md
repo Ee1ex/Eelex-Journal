@@ -183,3 +183,4 @@
 - 根因是仓库缺少 Git checkout 级换行约束，系统 `core.autocrlf=true` 将索引 LF 转为工作区 CRLF；`.editorconfig` 不能覆盖该环节。
 - 修复分支已新增 `.gitattributes` 的 `* text=auto eol=lf` 契约，并先观察到工程配置测试 RED，再验证 6/6 GREEN 与 `format:check` 通过。
 - 本 REQ 的最终关闭状态保持 `Done`；BUG 在重新合入 `main` 并完成根目录验证后由 `Verified` 更新为 `Closed`。
+- 关闭结果：修复提交 `c72d854` 已合入本地 `main`；关键文件确认为 `w/lf`，完整 `check`（9 项测试）、peer 检查、生产审计和 `git diff --check` 均通过，`BUG-20260724-01` 已更新为 `Closed`。
