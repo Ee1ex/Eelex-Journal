@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260724-02
-- 状态：In Progress
+- 状态：Done
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 产品基线：[`PRD.md`](PRD.md)
@@ -116,3 +116,12 @@
 - 远程仓库的平台、地址、可见性和创建/关联授权待用户确认；这属于外部状态变更，不作默认假设。
 - 若用户不接受推荐工具组合，需在批准前更新本 REQ，并据此调整 Phase 1 DEV、交付文件和验收命令。
 - Netlify 的站点配置、计费、地区访问与真实部署不在本 Phase 验证，按 PRD 与 DEV 留待 Phase 7。
+
+## 完成记录（2026-07-24）
+
+- 用户已授权将 `phase-1-engineering-foundation` 通过 PR #1 合入远程 `main`；合并提交为 `74a7f41a1b6bb747619225b5a01b62194803df4c`。未执行部署、发布或 Netlify 配置。
+- 合并后的根目录复验发现，本地隔离工作树会被 `eslint .` 和 Vitest 递归扫描，造成构建产物被 Lint 及测试重复执行。该问题不违反产品行为，但会破坏工程命令的确定性。
+- 已在 `eslint.config.mjs` 与 `vitest.config.ts` 显式排除 `.worktrees/**`；此目录仍由 `.gitignore` 排除。实际测试文件为 `tests/app-shell.test.tsx`，替代交付文件清单中早期写入的 `tests/engineering-baseline.test.ts`。
+- 最终根目录验证：`corepack pnpm install --frozen-lockfile`、`corepack pnpm typecheck`、`corepack pnpm lint`、`corepack pnpm test`、`corepack pnpm build` 和 `corepack pnpm peers check` 均以零退出码完成；Vitest 为 1 个测试文件、3 个测试通过。
+- 本地运行验证：以 `corepack pnpm exec next dev --hostname 127.0.0.1 --port 3100` 启动，`http://127.0.0.1:3100` 返回 HTTP 200 且响应包含 `<main>`；验证后已停止监听进程并确认端口释放。
+- DoD 结果：Git 与忽略规则、固定 Node/pnpm、App Router + TypeScript + Tailwind + MDX 基础、五项工程命令、最小测试入口、DEV/README/PROG/索引同步均通过。真实 MDX 内容、页面功能和部署按既定非目标留待后续 Phase。

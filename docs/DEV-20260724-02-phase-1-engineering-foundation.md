@@ -57,8 +57,8 @@
 | `next.config.mjs` | 启用 MDX 文件扩展名。 |
 | `mdx-components.tsx` | 提供 App Router 的全局 MDX 组件映射。 |
 | `postcss.config.mjs` | 启用 `@tailwindcss/postcss`。 |
-| `eslint.config.mjs` | 采用 Next.js Core Web Vitals 规则。 |
-| `vitest.config.ts` | 配置 Node 测试环境与 Vite 8 OXC 的 automatic JSX transform。 |
+| `eslint.config.mjs` | 采用 Next.js Core Web Vitals 规则，并排除本地隔离工作树。 |
+| `vitest.config.ts` | 配置 Node 测试环境与 Vite 8 OXC 的 automatic JSX transform，并排除本地隔离工作树。 |
 | `tests/app-shell.test.tsx` | 验证页面壳、根布局和 MDX 映射的最小行为。 |
 | `src/app/layout.tsx` | 仅提供中文文档根结构和全局 CSS 入口。 |
 | `src/app/page.tsx` | 提供空的语义化 `<main>`，不预置任何面向访客的占位文案。 |
@@ -99,3 +99,9 @@
 
 - Netlify 生产配置、计费和地域访问不在本 Phase 处理。
 - 视觉 token、真实页面内容、MDX 内容模型和元数据校验按既定路线留待后续 Phase。
+
+## 实施完成补充（2026-07-24）
+
+- PR #1 合入 `main` 后的根目录复验表明，`.worktrees/phase-1-engineering-foundation` 会被 ESLint 与 Vitest 递归扫描。ESLint 因而读取其中的 `.next` 构建产物，Vitest 因而重复收集测试；这不是应用源码或依赖兼容性错误。
+- `eslint.config.mjs` 使用 `globalIgnores` 排除 `.worktrees/**`；`vitest.config.ts` 基于 `configDefaults.exclude` 追加同一规则。该设置保证根目录工程命令只检查当前工作树，且不覆盖 Vitest 默认排除项。
+- 最终根目录复验：冻结安装、类型检查、Lint、测试、生产构建与 peer 检查均以零退出码完成；Vitest 仅收集 `tests/app-shell.test.tsx` 的 3 个测试。独立端口开发服务器返回 HTTP 200，并已在验证后停止。
