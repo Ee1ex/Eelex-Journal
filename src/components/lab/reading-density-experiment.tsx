@@ -28,7 +28,7 @@ export function ReadingDensityExperiment() {
         选择一种信息密度，观察相同内容在间距和行距变化下的阅读节奏。
       </p>
 
-      <fieldset className="mt-6 grid gap-3" aria-describedby="density-hint">
+      <fieldset aria-describedby="density-hint" className="mt-6 grid gap-3">
         <legend className="font-semibold text-ink">选择阅读密度</legend>
         <p className="text-sm text-muted" id="density-hint">
           可使用方向键切换选项，按空格键确认选择。
@@ -62,9 +62,7 @@ export function ReadingDensityExperiment() {
         <p>
           文字之间的距离会影响注意力的停靠方式。相同的内容，在不同密度下会呈现不同的呼吸感。
         </p>
-        <p>
-          这个实验不保存偏好；刷新页面或使用重置按钮，都能回到舒适密度。
-        </p>
+        <p>这个实验不保存偏好；刷新页面或使用重置按钮，都能回到舒适密度。</p>
       </article>
 
       <button
