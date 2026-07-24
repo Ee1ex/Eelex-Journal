@@ -6,14 +6,13 @@ Eelex Code Hub 是一个用于发布学习思考、分享前端实践与工具�
 
 ## 当前状态
 
-**Phase 1：Git 与工程基础** 已完成并合入 `main`。Phase 2 前置工程加固已完成：依赖安全、类型对齐、跨平台 LF 契约、格式化、直接串联底层工具的统一质量命令、CI 与 Dependabot 入口均已就绪。下一步是在开始页面或设计工作前创建并批准独立的 Phase 2 REQ；公开站点尚未部署。
+**Phase 1：Git 与工程基础** 及 Phase 2 前置工程加固已在本地 `main` 完成。正式 Phase 2 REQ、产品/视觉决策、设计基础 DEV 和逐任务实施计划均已就绪；尚未修改 CSS、测试、页面或组件。GitHub 远程 CI 和公开站点尚未验证。
 
 ## v1 概览
 
 v1 将提供：
 
-- 以最新内容为主体的首页
-- 支持分类或标签筛选的全部文章页
+- 整合个人介绍、全部内容、分类选择和轻量搜索的首页
 - 支持图片、代码块和文章目录的内容详情页
 - 展示个人资料、技能方向和联系方式的关于页
 - 与博客核心功能解耦的实验室
@@ -70,10 +69,13 @@ GitHub Actions 已配置为在 `main` 推送和 Pull Request 上执行冻结安�
 - [Phase 0 需求](docs/REQ-20260724-01-phase-0-foundation.md)
 - [Phase 1 需求](docs/REQ-20260724-02-phase-1-git-engineering-foundation.md)
 - [P2 前置工程加固需求](docs/REQ-20260724-03-p2-preflight-engineering-hardening.md)
+- [Phase 2 设计基础需求](docs/REQ-20260724-04-phase-2-design-foundation.md)
 - [Phase 0 决策](docs/BIZ-20260724-01-phase-0-baseline.md)
+- [Phase 2 产品与设计决策](docs/BIZ-20260724-02-phase-2-product-design-decisions.md)
 - [v1 技术方案与路线](docs/DEV-20260724-01-v1-architecture-roadmap.md)
 - [Phase 1 工程方案](docs/DEV-20260724-02-phase-1-engineering-foundation.md)
 - [P2 前置工程加固方案](docs/DEV-20260724-03-p2-preflight-engineering-hardening.md)
+- [Phase 2 设计基础方案](docs/DEV-20260724-04-phase-2-design-foundation.md)
 - [当前进度](docs/PROG-20260724.md)
 
 ## GitHub 展示
