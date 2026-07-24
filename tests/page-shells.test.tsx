@@ -33,6 +33,11 @@ describe("页面骨架与真实内容链路", () => {
       "src/app/content/[slug]/page.tsx",
       "utf8",
     );
+    const aboutSource = readFileSync("src/app/about/page.tsx", "utf8");
+    const experimentSource = readFileSync(
+      "src/components/lab/reading-density-experiment.tsx",
+      "utf8",
+    );
 
     expect(detailSource).toContain("getContentBySlug");
     expect(detailSource).toContain("dynamicParams = false");
@@ -48,5 +53,9 @@ describe("页面骨架与真实内容链路", () => {
     expect(readFileSync("src/app/lab/page.tsx", "utf8")).not.toContain(
       "content/repository",
     );
+    expect(aboutSource).toContain("sm:grid-cols-[auto_minmax(0,1fr)]");
+    expect(experimentSource).not.toContain("content/");
+    expect(experimentSource).not.toContain("localStorage");
+    expect(experimentSource).not.toContain("useSearchParams");
   });
 });
