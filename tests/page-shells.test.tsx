@@ -7,6 +7,7 @@ import AboutPage from "../src/app/about/page";
 import LabPage from "../src/app/lab/page";
 import NotFoundPage from "../src/app/not-found";
 import Home from "../src/app/page";
+import { SiteFooter } from "../src/components/site-footer";
 
 describe("页面骨架与真实内容链路", () => {
   it("首页展示个人区、已启用的内容发现和真实内容入口", () => {
@@ -25,6 +26,7 @@ describe("页面骨架与真实内容链路", () => {
 
   it("详情路由、关于我、实验室和 404 保持既定边界", () => {
     const about = renderToStaticMarkup(<AboutPage />);
+    const footer = renderToStaticMarkup(<SiteFooter />);
     const lab = renderToStaticMarkup(<LabPage />);
     const notFound = renderToStaticMarkup(<NotFoundPage />);
     const detailSource = readFileSync(
@@ -36,7 +38,9 @@ describe("页面骨架与真实内容链路", () => {
     expect(detailSource).toContain("dynamicParams = false");
     expect(detailSource).toContain('href="/#content"');
     expect(about).toContain("当前学习方向");
-    expect(about).not.toContain("<a");
+    expect(about).toContain('aria-label="Eelex 的字母头像"');
+    expect(about).toContain('href="https://github.com/Ee1ex"');
+    expect(footer).toContain('href="https://github.com/Ee1ex"');
     expect(lab).toContain("实验室");
     expect(notFound).toContain('href="/#content"');
     expect(readFileSync("src/app/lab/page.tsx", "utf8")).not.toContain(
