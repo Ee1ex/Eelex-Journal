@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260724-05
-- 状态：Approved
+- 状态：Done
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 产品基线：[`PRD.md`](PRD.md)
@@ -127,3 +127,19 @@
 ## 批准记录
 
 - 2026-07-24：用户批准本 REQ，并批准创建独立 `DEV-20260724-05`；批准不包含页面代码、提交、推送或部署授权。
+
+## 实施启动记录
+
+- 2026-07-24：在 `codex/phase-3-page-shells` 隔离 worktree 开始实施；用户已授权当前会话内联执行，未使用子代理。
+- 模拟内容、共享框架、首页、内容详情、关于我、实验室和 404 已按 TDD 完成定向 RED/GREEN。
+- 当前本地验证已通过格式、类型、Lint、5 个测试文件中的 17 项测试、生产构建、peer 检查、桌面与手机人工检查和 Git 差异检查。
+- `corepack pnpm audit --prod` 曾因会向外部公告服务发送依赖元数据而被环境策略拦截；用户于当日明确授权后复跑，输出 `No known vulnerabilities found`。
+
+## 完成记录
+
+- 2026-07-24：本 REQ 的全部范围已在 `codex/phase-3-page-shells` 隔离 worktree 完成。首页、`/content/[slug]`、`/about`、`/lab`、404、共享导航、页脚、跳至主内容入口、统一模拟资料与内容卡片均已落地；首页及详情只读取同一份模拟内容集合。
+- TDD 证据：模拟来源、应用壳、首页与其他路由均先观察预期 RED，再完成最小实现并转为 GREEN；最终 Vitest 为 5 个测试文件、17 项测试通过。
+- 质量证据：`corepack pnpm install --frozen-lockfile`、`corepack pnpm format:check`、`corepack pnpm typecheck`、`corepack pnpm lint`、`corepack pnpm test`、`corepack pnpm build`、`corepack pnpm check`、`corepack pnpm peers check`、`corepack pnpm audit --prod` 与 `git diff --check` 均以零退出码完成；生产审计输出 `No known vulnerabilities found`。
+- 人工证据：在 `127.0.0.1:3103` 的 1280px 与 375px 视口检查首页比例、导航、禁用控件、详情与 404 返回路径；Tab 首次聚焦显示“跳到主要内容”，浏览器日志无 warning 或 error。验证后开发服务器已停止，端口 3103 已释放。
+- 实施中发现 Vitest 未配置 `@/*` 路径别名；这是测试解析配置与 TypeScript 路径配置不一致，而非页面设计缺陷。为维持最小范围，所有新增模块改用相对导入，未添加依赖或修改 Vite 配置。
+- 未执行远程推送、GitHub Actions 远程结果核对、PR、Netlify 部署或公开发布；真实 MDX、搜索与分类行为、URL 状态、SEO、可操作实验和真实联系方式仍按已批准的后续 Phase 推迟。

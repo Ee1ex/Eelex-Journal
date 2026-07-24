@@ -125,3 +125,10 @@
 ## 批准记录
 
 - 2026-07-24：用户批准本 DEV；下一步应先创建逐任务实施计划，页面代码须按已批准计划执行。
+
+## 实施与验证记录
+
+- 2026-07-24：按本方案完成 `src/mocks/content.ts`、`src/mocks/profile.ts`、共享 `SiteHeader`、`SiteFooter`、`ContentCard` 与全部 Phase 3 路由。只有当前路径高亮所需的 `SiteHeader` 为最小 Client Component；页面、模拟数据、卡片与页脚保持 Server Component。
+- `/content/[slug]` 使用 `getMockContentBySlug` 读取统一集合，并对未知 slug 调用 `notFound()`；`/lab` 未导入模拟内容集合。首页搜索与分类结构使用原生禁用语义，未引入事件、状态、查询参数或结果计算。
+- 实施时确认 Vitest 未配置 `@/*` 别名，导致新增组件的别名导入无法解析。选择将新增模块保持为相对导入，不增加 Vite 别名配置或依赖，确保运行时和测试解析边界一致。
+- `corepack pnpm check` 通过（Prettier、typegen/TypeScript、ESLint、Vitest 5 个文件 17 项测试、生产构建）；`corepack pnpm peers check`、`corepack pnpm audit --prod` 和 `git diff --check` 均通过。隔离 worktree 中生产构建仍输出已知的 Next.js 多 workspace 根目录推断 warning，但构建成功，未调整无关配置。

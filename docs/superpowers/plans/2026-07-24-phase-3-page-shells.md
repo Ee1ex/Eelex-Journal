@@ -11,6 +11,7 @@
 ## Global Constraints
 
 - 只在 `codex/phase-3-page-shells` 隔离 worktree 中实施；开始前先确认当前工作树及已批准文档已提交或被安全带入该 worktree。
+- Vitest 未配置 `@/*` 的 Vite alias；本阶段所有新模块使用相对导入，不新增路径解析依赖。
 - 不新增依赖、Tailwind 配置、字体、数据库、后端、CMS、搜索库或浏览器测试工具。
 - 保持 `:root` token 与 `@theme inline` 映射的精确值；只添加 token 消费层样式。
 - 仅建立 `/`、`/content/[slug]`、`/about`、`/lab` 和 `not-found`；不创建独立“全部文章”页。
@@ -53,7 +54,7 @@
 - Produces: `ContentCategory`、`MockContentItem`、`mockContent`、`getMockContentBySlug(slug: string): MockContentItem | undefined`。
 - Produces: `mockProfile`，供首页和关于我页读取。
 
-- [ ] **Step 1: 写入失败的模拟来源测试**
+- [x] **Step 1: 写入失败的模拟来源测试**
 
 ```tsx
 import { describe, expect, it } from "vitest";
@@ -84,13 +85,13 @@ describe("Phase 3 模拟内容", () => {
 });
 ```
 
-- [ ] **Step 2: 运行测试，确认因缺少模块失败**
+- [x] **Step 2: 运行测试，确认因缺少模块失败**
 
 Run: `corepack pnpm exec vitest run tests/mock-content.test.ts`
 
 Expected: FAIL，错误包含 `Cannot find module '../src/mocks/content'`。
 
-- [ ] **Step 3: 写入最小模拟来源实现**
+- [x] **Step 3: 写入最小模拟来源实现**
 
 `src/mocks/content.ts`：
 
@@ -172,7 +173,7 @@ export const mockProfile = {
 } as const;
 ```
 
-- [ ] **Step 4: 运行定向测试，确认通过**
+- [x] **Step 4: 运行定向测试，确认通过**
 
 Run: `corepack pnpm exec vitest run tests/mock-content.test.ts`
 
@@ -193,7 +194,7 @@ Expected: PASS，2 项测试通过。
 - Consumes: 无内容数据。
 - Produces: 所有页面可使用的 `SiteHeader`、`SiteFooter`，跳转锚点为 `#main-content`。
 
-- [ ] **Step 1: 用共享框架断言替换空应用壳断言**
+- [x] **Step 1: 用共享框架断言替换空应用壳断言**
 
 ```tsx
 import { renderToStaticMarkup } from "react-dom/server";
@@ -224,13 +225,13 @@ describe("应用壳", () => {
 });
 ```
 
-- [ ] **Step 2: 运行测试，确认缺少共享组件导致失败**
+- [x] **Step 2: 运行测试，确认缺少共享组件导致失败**
 
 Run: `corepack pnpm exec vitest run tests/app-shell.test.tsx`
 
 Expected: FAIL，断言未找到 `href="#main-content"`。
 
-- [ ] **Step 3: 实现共享组件和布局**
+- [x] **Step 3: 实现共享组件和布局**
 
 `src/components/site-header.tsx`：
 
@@ -307,8 +308,8 @@ export function SiteFooter() {
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "../components/site-footer";
+import { SiteHeader } from "../components/site-header";
 
 import "./globals.css";
 
@@ -363,7 +364,7 @@ input {
 }
 ```
 
-- [ ] **Step 4: 运行定向测试和类型检查**
+- [x] **Step 4: 运行定向测试和类型检查**
 
 Run: `corepack pnpm exec vitest run tests/app-shell.test.tsx && corepack pnpm typecheck`
 
@@ -382,7 +383,7 @@ Expected: PASS，应用壳测试通过且 TypeScript 零错误。
 - Consumes: `MockContentItem`、`mockContent`、`mockProfile`。
 - Produces: 首页 `#main-content`、内容区 `#content` 和每项 `/content/[slug]` 链接。
 
-- [ ] **Step 1: 写入首页失败测试**
+- [x] **Step 1: 写入首页失败测试**
 
 ```tsx
 import { renderToStaticMarkup } from "react-dom/server";
@@ -406,20 +407,20 @@ describe("Phase 3 页面骨架", () => {
 });
 ```
 
-- [ ] **Step 2: 运行测试，确认空首页导致失败**
+- [x] **Step 2: 运行测试，确认空首页导致失败**
 
 Run: `corepack pnpm exec vitest run tests/page-shells.test.tsx`
 
 Expected: FAIL，断言未找到 `id="content"`。
 
-- [ ] **Step 3: 实现内容卡片和首页**
+- [x] **Step 3: 实现内容卡片和首页**
 
 `src/components/content-card.tsx`：
 
 ```tsx
 import Link from "next/link";
 
-import type { MockContentItem } from "@/mocks/content";
+import type { MockContentItem } from "../mocks/content";
 
 const categoryStyles = {
   文章: "border-category-article bg-category-article-soft text-category-article",
@@ -461,9 +462,9 @@ export function ContentCard({ item }: { item: MockContentItem }) {
 ```tsx
 import Link from "next/link";
 
-import { ContentCard } from "@/components/content-card";
-import { mockContent } from "@/mocks/content";
-import { mockProfile } from "@/mocks/profile";
+import { ContentCard } from "../components/content-card";
+import { mockContent } from "../mocks/content";
+import { mockProfile } from "../mocks/profile";
 
 const categories = ["全部", "文章", "学习笔记", "工具分享"] as const;
 
@@ -536,7 +537,7 @@ export default function Home() {
 }
 ```
 
-- [ ] **Step 4: 运行首页测试，确认通过**
+- [x] **Step 4: 运行首页测试，确认通过**
 
 Run: `corepack pnpm exec vitest run tests/page-shells.test.tsx`
 
@@ -557,7 +558,7 @@ Expected: PASS，首页结构测试通过。
 - Consumes: `getMockContentBySlug`、`mockProfile`。
 - Produces: 详情返回 `/#content`；未知 slug 使用 `notFound()`。
 
-- [ ] **Step 1: 扩展路由失败测试**
+- [x] **Step 1: 扩展路由失败测试**
 
 在 `tests/page-shells.test.tsx` 追加：
 
@@ -582,13 +583,13 @@ it("详情、关于我、实验室和 404 提供既定结构与恢复路径", as
 });
 ```
 
-- [ ] **Step 2: 运行测试，确认因缺少路由模块失败**
+- [x] **Step 2: 运行测试，确认因缺少路由模块失败**
 
 Run: `corepack pnpm exec vitest run tests/page-shells.test.tsx`
 
 Expected: FAIL，错误包含 `Cannot find module '../src/app/about/page'`。
 
-- [ ] **Step 3: 实现四个路由模块**
+- [x] **Step 3: 实现四个路由模块**
 
 `src/app/content/[slug]/page.tsx`：
 
@@ -596,7 +597,7 @@ Expected: FAIL，错误包含 `Cannot find module '../src/app/about/page'`。
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getMockContentBySlug } from "@/mocks/content";
+import { getMockContentBySlug } from "../../../mocks/content";
 
 export default async function ContentPage({
   params,
@@ -643,7 +644,7 @@ export default async function ContentPage({
 `src/app/about/page.tsx`：
 
 ```tsx
-import { mockProfile } from "@/mocks/profile";
+import { mockProfile } from "../../mocks/profile";
 
 export default function AboutPage() {
   return (
@@ -710,7 +711,7 @@ export default function NotFoundPage() {
 }
 ```
 
-- [ ] **Step 4: 运行全部页面骨架测试和类型检查**
+- [x] **Step 4: 运行全部页面骨架测试和类型检查**
 
 Run: `corepack pnpm exec vitest run tests/page-shells.test.tsx tests/app-shell.test.tsx tests/mock-content.test.ts && corepack pnpm typecheck`
 
@@ -731,7 +732,7 @@ Expected: PASS，所有定向测试通过，TypeScript 零错误。
 - Consumes: Tasks 1–4 的命令输出、人工检查结果与 git 状态。
 - Produces: `REQ-20260724-05` 的 `Done` 状态、可检查验证证据和下一阶段交接记录。
 
-- [ ] **Step 1: 运行完整自动验证**
+- [x] **Step 1: 运行完整自动验证**
 
 Run:
 
@@ -750,9 +751,9 @@ git diff --check
 
 Expected: 全部零退出码；既有 token 和工程测试继续通过；新增页面骨架测试通过；生产审计输出 `No known vulnerabilities found`。
 
-- [ ] **Step 2: 进行人工页面验证**
+- [x] **Step 2: 进行人工页面验证**
 
-Run: `corepack pnpm dev -- --hostname 127.0.0.1 --port 3103`
+Run: `corepack pnpm exec next dev --hostname 127.0.0.1 --port 3103`
 
 Expected: 本地服务器启动后，在 `1280px` 与 `375px` 宽度逐项确认：
 
@@ -766,11 +767,11 @@ Expected: 本地服务器启动后，在 `1280px` 与 `375px` 宽度逐项确认
 
 验证结束后停止开发服务器并确认端口 `3103` 已释放。
 
-- [ ] **Step 3: 追加准确的完成记录**
+- [x] **Step 3: 追加准确的完成记录**
 
 在 REQ 中追加实际通过的命令、测试文件与测试数量、人工检查结果、未执行项和未实现的后续 Phase 边界；将状态改为 `Done`。在 DEV 中追加实现与验证证据。在 PROG 中追加 Phase 3 目标、DoD 逐项结果、风险、推迟事项和 Phase 4 交接。将 `docs/README.md` 的当前 REQ 状态和 README 的项目状态同步为实际完成事实。
 
-- [ ] **Step 4: 文档与变更自审**
+- [x] **Step 4: 文档与变更自审**
 
 Run:
 
