@@ -237,3 +237,9 @@
 - 根目录生产构建未出现隔离 worktree 中的多 workspace 根目录推断 warning，该提示已确认属于嵌套工作树环境，不是产品或构建缺陷。
 - 本 REQ 的 Phase 2 DoD 已在目标分支与本地 `main` 根目录双重验证。
 - 未执行远程推送、PR、远程 CI 或部署；GitHub Actions 首次远程运行和 Netlify 验证仍按后续授权与对应 Phase 处理。
+
+## 远程交付补充
+
+- 2026-07-24：用户另行授权推送，本地 `main` 已通过普通非强制推送同步到 GitHub `origin/main`。
+- 远程 `refs/heads/main` 与本地 `HEAD` 已核对为同一提交 `d6bf1c6411799897dfe5b44b7062c19e71344060`。
+- 未创建 PR，未部署；GitHub Actions 首次远程运行结果尚未核对。
