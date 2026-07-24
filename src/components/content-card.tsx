@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { MockContentItem } from "../mocks/content";
+import type { ContentSummary } from "../content/schema";
 
 const categoryStyles = {
   文章: "border-category-article bg-category-article-soft text-category-article",
@@ -8,7 +8,7 @@ const categoryStyles = {
   工具分享: "border-category-tool bg-category-tool-soft text-category-tool",
 } as const;
 
-export function ContentCard({ item }: { item: MockContentItem }) {
+export function ContentCard({ item }: { item: ContentSummary }) {
   return (
     <article className="rounded-panel border border-border bg-surface p-6">
       <div className="flex flex-wrap items-center gap-3 text-[length:var(--eelex-text-meta)] text-muted">
