@@ -278,3 +278,11 @@ Phase 2 不实现搜索，但为 Phase 4 固定以下产品语义：
 - 完整套件为 3 个文件、14 个测试通过；生产构建验证 Tailwind CSS v4 接受批准的 `@theme inline` 映射。
 - 嵌套 worktree 构建保留已知的多 workspace 根目录推断 warning；构建成功，合入本地 `main` 后仍须根目录复验。
 - Phase 3 仍需用真实页面骨架和中文内容复核视觉比例；本方案未提前创建展示页。
+
+## 本地 `main` 根目录复验
+
+- 2026-07-24：实现分支已通过 `fast-forward` 合入本地 `main`。
+- 根目录 `corepack pnpm check` 通过，覆盖 Prettier、Next 类型生成、TypeScript、ESLint、3 个测试文件中的 14 个测试和生产构建。
+- 根目录 `corepack pnpm peers check`、`corepack pnpm audit --prod` 与 `git diff --check` 全部通过。
+- 嵌套 worktree 下的多 workspace 根目录推断 warning 在主工作区复验时消失，不需要修改 `next.config.mjs` 或扩大工程配置范围。
+- 当前技术方案已完成验证；Phase 3 消费 token 时仍需针对真实页面、中文内容和 `prefers-reduced-motion` 重新检查视觉与交互表现。

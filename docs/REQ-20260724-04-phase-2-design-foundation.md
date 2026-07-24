@@ -226,3 +226,14 @@
 - 字体、颜色、分类色、间距、圆角、页面宽度和动效 token：通过。
 - CSS token 与自动契约：通过。
 - 未提前进入正式页面、内容系统或部署：通过。
+
+## 本地交付与最终验证补充
+
+- 2026-07-24：用户选择本地合并，`codex/phase-2-design-foundation` 已通过 `fast-forward` 合入本地 `main`，无冲突。
+- 在 `main` 根目录重新执行 `corepack pnpm install --frozen-lockfile` 与统一 `corepack pnpm check`，格式、类型生成与检查、Lint、3 个测试文件中的 14 个测试以及生产构建全部通过。
+- `corepack pnpm peers check` 返回 `No peer dependency issues found`。
+- `corepack pnpm audit --prod` 返回 `No known vulnerabilities found`。
+- `git diff --check` 通过。
+- 根目录生产构建未出现隔离 worktree 中的多 workspace 根目录推断 warning，该提示已确认属于嵌套工作树环境，不是产品或构建缺陷。
+- 本 REQ 的 Phase 2 DoD 已在目标分支与本地 `main` 根目录双重验证。
+- 未执行远程推送、PR、远程 CI 或部署；GitHub Actions 首次远程运行和 Netlify 验证仍按后续授权与对应 Phase 处理。
