@@ -1,1 +1,76 @@
 @import "tailwindcss";
+
+:root {
+  --eelex-color-canvas: #f7f4ec;
+  --eelex-color-surface: #fffdf8;
+  --eelex-color-ink: #202522;
+  --eelex-color-muted: #626a66;
+  --eelex-color-border: #d8d4ca;
+  --eelex-color-accent: #3d6078;
+  --eelex-color-focus: #285f8f;
+  --eelex-color-category-all: #4f5854;
+  --eelex-color-category-article: #365f7a;
+  --eelex-color-category-note: #835f1f;
+  --eelex-color-category-tool: #2d6a60;
+  --eelex-color-category-article-soft: #e5edf2;
+  --eelex-color-category-note-soft: #f5ebcf;
+  --eelex-color-category-tool-soft: #dcece8;
+  --eelex-font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --eelex-font-mono:
+    ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+  --eelex-text-display: clamp(2.75rem, 5vw, 4.5rem);
+  --eelex-text-page-title: clamp(2rem, 4vw, 3rem);
+  --eelex-text-section-title: clamp(1.5rem, 3vw, 2rem);
+  --eelex-text-body: 1rem;
+  --eelex-text-small: 0.875rem;
+  --eelex-text-meta: 0.8125rem;
+  --eelex-leading-tight: 1.15;
+  --eelex-leading-body: 1.75;
+  --eelex-space-page-inline: clamp(1rem, 3vw, 2rem);
+  --eelex-space-section: clamp(3rem, 7vw, 6rem);
+  --eelex-space-stack: 1.5rem;
+  --eelex-radius-control: 0.75rem;
+  --eelex-radius-panel: 1.25rem;
+  --eelex-width-wide: 72rem;
+  --eelex-width-reading: 44rem;
+  --eelex-width-toc: 15rem;
+  --eelex-duration-fast: 120ms;
+  --eelex-duration-base: 180ms;
+  --eelex-duration-slow: 240ms;
+  --eelex-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@theme inline {
+  --color-canvas: var(--eelex-color-canvas);
+  --color-surface: var(--eelex-color-surface);
+  --color-ink: var(--eelex-color-ink);
+  --color-muted: var(--eelex-color-muted);
+  --color-border: var(--eelex-color-border);
+  --color-accent: var(--eelex-color-accent);
+  --color-focus: var(--eelex-color-focus);
+  --color-category-all: var(--eelex-color-category-all);
+  --color-category-article: var(--eelex-color-category-article);
+  --color-category-note: var(--eelex-color-category-note);
+  --color-category-tool: var(--eelex-color-category-tool);
+  --color-category-article-soft: var(--eelex-color-category-article-soft);
+  --color-category-note-soft: var(--eelex-color-category-note-soft);
+  --color-category-tool-soft: var(--eelex-color-category-tool-soft);
+  --font-sans: var(--eelex-font-sans);
+  --font-mono: var(--eelex-font-mono);
+  --radius-control: var(--eelex-radius-control);
+  --radius-panel: var(--eelex-radius-panel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
