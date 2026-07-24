@@ -7,7 +7,7 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ | [`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md) | Approved | Phase 2 设计基础需求与验收边界 |
+| REQ | [`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md) | In Progress | Phase 2 设计基础需求与验收边界 |
 | BIZ（v1 基线） | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | 未被后续决策替代的 Phase 0 产品与技术选择 |
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
