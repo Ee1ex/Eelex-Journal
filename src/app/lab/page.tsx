@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { ReadingDensityExperiment } from "../../components/lab/reading-density-experiment";
+
 export default function LabPage() {
   return (
     <main
@@ -14,6 +16,7 @@ export default function LabPage() {
       <p className="mt-4 max-w-2xl text-muted">
         这里会收录关于界面、动效与交互的独立小实验。
       </p>
+      <ReadingDensityExperiment />
       <Link
         className="mt-10 inline-flex rounded-control border border-ink px-4 py-3 font-semibold text-ink"
         href="/#content"

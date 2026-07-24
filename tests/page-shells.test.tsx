@@ -42,6 +42,8 @@ describe("页面骨架与真实内容链路", () => {
     expect(about).toContain('href="https://github.com/Ee1ex"');
     expect(footer).toContain('href="https://github.com/Ee1ex"');
     expect(lab).toContain("实验室");
+    expect(lab).toContain('name="reading-density"');
+    expect(lab).toContain("重置为舒适密度");
     expect(notFound).toContain('href="/#content"');
     expect(readFileSync("src/app/lab/page.tsx", "utf8")).not.toContain(
       "content/repository",
