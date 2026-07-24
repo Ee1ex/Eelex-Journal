@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { ContentDiscovery } from "../components/content-discovery";
 import { getAllContent } from "../content/repository";
-import { mockProfile } from "../mocks/profile";
+import { publicProfile } from "../site/profile";
 
 export default function Home() {
   const items = getAllContent();
@@ -13,12 +13,14 @@ export default function Home() {
           Eelex Code Hub
         </p>
         <h1 className="mt-4 max-w-4xl text-[length:var(--eelex-text-display)] leading-[var(--eelex-leading-tight)] font-semibold text-ink">
-          {mockProfile.name}
+          {publicProfile.name}
         </h1>
         <p className="mt-4 text-lg font-semibold text-ink">
-          {mockProfile.role}
+          {publicProfile.role}
         </p>
-        <p className="mt-4 max-w-2xl text-muted">{mockProfile.introduction}</p>
+        <p className="mt-4 max-w-2xl text-muted">
+          {publicProfile.introduction}
+        </p>
       </section>
 
       <section className="border-y border-border bg-surface" id="content">
