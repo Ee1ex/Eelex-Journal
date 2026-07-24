@@ -7,15 +7,17 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ | [`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md) | Done | Phase 2 设计基础完成记录 |
+| REQ | [`REQ-20260724-05-phase-3-page-shells.md`](REQ-20260724-05-phase-3-page-shells.md) | Approved | Phase 3 页面骨架与模拟内容 |
 | BIZ（v1 基线） | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | 未被后续决策替代的 Phase 0 产品与技术选择 |
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
 | DEV（Phase 1） | [`DEV-20260724-02-phase-1-engineering-foundation.md`](DEV-20260724-02-phase-1-engineering-foundation.md) | Approved | Phase 1 工程基线与实施方案 |
 | DEV（P2 前置） | [`DEV-20260724-03-p2-preflight-engineering-hardening.md`](DEV-20260724-03-p2-preflight-engineering-hardening.md) | Approved | 依赖安全、工具链、CI 与格式化方案 |
 | DEV（Phase 2） | [`DEV-20260724-04-phase-2-design-foundation.md`](DEV-20260724-04-phase-2-design-foundation.md) | Approved | 设计 token、低保真结构与验证方案 |
+| DEV（Phase 3） | [`DEV-20260724-05-phase-3-page-shells.md`](DEV-20260724-05-phase-3-page-shells.md) | Approved | 页面路由、共享框架、模拟来源与测试方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Completed | 设计 token RED/GREEN、质量门禁与收尾计划 |
+| PLAN（Phase 3） | [`superpowers/plans/2026-07-24-phase-3-page-shells.md`](superpowers/plans/2026-07-24-phase-3-page-shells.md) | Ready | 页面骨架、模拟来源、路由与收尾计划 |
 | PROG | [`PROG-20260724.md`](PROG-20260724.md) | Active | 当前进度、证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 
@@ -151,3 +153,5 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-24：完成 `REQ-20260724-04` 的设计 token、自动契约与本地质量门禁；Phase 2 状态更新为 `Done`。未创建正式页面、组件、内容模型、推送或部署；下一项任务是完成本地分支交付，再创建并批准 Phase 3 REQ。
 - 2026-07-24：`codex/phase-2-design-foundation` 已快进合入本地 `main`，根目录冻结安装、统一质量门禁、peer 检查、生产依赖审计和 Git 差异检查全部通过；Phase 2 本地交付完成，下一项任务为创建并批准 Phase 3 REQ。
 - 2026-07-24：用户另行授权后，本地 `main` 已通过非强制推送同步到 GitHub `origin/main`，远程分支指针与本地提交一致；尚未核对首次远程 CI，未创建 PR 或部署。
+- 2026-07-24：用户批准 `REQ-20260724-05` 与 `DEV-20260724-05`。Phase 3 采用全部 v1 页面骨架、共享框架与统一模拟内容闭环；真实 MDX、搜索与分类行为、可操作实验、SEO、远程 CI 核对和部署仍不实施。
+- 2026-07-24：创建 `PLAN（Phase 3）`，状态为 `Ready`。计划按模拟来源、共享框架、首页、其他路由与质量收尾拆分为五个可验证闭环；未开始页面实现。

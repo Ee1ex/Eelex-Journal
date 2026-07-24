@@ -6,7 +6,7 @@ Eelex Code Hub 是一个用于发布学习思考、分享前端实践与工具�
 
 ## 当前状态
 
-**Phase 2：设计基础** 已完成：主要视觉、低保真结构、基础设计 token 和自动契约均已确认并通过本地质量门禁。正式页面、内容模型、搜索行为、远程 CI 和公开部署尚未实施；下一步是创建并批准 Phase 3 REQ。
+**Phase 3：页面骨架与模拟内容** 的 REQ、DEV 与实施计划已就绪：将建立共享导航、页脚、全部 v1 页面骨架和统一模拟内容。页面代码、真实内容系统、搜索行为、远程 CI 核对和公开部署尚未实施；下一步是按计划实施。
 
 ## v1 概览
 
@@ -70,12 +70,14 @@ GitHub Actions 已配置为在 `main` 推送和 Pull Request 上执行冻结安�
 - [Phase 1 需求](docs/REQ-20260724-02-phase-1-git-engineering-foundation.md)
 - [P2 前置工程加固需求](docs/REQ-20260724-03-p2-preflight-engineering-hardening.md)
 - [Phase 2 设计基础需求](docs/REQ-20260724-04-phase-2-design-foundation.md)
+- [Phase 3 页面骨架与模拟内容需求](docs/REQ-20260724-05-phase-3-page-shells.md)
 - [Phase 0 决策](docs/BIZ-20260724-01-phase-0-baseline.md)
 - [Phase 2 产品与设计决策](docs/BIZ-20260724-02-phase-2-product-design-decisions.md)
 - [v1 技术方案与路线](docs/DEV-20260724-01-v1-architecture-roadmap.md)
 - [Phase 1 工程方案](docs/DEV-20260724-02-phase-1-engineering-foundation.md)
 - [P2 前置工程加固方案](docs/DEV-20260724-03-p2-preflight-engineering-hardening.md)
 - [Phase 2 设计基础方案](docs/DEV-20260724-04-phase-2-design-foundation.md)
+- [Phase 3 页面骨架与模拟内容方案](docs/DEV-20260724-05-phase-3-page-shells.md)
 - [当前进度](docs/PROG-20260724.md)
 
 ## GitHub 展示
