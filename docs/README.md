@@ -7,7 +7,7 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ | [`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md) | In Progress | Phase 2 设计基础需求与验收边界 |
+| REQ | [`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md) | Done | Phase 2 设计基础完成记录 |
 | BIZ（v1 基线） | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | 未被后续决策替代的 Phase 0 产品与技术选择 |
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
@@ -15,7 +15,7 @@
 | DEV（P2 前置） | [`DEV-20260724-03-p2-preflight-engineering-hardening.md`](DEV-20260724-03-p2-preflight-engineering-hardening.md) | Approved | 依赖安全、工具链、CI 与格式化方案 |
 | DEV（Phase 2） | [`DEV-20260724-04-phase-2-design-foundation.md`](DEV-20260724-04-phase-2-design-foundation.md) | Approved | 设计 token、低保真结构与验证方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
-| PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Ready | 设计 token RED/GREEN、质量门禁与收尾计划 |
+| PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Completed | 设计 token RED/GREEN、质量门禁与收尾计划 |
 | PROG | [`PROG-20260724.md`](PROG-20260724.md) | Active | 当前进度、证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 
@@ -148,3 +148,4 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-24：用户批准 `REQ-20260724-04` 与 `BIZ-20260724-02`。首页改为整合全部内容、分类选择和轻量多字段搜索，取消独立“全部文章”页；视觉方向和关键页面低保真结构已确认。`DEV-20260724-04` 当前为 `Proposed`，未获批准前不实施 CSS 或测试。
 - 2026-07-24：用户批准 `DEV-20260724-04` 的精确 token、Tailwind CSS v4 映射、对比度门禁和测试方案；下一步创建逐任务实施计划，仍未开始 CSS 或测试改动。
 - 2026-07-24：创建 `PLAN（Phase 2）`，状态为 `Ready`；计划拆分为实施状态启动、token 契约 RED/GREEN 和全量验证收尾三个闭环。按用户约束仅允许当前会话内联执行。
+- 2026-07-24：完成 `REQ-20260724-04` 的设计 token、自动契约与本地质量门禁；Phase 2 状态更新为 `Done`。未创建正式页面、组件、内容模型、推送或部署；下一项任务是完成本地分支交付，再创建并批准 Phase 3 REQ。

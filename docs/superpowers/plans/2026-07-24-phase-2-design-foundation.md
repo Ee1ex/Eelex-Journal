@@ -238,7 +238,11 @@ const tailwindMappings = {
 } as const;
 
 function normalizeValue(value: string): string {
-  return value.replace(/\s+/g, " ").trim();
+  return value
+    .replace(/\s+/g, " ")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s+\)/g, ")")
+    .trim();
 }
 
 function readDeclaration(name: string): string | undefined {
@@ -708,3 +712,11 @@ git commit -m "docs: close Phase 2 design foundation"
 ```
 
 Expected: one local closeout commit. Do not push, create a PR, or deploy.
+
+## Execution Record
+
+- 2026-07-24：按 `using-git-worktrees` 要求，将原计划中的当前目录分支切换调整为隔离 worktree `.worktrees/phase-2-design-foundation`，分支名保持 `codex/phase-2-design-foundation`。
+- RED 为 1 项通过、4 项失败，失败原因与计划一致。
+- 最小 CSS 后首次运行 4/5 通过；测试 helper 只折叠空白但未处理多行 `var(...)` 括号内格式空格。计划示例已同步为保留字体名称空格、只规范化括号内侧空白的实际实现。
+- 最终定向 GREEN 为 5/5；完整 Vitest 为 3 个文件、14 个测试通过。
+- 完整质量门禁、peer 和生产审计通过；嵌套 worktree 保留已知的 Next.js 根目录推断 warning，待本地 `main` 根目录复验。

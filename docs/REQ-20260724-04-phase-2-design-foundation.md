@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260724-04
-- 状态：In Progress
+- 状态：Done
 - 创建日期：2026-07-24
 - 更新日期：2026-07-24
 - 产品基线：[`PRD.md`](PRD.md)
@@ -194,3 +194,35 @@
 ## 实施启动记录
 
 - 2026-07-24：从干净的本地 `main` 创建隔离 worktree `.worktrees/phase-2-design-foundation` 和分支 `codex/phase-2-design-foundation`，开始基础 token 契约 RED/GREEN；未推送、未部署。
+
+## 完成记录与验收证据
+
+### 状态变更
+
+- 2026-07-24：本 REQ 从 `In Progress` 更新为 `Done`。
+
+### 实施结果
+
+- `src/app/globals.css` 已建立批准的 `:root` 语义 token、Tailwind CSS v4 `@theme inline` 映射和减少动效保护。
+- `tests/design-tokens.test.ts` 覆盖精确 token、Tailwind 映射、WCAG 对比度、减少动效以及禁止字体下载和 Tailwind 配置文件。
+- RED 阶段为 1 项通过、4 项失败，失败准确指向缺少 token 实现。
+- 最小 CSS 后首次运行有 4/5 通过；剩余失败来自测试只折叠空白、未规范化 Prettier 在多行 `var(...)` 括号内加入的空格。测试 helper 最小修正为只移除括号内侧格式空白并保留字体名称中的空格，随后 GREEN 为 5/5 通过。
+- 完整 Vitest 为 3 个测试文件、14 个测试通过，应用壳继续输出空 `<main>`。
+- 未创建页面、组件、内容模型、搜索行为、依赖、字体、Tailwind 配置、推送或部署。
+
+### 工程证据
+
+- `corepack pnpm install --frozen-lockfile`：通过，使用 pnpm `11.17.0`。
+- `corepack pnpm check`：通过，包含格式、类型生成与检查、Lint、14 项测试和生产构建。
+- `corepack pnpm peers check`：`No peer dependency issues found`。
+- `corepack pnpm audit --prod`：`No known vulnerabilities found`。
+- `git diff --check`：通过。
+- 嵌套 worktree 构建出现已知的 Next.js 多 `pnpm-workspace.yaml` 根目录推断 warning，但生产构建成功；本地合入 `main` 后必须从仓库根目录重新执行最终门禁。
+
+### Phase 2 DoD
+
+- 主视觉、阅读、UI 和动效原则：通过。
+- 共享框架、首页、内容详情、关于我和实验室 PC/手机低保真结构：通过。
+- 字体、颜色、分类色、间距、圆角、页面宽度和动效 token：通过。
+- CSS token 与自动契约：通过。
+- 未提前进入正式页面、内容系统或部署：通过。
