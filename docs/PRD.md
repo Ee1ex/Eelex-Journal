@@ -8,7 +8,7 @@
 - 更新日期：2026-07-24
 - 基线决策：[`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md)
 - 当前决策：[`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md)
-- 当前需求：[`REQ-20260724-04-phase-2-design-foundation.md`](REQ-20260724-04-phase-2-design-foundation.md)
+- 最近完成需求：[`REQ-20260724-06-phase-4-mdx-content-discovery.md`](REQ-20260724-06-phase-4-mdx-content-discovery.md)
 
 ## 产品定位
 
@@ -207,3 +207,4 @@ Phase 0 的根目录 README 先准确呈现项目目标、范围、状态和文�
 - 2026-07-24：`REQ-20260724-03` 已完成工程加固验证；未改变产品范围、页面需求、内容模型或 Phase 顺序。下一项产品工作仍须先创建并批准独立的 Phase 2 REQ。
 - 2026-07-24：用户批准 `REQ-20260724-04` 与 `BIZ-20260724-02`。首页改为承载全部内容、分类选择和轻量多字段搜索；取消独立“全部文章”页及导航入口。其他 v1 页面、统一内容模型、实验室隔离和非目标保持不变。
 - 2026-07-24：`REQ-20260724-04` 完成设计基础实施；低保真、视觉原则和基础 token 已验证，产品范围未进一步变化。下一项产品工作须先创建并批准 Phase 3 REQ。
+- 2026-07-24：`REQ-20260724-06` 完成真实 MDX 内容模型和内容发现实现；产品范围未改变。

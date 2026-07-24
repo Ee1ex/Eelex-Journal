@@ -1,12 +1,11 @@
 import Link from "next/link";
 
-import { ContentCard } from "../components/content-card";
-import { mockContent } from "../mocks/content";
+import { ContentDiscovery } from "../components/content-discovery";
+import { getAllContent } from "../content/repository";
 import { mockProfile } from "../mocks/profile";
 
-const categories = ["全部", "文章", "学习笔记", "工具分享"] as const;
-
 export default function Home() {
+  const items = getAllContent();
   return (
     <main id="main-content" tabIndex={-1}>
       <section className="mx-auto flex min-h-[22.5rem] max-w-[var(--eelex-width-wide)] flex-col justify-end px-[var(--eelex-space-page-inline)] py-[var(--eelex-space-section)] sm:min-h-[26.25rem]">
@@ -32,36 +31,7 @@ export default function Home() {
               从最近的记录开始阅读
             </h2>
           </div>
-          <fieldset className="mt-8 grid gap-4" disabled>
-            <legend className="sr-only">内容发现</legend>
-            <label className="grid gap-2 text-sm font-semibold text-ink">
-              搜索内容
-              <input
-                className="rounded-control border border-border bg-canvas px-4 py-3 text-muted"
-                placeholder="搜索标题、摘要、分类或标签"
-                type="search"
-              />
-            </label>
-            <div className="flex flex-wrap gap-2" aria-label="内容分类">
-              {categories.map((category) => (
-                <button
-                  className="rounded-control border border-border bg-canvas px-3 py-2 text-sm font-semibold text-muted disabled:cursor-not-allowed disabled:opacity-70"
-                  key={category}
-                  type="button"
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </fieldset>
-          <p className="mt-4 text-sm text-muted" role="status">
-            搜索将在内容发布后开放
-          </p>
-          <div className="mt-8 grid gap-5">
-            {mockContent.map((item) => (
-              <ContentCard item={item} key={item.slug} />
-            ))}
-          </div>
+          <ContentDiscovery items={items} />
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               className="rounded-control border border-ink px-4 py-3 font-semibold text-ink"

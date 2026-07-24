@@ -4,6 +4,11 @@ const nextConfig = {
   pageExtensions: ["ts", "tsx", "md", "mdx"],
 };
 
-const withMDX = createMDX({});
+const withMDX = createMDX({
+  options: {
+    rehypePlugins: ["rehype-slug"],
+    remarkPlugins: ["remark-frontmatter"],
+  },
+});
 
 export default withMDX(nextConfig);

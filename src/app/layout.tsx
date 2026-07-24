@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { RouteScrollReset } from "../components/route-scroll-reset";
 
 import "./globals.css";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body>
+        <RouteScrollReset />
         <SiteHeader />
         {children}
         <SiteFooter />
