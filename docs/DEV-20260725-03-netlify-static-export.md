@@ -37,3 +37,8 @@
 ## 批准记录
 
 - 2026-07-25：用户确认采用静态导出并直接上传 `out` 的方案。
+
+## 实施与验证记录
+
+- 2026-07-25：配置与 metadata 路由静态声明均通过测试先行验证；首次静态构建提示 `robots.txt` 缺少 `force-static`，补齐 `robots.ts` 与 `sitemap.ts` 的构建期声明后成功生成 `out`。
+- 2026-07-25：`corepack pnpm check`、`git diff --check` 通过；用户上传 `out` 后，线上 `/lab` 返回 404，核心页面和 SEO 文件均可访问。

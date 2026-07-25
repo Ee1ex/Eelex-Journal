@@ -34,7 +34,7 @@
 | PLAN（视觉刷新） | [`superpowers/plans/2026-07-25-visual-refresh.md`](superpowers/plans/2026-07-25-visual-refresh.md) | Completed | 阅读画廊 UI、实验室移除、验证与文档收尾 |
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
-| BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Fixing | Netlify Next 构建产物保留已删除的 `/lab` 路由 |
+| BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Closed | Netlify Next 构建产物保留已删除的 `/lab` 路由，已通过静态导出修复 |
 
 ## 文档分类
 

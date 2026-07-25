@@ -55,3 +55,4 @@
 ## 上线更正记录
 
 - 2026-07-25：线上核对确认历史 Next 构建产物仍保留已取消的 `/lab`，该行为违背本需求的路由树验收标准。已创建 [BUG-20260725-01-netlify-stale-lab-route.md](BUG-20260725-01-netlify-stale-lab-route.md)，并在用户批准后采用 [DEV-20260725-03-netlify-static-export.md](DEV-20260725-03-netlify-static-export.md) 的静态导出发布方案修复。
+- 2026-07-25：用户上传静态 `out` 后完成线上复核，`/lab` 返回 404，视觉刷新需求中的实验室移除验收项现已在生产地址验证通过。

@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：BUG-20260725-01
-- 状态：Fixing
+- 状态：Closed
 - 创建日期：2026-07-25
 - 更新日期：2026-07-25
 - 来源需求：[REQ-20260725-02-visual-refresh.md](REQ-20260725-02-visual-refresh.md)
@@ -38,3 +38,8 @@
 - 静态 `out` 构建通过，且不含任何 `lab` 文件。
 - 用户将 `out` 文件夹上传到 Netlify Drop。
 - 线上 `/lab` 返回 404，首页、关于页、`/robots.txt` 与 `/sitemap.xml` 保持可访问。
+
+## 关闭记录
+
+- 2026-07-25：`corepack pnpm check` 通过格式、类型、12 个测试文件共 33 项测试和静态生产构建；`out` 不含任何 `lab` 文件。
+- 2026-07-25：用户将 `out` 上传到 Netlify Drop 后，带版本查询参数的线上验收确认 `/`、`/about`、`/robots.txt` 和 `/sitemap.xml` 均返回 200，`/lab` 返回 404，且 sitemap 不含 `/lab`。缺陷关闭。
