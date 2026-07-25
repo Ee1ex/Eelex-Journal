@@ -1,6 +1,6 @@
 # Phase 5 关于我、实验室与响应式体验 Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task. All steps below are complete.
 
 **Goal:** 完成统一公开资料、可访问的阅读密度实验和关键页面响应式体验。
 
@@ -28,7 +28,7 @@
 
 **Interfaces:** Produces `publicProfile`，包含昵称、定位、介绍、方向、字母头像和 GitHub 联系方式；迁移当前 `src/mocks/profile.ts` 的公开文案。
 
-- [ ] **Step 1: 写入失败的资料契约测试**
+- [x] **Step 1: 写入失败的资料契约测试**
 
 ```ts
 import { mockProfile } from "../src/mocks/profile";
@@ -39,9 +39,9 @@ it("提供字母头像与唯一的 GitHub 联系方式", () => {
 });
 ```
 
-- [ ] **Step 2: 运行 `corepack pnpm exec vitest run tests/profile.test.ts`，确认因为现有资料缺少头像和联系方式而 RED。**
+- [x] **Step 2: 运行 `corepack pnpm exec vitest run tests/profile.test.ts`，确认因为现有资料缺少头像和联系方式而 RED。**
 
-- [ ] **Step 3: 写入最小实现**
+- [x] **Step 3: 写入最小实现**
 
 ```ts
 export const publicProfile = {
@@ -53,8 +53,8 @@ export const publicProfile = {
 } as const;
 ```
 
-- [ ] **Step 4: 令 `mockProfile` 兼容地重导出 `publicProfile`，迁移首页至 `publicProfile`，重新运行定向测试并确认 GREEN。**
-- [ ] **Step 5: 提交任务：`git add src/site/profile.ts src/app/page.tsx tests/profile.test.ts && git commit -m "feat: add public profile source"`。**
+- [x] **Step 4: 令 `mockProfile` 兼容地重导出 `publicProfile`，迁移首页至 `publicProfile`，重新运行定向测试并确认 GREEN。**
+- [x] **Step 5: 提交任务：`git add src/site/profile.ts src/app/page.tsx tests/profile.test.ts && git commit -m "feat: add public profile source"`。**
 
 ### Task 2: 完成关于页和页脚
 
@@ -65,7 +65,7 @@ export const publicProfile = {
 
 **Interfaces:** Consumes `publicProfile` and produces mobile single-column / `sm` two-column about layout plus explicit external GitHub link in the footer.
 
-- [ ] **Step 1: 写入失败的页面契约测试**
+- [x] **Step 1: 写入失败的页面契约测试**
 
 ```ts
 expect(about).toContain('aria-label="Eelex 的字母头像"');
@@ -73,8 +73,8 @@ expect(about).toContain('href="https://github.com/Ee1ex"');
 expect(footer).toContain('href="https://github.com/Ee1ex"');
 ```
 
-- [ ] **Step 2: 运行 `corepack pnpm exec vitest run tests/page-shells.test.tsx`，确认 RED。**
-- [ ] **Step 3: 以最小实现渲染头像和联系方式。**
+- [x] **Step 2: 运行 `corepack pnpm exec vitest run tests/page-shells.test.tsx`，确认 RED。**
+- [x] **Step 3: 以最小实现渲染头像和联系方式。**
 
 ```tsx
 <div aria-label={publicProfile.avatar.alt} className="grid size-24 place-items-center rounded-full bg-accent text-3xl font-semibold text-surface">
@@ -84,8 +84,8 @@ expect(footer).toContain('href="https://github.com/Ee1ex"');
 
 关于页使用 `sm:grid-cols-[auto_minmax(0,1fr)]`；页脚遍历 contacts，外链设置 `target="_blank" rel="noreferrer"`。
 
-- [ ] **Step 4: 重跑定向测试，确认 GREEN。**
-- [ ] **Step 5: 提交任务：`git add src/app/about/page.tsx src/components/site-footer.tsx tests/page-shells.test.tsx && git commit -m "feat: complete public profile presentation"`。**
+- [x] **Step 4: 重跑定向测试，确认 GREEN。**
+- [x] **Step 5: 提交任务：`git add src/app/about/page.tsx src/components/site-footer.tsx tests/page-shells.test.tsx && git commit -m "feat: complete public profile presentation"`。**
 
 ### Task 3: 交付阅读密度实验
 
@@ -98,7 +98,7 @@ expect(footer).toContain('href="https://github.com/Ee1ex"');
 
 **Interfaces:** Produces `defaultDensity`、`densityOptions`、`getDensityPreviewClass` 和唯一 Client Component；不导入内容仓库、资料模块或页面组件。
 
-- [ ] **Step 1: 写入失败的状态测试**
+- [x] **Step 1: 写入失败的状态测试**
 
 ```ts
 import { defaultDensity, densityOptions, getDensityPreviewClass } from "../src/lab/reading-density";
@@ -110,16 +110,16 @@ it("以舒适密度为默认值并为每种状态提供预览样式", () => {
 });
 ```
 
-- [ ] **Step 2: 运行 `corepack pnpm exec vitest run tests/reading-density.test.ts`，确认 RED。**
-- [ ] **Step 3: 实现纯状态模块和原生 radio group。**
+- [x] **Step 2: 运行 `corepack pnpm exec vitest run tests/reading-density.test.ts`，确认 RED。**
+- [x] **Step 3: 实现纯状态模块和原生 radio group。**
 
 ```tsx
 <fieldset><legend>选择阅读密度</legend>{densityOptions.map((option) => <label key={option.value}><input checked={density === option.value} name="reading-density" onChange={() => setDensity(option.value)} type="radio" value={option.value} />{option.label}</label>)}</fieldset>
 <button onClick={() => setDensity(defaultDensity)} type="button">重置为舒适密度</button>
 ```
 
-- [ ] **Step 4: 重跑密度和页面测试，确认 GREEN，且源码不含 `content/repository`、`localStorage`、`useSearchParams`。**
-- [ ] **Step 5: 提交任务：`git add src/lab/reading-density.ts src/components/lab/reading-density-experiment.tsx src/app/lab/page.tsx tests/reading-density.test.ts tests/page-shells.test.tsx && git commit -m "feat: add reading density lab experiment"`。**
+- [x] **Step 4: 重跑密度和页面测试，确认 GREEN，且源码不含 `content/repository`、`localStorage`、`useSearchParams`。**
+- [x] **Step 5: 提交任务：`git add src/lab/reading-density.ts src/components/lab/reading-density-experiment.tsx src/app/lab/page.tsx tests/reading-density.test.ts tests/page-shells.test.tsx && git commit -m "feat: add reading density lab experiment"`。**
 
 ### Task 4: 响应式验证与文档收尾
 
@@ -127,7 +127,7 @@ it("以舒适密度为默认值并为每种状态提供预览样式", () => {
 - Modify: `tests/page-shells.test.tsx`
 - Modify: Phase 5 REQ、DEV、PRD、PROG、文档索引和实施计划
 
-- [ ] **Step 1: 写入失败的隔离与响应式结构测试。**
+- [x] **Step 1: 写入失败的隔离与响应式结构测试。**
 
 ```ts
 expect(readFileSync("src/app/lab/page.tsx", "utf8")).not.toContain("content/");
@@ -135,7 +135,7 @@ expect(readFileSync("src/components/lab/reading-density-experiment.tsx", "utf8")
 expect(readFileSync("src/app/about/page.tsx", "utf8")).toContain("sm:grid-cols");
 ```
 
-- [ ] **Step 2: 运行页面测试确认 RED，补足最小 Tailwind 类后确认 GREEN，不修改全局 token。**
-- [ ] **Step 3: 在 `320px`、`375px`、`768px`、`1280px` 检查首页、详情、关于页、实验室、导航、页脚、键盘焦点和减少动效。**
-- [ ] **Step 4: 运行 `corepack pnpm check && git diff --check`，确认 PASS。**
-- [ ] **Step 5: 同步文档并提交任务：`git add docs tests/page-shells.test.tsx && git commit -m "docs: close Phase 5 verification"`。**
+- [x] **Step 2: 运行页面测试确认 RED，补足最小 Tailwind 类后确认 GREEN，不修改全局 token。**
+- [x] **Step 3: 在 `320px`、`375px`、`768px`、`1280px` 检查首页、详情、关于页、实验室、导航、页脚、键盘焦点和减少动效。**
+- [x] **Step 4: 运行 `corepack pnpm check && git diff --check`，确认 PASS。**
+- [x] **Step 5: 同步文档并提交任务：`git add docs tests/page-shells.test.tsx && git commit -m "docs: close Phase 5 verification"`。**

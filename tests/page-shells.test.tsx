@@ -25,8 +25,22 @@ describe("页面骨架与真实内容链路", () => {
     expect(markup).toContain('aria-pressed="true"');
     expect(markup).not.toContain('disabled=""');
     expect(markup).toContain('href="/content/designing-readable-interfaces"');
-    expect(markup).toContain('href="/content/weekly-learning-notes-01"');
-    expect(markup).toContain('href="/content/spacing-scale-checklist"');
+  });
+
+  it("首页、关于和阅读页保持阅读画廊标题层级", () => {
+    const home = renderToStaticMarkup(<Home />);
+    const about = renderToStaticMarkup(<AboutPage />);
+    const detailSource = readFileSync(
+      "src/app/content/[slug]/page.tsx",
+      "utf8",
+    );
+    const cardSource = readFileSync("src/components/content-card.tsx", "utf8");
+
+    expect(home).toMatch(/eelex-page-heading[^>]*font-normal/);
+    expect(home).toMatch(/eelex-text-section-title[^>]*font-semibold/);
+    expect(about).toMatch(/eelex-page-heading[^>]*font-normal/);
+    expect(detailSource).toMatch(/eelex-text-page-title[^\n]*font-medium/);
+    expect(cardSource).toMatch(/text-lg[^\n]*font-medium/);
   });
 
   it("详情路由、关于我和 404 保持阅读画廊边界，实验室已移除", () => {

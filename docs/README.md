@@ -9,6 +9,8 @@
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
 | REQ | [`REQ-20260724-05-phase-3-page-shells.md`](REQ-20260724-05-phase-3-page-shells.md) | Done | Phase 3 页面骨架与模拟内容 |
 | REQ（Phase 4） | [`REQ-20260724-06-phase-4-mdx-content-discovery.md`](REQ-20260724-06-phase-4-mdx-content-discovery.md) | Done | 真实 MDX 内容模型、内容发现与阅读链路 |
+| REQ（Phase 5） | [`REQ-20260724-07-phase-5-profile-lab-responsive.md`](REQ-20260724-07-phase-5-profile-lab-responsive.md) | Done | 公开个人资料、独立交互实验与响应式体验 |
+| REQ（Phase 6） | [`REQ-20260725-01-phase-6-seo-accessibility-quality.md`](REQ-20260725-01-phase-6-seo-accessibility-quality.md) | Done | 基础 SEO、可访问性、异常路径与质量验证 |
 | REQ（视觉刷新） | [`REQ-20260725-02-visual-refresh.md`](REQ-20260725-02-visual-refresh.md) | Done | 阅读画廊正式 UI、实验室移除与页面一致性 |
 | BIZ（v1 基线） | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | 未被后续决策替代的 Phase 0 产品与技术选择 |
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
@@ -19,11 +21,15 @@
 | DEV（Phase 2） | [`DEV-20260724-04-phase-2-design-foundation.md`](DEV-20260724-04-phase-2-design-foundation.md) | Approved | 设计 token、低保真结构与验证方案 |
 | DEV（Phase 3） | [`DEV-20260724-05-phase-3-page-shells.md`](DEV-20260724-05-phase-3-page-shells.md) | Approved | 页面路由、共享框架、模拟来源与测试方案 |
 | DEV（Phase 4） | [`DEV-20260724-06-phase-4-mdx-content-discovery.md`](DEV-20260724-06-phase-4-mdx-content-discovery.md) | Approved | MDX 读取、校验、发现状态、渲染与测试方案 |
+| DEV（Phase 5） | [`DEV-20260724-07-phase-5-profile-lab-responsive.md`](DEV-20260724-07-phase-5-profile-lab-responsive.md) | Approved | 公开资料模型、阅读密度实验、响应式与验证方案 |
+| DEV（Phase 6） | [`DEV-20260725-01-phase-6-seo-accessibility-quality.md`](DEV-20260725-01-phase-6-seo-accessibility-quality.md) | Approved | metadata、sitemap、robots、内容资产校验与质量验证方案 |
 | DEV（视觉刷新） | [`DEV-20260725-02-visual-refresh.md`](DEV-20260725-02-visual-refresh.md) | Approved | 表现层迁移、实验室删除与回归验证方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Completed | 设计 token RED/GREEN、质量门禁与收尾计划 |
 | PLAN（Phase 3） | [`superpowers/plans/2026-07-24-phase-3-page-shells.md`](superpowers/plans/2026-07-24-phase-3-page-shells.md) | Completed | 页面骨架、模拟来源、路由与收尾计划 |
 | PLAN（Phase 4） | [`superpowers/plans/2026-07-24-phase-4-mdx-content-discovery.md`](superpowers/plans/2026-07-24-phase-4-mdx-content-discovery.md) | Completed | 真实 MDX、内容发现、详情和验证 |
+| PLAN（Phase 5） | [`superpowers/plans/2026-07-24-phase-5-profile-lab-responsive.md`](superpowers/plans/2026-07-24-phase-5-profile-lab-responsive.md) | Completed | 公开资料、阅读密度实验、响应式与验证 |
+| PLAN（Phase 6） | [`superpowers/plans/2026-07-25-phase-6-seo-accessibility-quality.md`](superpowers/plans/2026-07-25-phase-6-seo-accessibility-quality.md) | Completed | SEO、可访问性、异常路径与质量验证逐任务计划 |
 | PLAN（视觉刷新） | [`superpowers/plans/2026-07-25-visual-refresh.md`](superpowers/plans/2026-07-25-visual-refresh.md) | Completed | 阅读画廊 UI、实验室移除、验证与文档收尾 |
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
@@ -163,5 +169,11 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-24：用户批准 `REQ-20260724-05` 与 `DEV-20260724-05`。Phase 3 采用全部 v1 页面骨架、共享框架与统一模拟内容闭环；真实 MDX、搜索与分类行为、可操作实验、SEO、远程 CI 核对和部署仍不实施。
 - 2026-07-24：创建 `PLAN（Phase 3）`，状态为 `Ready`。计划按模拟来源、共享框架、首页、其他路由与质量收尾拆分为五个可验证闭环；未开始页面实现。
 - 2026-07-24：完成 `REQ-20260724-05`。全部 v1 页面骨架、共享框架与统一模拟内容已在隔离 worktree 完成；5 个测试文件、17 项测试和完整本地质量门禁（含生产依赖审计）均通过。真实 MDX、搜索和分类行为、远程 CI 核对与部署仍未实施。
+- 2026-07-24：用户确认 Phase 4 的产品决策，创建 `REQ-20260724-06`（Draft）、`DEV-20260724-06`（Proposed）与对应实施计划（Draft）。本次仅完成需求与方案文档；真实 MDX、搜索、分类、依赖和应用代码仍待 REQ 与 DEV 明确批准后实施。
+- 2026-07-24：用户批准 `REQ-20260724-06` 与 `DEV-20260724-06`；实施计划状态更新为 `Ready`。Phase 4 可以按已批准范围开始实施，但推送、部署和远程 CI 操作仍需单独授权。
 - 2026-07-24：完成 `REQ-20260724-06`。真实 MDX、统一内容校验、首页搜索/分类、结果状态、详情目录、静态 slug 路由和滚动重置均已完成；8 个测试文件、22 项测试、格式、类型、构建和差异检查通过。审计和人工检查按用户指示未执行。
+- 2026-07-24：创建并获批 `REQ-20260724-07` 与 `DEV-20260724-07`。Phase 5 固定公开个人资料、独立阅读密度实验、无 URL/无持久化状态和响应式验收边界；本轮未开始实施。
+- 2026-07-24：Phase 5 已在隔离分支开始实现并通过本地自动验证；因 `main` 保留未提交改动，尚未集成、推送或部署。
+- 2026-07-25：用户批准 `REQ-20260725-01` 与 `DEV-20260725-01`，并创建 Phase 6 实施计划。正式生产 URL 在需要手动创建或上线 Netlify 时由用户提供；此前不猜测 sitemap、canonical 或 robots URL。本次仅更新文档，不实施、不推送或部署。
+- 2026-07-25：完成 `REQ-20260725-01`。Phase 6 的 metadata、canonical、sitemap、robots、MDX 图片校验、自动质量门禁及人工浏览器验收均有记录；未提交、推送、部署或运行远程 CI。实际发布、公开地区验证和 Netlify 用量仍属于 Phase 7。
 - 2026-07-25：完成 `REQ-20260725-02`。正式站点采用阅读画廊 UI，首页与关于页标题/简介统一为玻璃卡片，实验室及阅读密度交互已移除；9 个测试文件、23 项测试、格式、类型、构建与差异检查通过。未推送、部署或核对远程 CI。
