@@ -3,7 +3,7 @@
 ## 文档信息
 
 - ID：REQ-20260725-03
-- 状态：In Progress
+- 状态：Done
 - 创建日期：2026-07-25
 - 更新日期：2026-07-25
 - 关联产品：[PRD.md](PRD.md)
@@ -77,6 +77,7 @@
 - 2026-07-25：用户批准本需求、独立 Phase 7 DEV，以及 Netlify GitHub 自动发布、7 天流量观察和真实截图范围。当前仅完成需求与方案文档建立；尚未修改应用代码、README、测试、配置、Git 历史、远程仓库或 Netlify 设置，亦未部署。
 - 2026-07-25：用户确认开始实施。已生成并审查真实线上截图、更新根目录 README，并通过 `corepack pnpm check`、`git diff --check` 与静态产物路由核对；用户已在浏览器完成 Netlify 与 GitHub 连接。应用代码和发布配置未改动；同一提交的自动发布、地区和第 7 天流量证据仍待记录。
 - 2026-07-25：Phase 7 的 README、截图和进度记录已推送至 `main`（`924ed79`）；同一提交的 GitHub Actions CI 成功，用户确认最新 Netlify 部署无异常。线上首页、关于页、`robots.txt` 与 `sitemap.xml` 为 200，`/lab` 为 404；中国大陆与海外访问证据及第 7 天用量观察尚未完成，REQ 保持 `In Progress`。
+- 2026-07-25：用户确认中国大陆与海外访问验证已完成，并明确批准不提供 Netlify 用量基线或第 7 天快照。依据 [BIZ-20260725-04-phase-7-observability-waiver.md](BIZ-20260725-04-phase-7-observability-waiver.md)，用量观察不再阻塞关闭；`main@8633351` 的 Netlify 生产部署为 `Published`，对应 CI 成功，REQ 状态更新为 `Done`。未提供的用量数据不作任何流量结论。
 
 ## 遗留问题
 
