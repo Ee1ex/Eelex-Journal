@@ -8,7 +8,7 @@
 - 更新日期：2026-07-25
 - 基线决策：[`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md)
 - 当前决策：[`BIZ-20260725-03-visual-refresh.md`](BIZ-20260725-03-visual-refresh.md)
-- 当前需求：无（等待下一 Phase 的独立 REQ）
+- 当前需求：[`REQ-20260725-03-phase-7-release-github-closure.md`](REQ-20260725-03-phase-7-release-github-closure.md)
 - 最近完成需求：[`REQ-20260725-02-visual-refresh.md`](REQ-20260725-02-visual-refresh.md)
 
 ## 产品定位
@@ -205,3 +205,5 @@ Phase 0 的根目录 README 先准确呈现项目目标、范围、状态和文�
 - 2026-07-25：用户批准 `REQ-20260725-01` 与 `DEV-20260725-01`。Phase 6 将完成基础 SEO、可访问性和质量验证；公开索引范围包含首页、关于页、实验室和已发布内容，正式 Netlify 基址在需要手动创建或上线时由用户提供。本次未开始应用实现、推送或部署，产品范围未改变。
 - 2026-07-25：用户提供 `https://harmonious-sprite-8b742a.netlify.app/` 并确认开始 Phase 6 实施。metadata、canonical、sitemap、robots 和本地图片发布前校验已在隔离 worktree 实现；产品范围未改变，人工浏览器验收、提交和部署尚未完成。
 - 2026-07-25：`REQ-20260725-01` 已完成基础 SEO、404 不索引、内容图片发布前校验与质量验证；用户完成约定视口、键盘、刷新和站内跳转人工验收，并确认隔离预览字体与既有线上页面一致。产品范围未改变；未提交、推送或部署，Phase 7 仍负责实际发布及公开访问验证。
+- 2026-07-25：用户批准 `REQ-20260725-03` 与 `DEV-20260725-04`。Phase 7 将以现有静态导出为基线，完成 Netlify GitHub 自动发布、地区与用量验证，以及基于真实成品的 GitHub 项目首页收尾；产品范围未改变。当前仅建立文档，尚未修改应用代码、README、远程仓库或 Netlify 设置。
+- 2026-07-25：用户确认开始 Phase 7，并在浏览器中完成 Netlify 与 GitHub 的连接。真实 README 截图、项目首页内容和本地静态发布前验证均已完成；产品范围未改变。地区访问记录与第 7 天用量观察仍是完成 Phase 7 的前置条件。
