@@ -98,3 +98,8 @@
 - 2026-07-25：用户提供 `https://harmonious-sprite-8b742a.netlify.app/` 后，方案按既定边界在隔离 worktree 实现。`src/site/seo.ts` 成为站点名称、默认简介、标题规则和绝对 URL 的唯一来源；metadata、sitemap 与 robots 共同消费该配置及既有内容仓库。
 - 2026-07-25：图片校验在内容读取边界执行，拒绝空 alt、非 `/content/` 路径与不存在资源；未增加客户端降级状态或新依赖。SEO 与内容资产测试覆盖成功与失败契约。
 - 2026-07-25：最终 `corepack pnpm check`、`git diff --check` 通过，12 个测试文件共 33 项测试通过；用户完成约定视口、键盘、刷新与站内跳转人工检查并确认通过。未改变本方案的架构边界；未部署、推送或运行远程 CI。
+
+## 更正记录
+
+- 2026-07-25：线上验证发现本方案源码未随此前文档收尾进入 `main`。现已将其功能性实现迁入当前阅读画廊 UI：页面文件只补充 metadata，不回退现有样式；`src/app/robots.ts`、`src/app/sitemap.ts`、`src/site/seo.ts` 和 MDX 图片校验进入 `main`。
+- 2026-07-25：实验室已由 `BIZ-20260725-03-visual-refresh.md` 取消，因此 sitemap 与人工路由核对不再包含 `/lab`；该后续决策取代本方案中有关实验室公开索引的旧描述。

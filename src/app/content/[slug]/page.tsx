@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { TableOfContents } from "../../../components/table-of-contents";
@@ -7,11 +8,31 @@ import {
   getContentTableOfContents,
   getStaticContentParams,
 } from "../../../content/repository";
+import { createPageTitle } from "../../../site/seo";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getStaticContentParams();
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const item = getContentBySlug(slug);
+
+  if (!item) {
+    notFound();
+  }
+
+  return {
+    title: createPageTitle(item.title),
+    description: item.excerpt,
+    alternates: { canonical: `/content/${item.slug}` },
+  };
 }
 
 export default async function ContentPage({

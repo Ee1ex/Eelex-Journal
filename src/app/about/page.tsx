@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
+
 import { publicProfile } from "../../site/profile";
+import { createPageTitle } from "../../site/seo";
+
+export const metadata: Metadata = {
+  title: createPageTitle("关于我"),
+  description: "了解 Eelex 的学习方向、技能方向与联系方式。",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (

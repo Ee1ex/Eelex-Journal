@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
+
 import { ContentDiscovery } from "../components/content-discovery";
 import { getAllContent } from "../content/repository";
 import { publicProfile } from "../site/profile";
+import { defaultDescription, siteName } from "../site/seo";
+
+export const metadata: Metadata = {
+  title: siteName,
+  description: defaultDescription,
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   const items = getAllContent();

@@ -1,4 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+import { createPageTitle } from "../site/seo";
+
+export const metadata: Metadata = {
+  title: createPageTitle("没有找到页面"),
+  description: "你访问的页面不存在，返回首页继续浏览内容。",
+  robots: { follow: false, index: false },
+};
 
 export default function NotFoundPage() {
   return (

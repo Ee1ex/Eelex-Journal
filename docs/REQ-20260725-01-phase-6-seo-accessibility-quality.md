@@ -74,6 +74,12 @@
 - 2026-07-25：已在隔离 worktree `codex/phase-6-seo-accessibility-quality` 完成统一 SEO 配置、页面和详情 metadata、canonical、`sitemap.xml`、`robots.txt`、404 `noindex` 与 MDX 本地图片发布前校验；未新增依赖、锁文件或部署配置。
 - 2026-07-25：自动验证证据为 `corepack pnpm check`、`git diff --check` 均以退出码 0 完成；`check` 包含格式、类型、lint、12 个测试文件共 33 项测试和生产构建。生产构建已生成 `/robots.txt` 与 `/sitemap.xml`。lint 仅保留 `src/content/repository.ts` 的 4 条既有未使用参数 warning，没有 error 或本期新增 warning。
 - 2026-07-25：本地 HTTP 核对确认首页、有效内容详情、`/sitemap.xml` 与 `/robots.txt` 返回 200；无效内容 slug 和未知地址返回 404。用户已完成 `320px`、`375px`、`768px`、`1280px` 的人工浏览器、键盘、刷新和站内跳转检查并确认通过。
+
+## 更正记录
+
+- 2026-07-25：线上核对发现该 REQ 的源码此前仍停留在隔离 worktree，`main` 只保留了文档记录，导致 Netlify 的 `/robots.txt` 为 404。现已按测试先行方式将统一 metadata、canonical、`robots.txt`、`sitemap.xml` 与 MDX 图片发布前校验迁入 `main`。
+- 2026-07-25：`BIZ-20260725-03-visual-refresh.md` 已取消实验室，因此 sitemap 只枚举 `/`、`/about` 和已发布内容页；原验收记录中包含 `/lab` 的部分由该后续决策取代，不重新引入实验室。
+- 2026-07-25：补整后的 `corepack pnpm check` 通过 11 个测试文件、30 项测试、格式、类型与生产构建；产物路由包含 `/robots.txt`、`/sitemap.xml`，不包含 `/lab`。lint 仅有 `src/content/repository.ts` 的 4 条既有 warning。
 - 2026-07-25：为使隔离预览与既有线上页面的标题粗细一致，预览 worktree 临时同步了 main 中既有的 Phase 3 标题微调；用户复测确认字体一致。该组既有改动不属于 Phase 6，未修改 main，也不得混入后续 Phase 6 提交。
 - 未执行：未提交、未推送、未创建 PR、未运行远程 CI、未部署，亦未进行 Phase 7 所属的公开地区可访问性与 Netlify 用量验证。
 - 后续：Phase 7 负责在用户单独授权后处理实际部署、正式公开地址验收、远程 CI、地区访问和 GitHub 项目首页收尾。

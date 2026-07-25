@@ -1,5 +1,5 @@
-import { readFileSync, readdirSync } from "node:fs";
-import { basename, join } from "node:path";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { basename, join, resolve, sep } from "node:path";
 
 import GithubSlugger from "github-slugger";
 import matter from "gray-matter";
@@ -52,6 +52,41 @@ function validateBody(source: string, filePath: string) {
 
   if (/^(?:import|export)\s/m.test(source)) {
     throw new ContentValidationError(filePath, "正文不能包含 MDX 模块语法");
+  }
+
+  validateContentImages(source, filePath);
+}
+
+function validateContentImages(source: string, filePath: string) {
+  const contentDirectory = resolve(process.cwd(), "public", "content");
+  const images = source.matchAll(/!\[([^\]]*)\]\(([^)\s]+)\)/g);
+
+  for (const [, rawAlt, rawSource] of images) {
+    const alt = rawAlt.trim();
+    const imageSource = rawSource.trim();
+
+    if (!alt) {
+      throw new ContentValidationError(filePath, "正文图片必须提供替代文本");
+    }
+
+    if (!imageSource.startsWith("/content/")) {
+      throw new ContentValidationError(
+        filePath,
+        "正文图片必须使用 /content/ 本地资源",
+      );
+    }
+
+    const imagePath = resolve(process.cwd(), "public", `.${imageSource}`);
+
+    if (
+      !imagePath.startsWith(`${contentDirectory}${sep}`) ||
+      !existsSync(imagePath)
+    ) {
+      throw new ContentValidationError(
+        filePath,
+        `正文图片资源不存在：${imageSource}`,
+      );
+    }
   }
 }
 

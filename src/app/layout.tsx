@@ -4,12 +4,14 @@ import type { ReactNode } from "react";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { RouteScrollReset } from "../components/route-scroll-reset";
+import { defaultDescription, siteName, siteUrl } from "../site/seo";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Eelex Code Hub",
-  description: "一个关于代码、设计与学习的个人空间。",
+  metadataBase: siteUrl,
+  title: siteName,
+  description: defaultDescription,
 };
 
 export default function RootLayout({
