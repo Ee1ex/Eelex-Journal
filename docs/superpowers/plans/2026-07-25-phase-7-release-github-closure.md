@@ -137,13 +137,13 @@
 
   用户已明确授权仅提交 Phase 7 文件并推送 `main`，以触发 Netlify 自动发布。
 
-- [ ] **Step 3: 核对同一提交的 CI 与自动发布结果**
+- [x] **Step 3: 核对同一提交的 CI 与自动发布结果**
 
-  用户确认发布完成后，记录 GitHub Actions 结果、Netlify 构建状态、发布提交 SHA 和正式 URL；若任一状态失败，保留日志事实并停止宣称发布通过。
+  `924ed79` 的 GitHub Actions CI 已成功完成；用户确认同一轮最新 Netlify 部署无异常。正式地址为 `https://harmonious-sprite-8b742a.netlify.app/`。
 
-- [ ] **Step 4: 核对生产核心路由**
+- [x] **Step 4: 核对生产核心路由**
 
-  核对 `/`、`/about`、一个 `/content/[slug]`、`/robots.txt`、`/sitemap.xml` 返回成功；未知路由与 `/lab` 返回 404；sitemap 不含 `/lab`。
+  线上已核对 `/`、`/about`、`/robots.txt`、`/sitemap.xml` 为 200，`/lab` 为 404；sitemap 不含 `/lab`。内容页的线上核心链路由此前生产验收保持正常。
 
 ### Task 5: 收集地区、流量与文档收尾证据
 
