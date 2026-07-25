@@ -24,6 +24,7 @@
 | DEV（Phase 5） | [`DEV-20260724-07-phase-5-profile-lab-responsive.md`](DEV-20260724-07-phase-5-profile-lab-responsive.md) | Approved | 公开资料模型、阅读密度实验、响应式与验证方案 |
 | DEV（Phase 6） | [`DEV-20260725-01-phase-6-seo-accessibility-quality.md`](DEV-20260725-01-phase-6-seo-accessibility-quality.md) | Approved | metadata、sitemap、robots、内容资产校验与质量验证方案 |
 | DEV（视觉刷新） | [`DEV-20260725-02-visual-refresh.md`](DEV-20260725-02-visual-refresh.md) | Approved | 表现层迁移、实验室删除与回归验证方案 |
+| DEV（静态发布） | [`DEV-20260725-03-netlify-static-export.md`](DEV-20260725-03-netlify-static-export.md) | Approved | Netlify Drop 静态导出与旧路由清除方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Completed | 设计 token RED/GREEN、质量门禁与收尾计划 |
 | PLAN（Phase 3） | [`superpowers/plans/2026-07-24-phase-3-page-shells.md`](superpowers/plans/2026-07-24-phase-3-page-shells.md) | Completed | 页面骨架、模拟来源、路由与收尾计划 |
@@ -33,6 +34,7 @@
 | PLAN（视觉刷新） | [`superpowers/plans/2026-07-25-visual-refresh.md`](superpowers/plans/2026-07-25-visual-refresh.md) | Completed | 阅读画廊 UI、实验室移除、验证与文档收尾 |
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
+| BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Fixing | Netlify Next 构建产物保留已删除的 `/lab` 路由 |
 
 ## 文档分类
 
