@@ -18,9 +18,9 @@ describe("应用壳", () => {
 
     expect(markup).toContain('<html lang="zh-CN">');
     expect(markup).toContain('href="#main-content"');
-    expect(markup).toContain('href="/">首页</a>');
-    expect(markup).toContain('href="/lab">实验室</a>');
-    expect(markup).toContain('href="/about">关于我</a>');
+    expect(markup).toContain('href="/">内容</a>');
+    expect(markup).not.toContain('href="/lab"');
+    expect(markup).toContain('href="/about">关于</a>');
     expect(markup).toContain("© 2026 Eelex Code Hub");
   });
 

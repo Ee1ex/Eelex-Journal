@@ -21,12 +21,14 @@ export function TableOfContents({
     <>
       <aside
         aria-label="文章目录"
-        className="hidden lg:fixed lg:top-36 lg:right-8 lg:block lg:w-48"
+        className="hidden lg:fixed lg:top-28 lg:right-8 lg:block lg:w-48"
       >
-        <p className="mb-3 text-sm font-semibold text-ink">目录</p>
+        <p className="mb-3 text-sm font-semibold tracking-[0.08em] text-ink">
+          目录
+        </p>
         {links}
       </aside>
-      <details className="mt-10 rounded-panel border border-border p-4 lg:hidden">
+      <details className="mt-10 rounded-[1.15rem] border border-white/80 bg-surface p-4 shadow-[var(--eelex-shadow-panel)] lg:hidden">
         <summary className="cursor-pointer font-semibold text-ink">
           文章目录
         </summary>
