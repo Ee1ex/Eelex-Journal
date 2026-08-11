@@ -1,43 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --eelex-color-canvas: #f5f0e8;
-  --eelex-color-surface: rgba(255, 253, 248, 0.78);
-  --eelex-color-ink: #20211f;
-  --eelex-color-muted: #716d66;
-  --eelex-color-border: rgba(32, 33, 31, 0.12);
-  --eelex-color-accent: #365d7d;
-  --eelex-color-focus: #285f8f;
-  --eelex-color-category-all: #5e4f81;
+  --eelex-color-canvas: #fdfcfc;
+  --eelex-color-surface: #f5f3f1;
+  --eelex-color-ink: #000000;
+  --eelex-color-muted: #777169;
+  --eelex-color-border: #ebe8e4;
+  --eelex-color-accent: #000000;
+  --eelex-color-focus: #0447ff;
+  --eelex-color-category-all: #000000;
   --eelex-color-category-article: #2a5475;
   --eelex-color-category-note: #805719;
   --eelex-color-category-tool: #28695e;
   --eelex-color-category-article-soft: #e2edf6;
   --eelex-color-category-note-soft: #f6ead6;
   --eelex-color-category-tool-soft: #dfeee8;
+  --eelex-font-display:
+    "Waldenburg", "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC",
+    "Noto Sans CJK SC", sans-serif;
   --eelex-font-sans:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
   --eelex-font-mono:
-    ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas,
+    "Geist Mono", ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas,
     "Liberation Mono", monospace;
-  --eelex-text-display: clamp(1.7rem, 3.4vw, 3.2rem);
-  --eelex-text-page-title: clamp(1.7rem, 3.4vw, 3.2rem);
-  --eelex-text-section-title: clamp(1.1rem, 1.85vw, 1.45rem);
-  --eelex-text-body: 1rem;
+  --eelex-text-display: clamp(2.25rem, 5.6vw, 3rem);
+  --eelex-text-page-title: clamp(2rem, 5vw, 3rem);
+  --eelex-text-section-title: clamp(1.125rem, 1.8vw, 1.25rem);
+  --eelex-text-body: 0.9375rem;
   --eelex-text-small: 0.875rem;
   --eelex-text-meta: 0.8125rem;
-  --eelex-leading-tight: 1.15;
-  --eelex-leading-body: 1.75;
-  --eelex-space-page-inline: clamp(1rem, 3vw, 2rem);
-  --eelex-space-section: clamp(2.5rem, 5vw, 4.625rem);
-  --eelex-space-stack: 1.5rem;
-  --eelex-radius-control: 999px;
-  --eelex-radius-panel: 2rem;
-  --eelex-width-wide: 70rem;
+  --eelex-leading-tight: 1.08;
+  --eelex-leading-body: 1.5;
+  --eelex-space-page-inline: clamp(1.25rem, 4vw, 2rem);
+  --eelex-space-section: clamp(4rem, 8vw, 6rem);
+  --eelex-space-stack: 2rem;
+  --eelex-radius-control: 9999px;
+  --eelex-radius-input: 4px;
+  --eelex-radius-panel: 20px;
+  --eelex-width-wide: 80rem;
   --eelex-width-reading: 44rem;
   --eelex-width-toc: 15rem;
-  --eelex-shadow-panel: 0 24px 55px rgba(54, 48, 40, 0.1);
+  --eelex-shadow-panel: 0 0 0 1px rgb(0 0 0 / 0.04);
   --eelex-duration-fast: 120ms;
   --eelex-duration-base: 180ms;
   --eelex-duration-slow: 240ms;
@@ -61,7 +66,9 @@
   --color-category-tool-soft: var(--eelex-color-category-tool-soft);
   --font-sans: var(--eelex-font-sans);
   --font-mono: var(--eelex-font-mono);
+  --font-display: var(--eelex-font-display);
   --radius-control: var(--eelex-radius-control);
+  --radius-input: var(--eelex-radius-input);
   --radius-panel: var(--eelex-radius-panel);
 }
 
@@ -72,19 +79,7 @@ html {
 
 body {
   min-width: 20rem;
-  background:
-    radial-gradient(
-      circle at 100% 7%,
-      rgba(207, 219, 239, 0.55),
-      transparent 24rem
-    ),
-    radial-gradient(
-      circle at 0% 100%,
-      rgba(210, 201, 231, 0.45),
-      transparent 20rem
-    ),
-    var(--eelex-color-canvas);
-  background-attachment: fixed;
+  background: var(--eelex-color-canvas);
   color: var(--eelex-color-ink);
   font-family: var(--eelex-font-sans);
   font-size: var(--eelex-text-body);
@@ -104,6 +99,31 @@ button {
   cursor: pointer;
 }
 
+.eelex-display {
+  font-family: var(--eelex-font-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.eelex-editorial-rule {
+  border-color: var(--eelex-color-border);
+}
+
+.eelex-content-row {
+  border-top: 1px solid var(--eelex-color-border);
+  transition:
+    background-color var(--eelex-duration-fast) var(--eelex-ease-standard),
+    border-color var(--eelex-duration-fast) var(--eelex-ease-standard);
+}
+
+.eelex-content-row:last-child {
+  border-bottom: 1px solid var(--eelex-color-border);
+}
+
+.eelex-content-row:hover {
+  background: var(--eelex-color-surface);
+}
+
 :focus-visible {
   outline: 2px solid var(--eelex-color-focus);
   outline-offset: 3px;
@@ -117,5 +137,9 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .eelex-content-row {
+    transition: none;
   }
 }
