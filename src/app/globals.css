@@ -4,7 +4,9 @@
   --eelex-color-canvas: #fdfcfc;
   --eelex-color-surface: #f5f3f1;
   --eelex-color-ink: #000000;
+  --eelex-color-graphite: #44403b;
   --eelex-color-muted: #777169;
+  --eelex-color-ash: #a59f97;
   --eelex-color-border: #ebe8e4;
   --eelex-color-accent: #000000;
   --eelex-color-focus: #0447ff;
@@ -53,7 +55,9 @@
   --color-canvas: var(--eelex-color-canvas);
   --color-surface: var(--eelex-color-surface);
   --color-ink: var(--eelex-color-ink);
+  --color-graphite: var(--eelex-color-graphite);
   --color-muted: var(--eelex-color-muted);
+  --color-ash: var(--eelex-color-ash);
   --color-border: var(--eelex-color-border);
   --color-accent: var(--eelex-color-accent);
   --color-focus: var(--eelex-color-focus);

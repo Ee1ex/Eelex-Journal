@@ -14,10 +14,10 @@ const categories: readonly ("全部" | ContentCategory)[] = [
 ];
 
 const categoryClasses = {
-  全部: "border-[#8270a8]/30 bg-[#ede8f6] text-[#5e4f81]",
-  文章: "border-category-article/30 bg-category-article-soft text-category-article",
-  学习笔记: "border-category-note/30 bg-category-note-soft text-category-note",
-  工具分享: "border-category-tool/30 bg-category-tool-soft text-category-tool",
+  全部: "border-ink text-ink",
+  文章: "border-category-article text-category-article",
+  学习笔记: "border-category-note text-category-note",
+  工具分享: "border-category-tool text-category-tool",
 } as const;
 
 export function ContentDiscovery({
@@ -33,16 +33,16 @@ export function ContentDiscovery({
   );
 
   return (
-    <div className="mt-6 rounded-panel border border-white/80 bg-surface p-4 shadow-[var(--eelex-shadow-panel)] backdrop-blur sm:p-6">
-      <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-        <div aria-label="内容分类" className="flex flex-wrap gap-2">
+    <div className="eelex-content-discovery">
+      <div className="grid gap-5 border-b border-border pb-6 sm:grid-cols-[1fr_minmax(16rem,22rem)] sm:items-end">
+        <div aria-label="内容分类" className="flex flex-wrap gap-x-5 gap-y-3">
           {categories.map((item) => {
             const selected = category === item;
 
             return (
               <button
                 aria-pressed={selected}
-                className={`rounded-control border px-3 py-2 text-sm font-medium transition-colors hover:border-black/10 hover:bg-black/[0.04] hover:text-ink ${selected ? categoryClasses[item] : "border-transparent bg-transparent text-muted"}`}
+                className={`border-b pb-1 text-sm transition-colors ${selected ? `${categoryClasses[item]} font-medium` : "border-transparent text-muted hover:text-ink"}`}
                 key={item}
                 onClick={() => setCategory(item)}
                 type="button"
@@ -56,7 +56,7 @@ export function ContentDiscovery({
           搜索内容
         </label>
         <input
-          className="w-full rounded-[0.9rem] border border-border bg-white/70 px-4 py-3 text-ink outline-accent"
+          className="w-full rounded-[var(--eelex-radius-input)] border border-border bg-transparent px-3 py-2.5 text-sm text-ink outline-focus placeholder:text-ash"
           id="content-search"
           onChange={(event) => setQuery(event.target.value)}
           placeholder="搜索标题、摘要、分类或标签"
@@ -64,15 +64,18 @@ export function ContentDiscovery({
           value={query}
         />
       </div>
-      <p aria-live="polite" className="mt-4 text-sm text-muted">
+      <p
+        aria-live="polite"
+        className="mt-4 font-mono text-[length:var(--eelex-text-meta)] text-muted"
+      >
         {results.length} 篇内容
       </p>
       {results.length === 0 ? (
-        <p className="mt-8 rounded-[1.2rem] border border-dashed border-border p-6 text-muted">
+        <p className="mt-8 border-y border-dashed border-border py-8 text-sm text-muted">
           没有找到匹配的内容，试试更短的关键词或切换分类。
         </p>
       ) : (
-        <div className="mt-5 grid gap-3">
+        <div className="mt-6">
           {results.map((item) => (
             <ContentCard item={item} key={item.slug} />
           ))}

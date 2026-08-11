@@ -3,31 +3,34 @@ import Link from "next/link";
 import type { ContentSummary } from "../content/schema";
 
 const categoryDotStyles = {
-  文章: "bg-category-article shadow-[0_0_0_5px_rgba(42,84,117,0.11)]",
-  学习笔记: "bg-category-note shadow-[0_0_0_5px_rgba(128,87,25,0.11)]",
-  工具分享: "bg-category-tool shadow-[0_0_0_5px_rgba(40,105,94,0.11)]",
+  文章: "bg-category-article",
+  学习笔记: "bg-category-note",
+  工具分享: "bg-category-tool",
 } as const;
 
 export function ContentCard({ item }: { item: ContentSummary }) {
   return (
-    <article className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 rounded-[1.15rem] border border-transparent bg-white/40 p-5 transition hover:border-accent/15 hover:bg-white/75 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center">
-      <span
-        aria-hidden="true"
-        className={`category-dot mt-2 size-3 rounded-full ${categoryDotStyles[item.category]}`}
-      />
-      <div>
-        <h2 className="text-lg leading-tight font-medium tracking-[-0.03em] text-ink">
+    <article className="eelex-content-row grid gap-4 py-6 sm:grid-cols-[minmax(0,1fr)_10rem] sm:gap-8 sm:py-7">
+      <div className="min-w-0">
+        <div className="flex items-center gap-3 text-[length:var(--eelex-text-meta)] text-muted">
+          <span
+            aria-hidden="true"
+            className={`category-dot size-2 rounded-full ${categoryDotStyles[item.category]}`}
+          />
+          <span>{item.category}</span>
+        </div>
+        <h3 className="mt-3 text-xl leading-tight font-medium tracking-[-0.03em] text-ink sm:text-2xl">
           <Link className="hover:text-accent" href={`/content/${item.slug}`}>
             {item.title}
           </Link>
-        </h2>
-        <p className="mt-2 max-w-[var(--eelex-width-reading)] text-sm leading-relaxed text-muted">
+        </h3>
+        <p className="mt-3 max-w-[var(--eelex-width-reading)] text-sm leading-7 text-muted">
           {item.excerpt}
         </p>
-        <ul className="mt-3 flex flex-wrap gap-2" aria-label="标签">
+        <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2" aria-label="标签">
           {item.tags.map((tag) => (
             <li
-              className="rounded-control border border-border bg-white/40 px-2 py-1 text-[length:var(--eelex-text-meta)] text-muted"
+              className="font-mono text-[length:var(--eelex-text-meta)] text-ash"
               key={tag}
             >
               {tag}
@@ -35,9 +38,7 @@ export function ContentCard({ item }: { item: ContentSummary }) {
           ))}
         </ul>
       </div>
-      <p className="col-start-2 mt-3 text-[length:var(--eelex-text-meta)] text-muted sm:col-auto sm:mt-0 sm:text-right">
-        {item.category}
-        <br />
+      <p className="font-mono text-[length:var(--eelex-text-meta)] leading-relaxed text-muted sm:pt-1 sm:text-right">
         <time dateTime={item.publishedAt}>{item.publishedAt}</time>
       </p>
     </article>

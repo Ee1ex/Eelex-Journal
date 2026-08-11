@@ -13,21 +13,25 @@ import { getAllContent } from "../src/content/repository";
 describe("页面骨架与真实内容链路", () => {
   it("首页展示阅读画廊个人区、已启用的内容发现和真实内容入口", () => {
     const markup = renderToStaticMarkup(<Home />);
+    const homeSource = readFileSync("src/app/page.tsx", "utf8");
 
     expect(markup).toContain('id="main-content"');
     expect(markup).toContain('id="content"');
+    expect(markup).toContain("eelex-home-intro");
+    expect(markup).toContain("eelex-content-section");
+    expect(markup).toContain("eelex-content-discovery");
     expect(markup).toContain("欢迎来到Eelex 的个人博客");
-    expect(markup).toContain("eelex-page-heading");
-    expect(markup).toContain("eelex-page-intro");
-    expect(markup).toContain("eelex-page-intro-card");
     expect(markup).toContain("我的记录与思考");
+    expect(markup).toContain("搜索标题、摘要、分类或标签");
     expect(markup).toContain("3 篇内容");
     expect(markup).toContain('aria-pressed="true"');
     expect(markup).not.toContain('disabled=""');
     expect(markup).toContain('href="/content/designing-readable-interfaces"');
+    expect(homeSource).toContain("getAllContent()");
+    expect(homeSource).toContain("<ContentDiscovery items={items} />");
   });
 
-  it("首页、关于和阅读页保持阅读画廊标题层级", () => {
+  it("首页、关于和阅读页保持各自的标题层级", () => {
     const home = renderToStaticMarkup(<Home />);
     const about = renderToStaticMarkup(<AboutPage />);
     const detailSource = readFileSync(
@@ -36,11 +40,11 @@ describe("页面骨架与真实内容链路", () => {
     );
     const cardSource = readFileSync("src/components/content-card.tsx", "utf8");
 
-    expect(home).toMatch(/eelex-page-heading[^>]*font-normal/);
-    expect(home).toMatch(/eelex-text-section-title[^>]*font-semibold/);
+    expect(home).toContain("eelex-display");
+    expect(home).toContain("eelex-text-section-title");
     expect(about).toMatch(/eelex-page-heading[^>]*font-normal/);
     expect(detailSource).toMatch(/eelex-text-page-title[^\n]*font-medium/);
-    expect(cardSource).toMatch(/text-lg[^\n]*font-medium/);
+    expect(cardSource).toMatch(/text-xl[^\n]*font-medium/);
   });
 
   it("详情路由、关于我和 404 保持阅读画廊边界，实验室已移除", () => {
@@ -75,6 +79,7 @@ describe("页面骨架与真实内容链路", () => {
       existsSync("src/components/lab/reading-density-experiment.tsx"),
     ).toBe(false);
     expect(existsSync("src/lab/reading-density.ts")).toBe(false);
+    expect(card).toContain("eelex-content-row");
     expect(card).toContain("category-dot");
     expect(card).toContain("category-article");
     expect(aboutSource).toContain("rounded-panel");
