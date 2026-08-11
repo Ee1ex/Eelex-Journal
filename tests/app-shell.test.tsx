@@ -18,6 +18,9 @@ describe("应用壳", () => {
 
     expect(markup).toContain('<html lang="zh-CN">');
     expect(markup).toContain('href="#main-content"');
+    expect(markup).toContain("eelex-site-header");
+    expect(markup).toContain("eelex-site-nav");
+    expect(markup).toContain("eelex-site-footer");
     expect(markup).toContain('href="/">内容</a>');
     expect(markup).not.toContain('href="/lab"');
     expect(markup).toContain('href="/about">关于</a>');

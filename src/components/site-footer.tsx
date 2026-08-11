@@ -2,7 +2,7 @@ import { publicProfile } from "../site/profile";
 
 export function SiteFooter() {
   return (
-    <footer className="px-[var(--eelex-space-page-inline)] pt-8 pb-12">
+    <footer className="eelex-site-footer px-[var(--eelex-space-page-inline)] pt-10 pb-12">
       <div className="mx-auto flex max-w-[var(--eelex-width-wide)] flex-col gap-3 border-t border-border pt-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <span>Eelex Code Hub</span>
         <div className="flex flex-wrap gap-x-4 gap-y-1">
