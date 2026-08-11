@@ -12,10 +12,12 @@
 | REQ（Phase 5） | [`REQ-20260724-07-phase-5-profile-lab-responsive.md`](REQ-20260724-07-phase-5-profile-lab-responsive.md) | Done | 公开个人资料、独立交互实验与响应式体验 |
 | REQ（Phase 6） | [`REQ-20260725-01-phase-6-seo-accessibility-quality.md`](REQ-20260725-01-phase-6-seo-accessibility-quality.md) | Done | 基础 SEO、可访问性、异常路径与质量验证 |
 | REQ（视觉刷新） | [`REQ-20260725-02-visual-refresh.md`](REQ-20260725-02-visual-refresh.md) | Done | 阅读画廊正式 UI、实验室移除与页面一致性 |
+| REQ（首页 Demo） | [`REQ-20260811-01-home-editorial-demo.md`](REQ-20260811-01-home-editorial-demo.md) | Done | 首页编辑型视觉 Demo、原有内容与交互保留 |
 | REQ（Phase 7） | [`REQ-20260725-03-phase-7-release-github-closure.md`](REQ-20260725-03-phase-7-release-github-closure.md) | Done | 自动静态发布、公开验证与 GitHub 项目首页收尾；用量观察已获豁免 |
 | BIZ（v1 基线） | [`BIZ-20260724-01-phase-0-baseline.md`](BIZ-20260724-01-phase-0-baseline.md) | Approved | 未被后续决策替代的 Phase 0 产品与技术选择 |
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
 | BIZ（视觉刷新） | [`BIZ-20260725-03-visual-refresh.md`](BIZ-20260725-03-visual-refresh.md) | Approved | 阅读画廊视觉基线、实验室取消与页面层级 |
+| BIZ（首页 Demo） | [`BIZ-20260811-01-home-editorial-demo.md`](BIZ-20260811-01-home-editorial-demo.md) | Approved | 首页暖白编辑目录视觉与全站扩展边界 |
 | BIZ（Phase 7） | [`BIZ-20260725-04-phase-7-observability-waiver.md`](BIZ-20260725-04-phase-7-observability-waiver.md) | Approved | 用户批准免除用量观察，完成发布闭环收尾 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
 | DEV（Phase 1） | [`DEV-20260724-02-phase-1-engineering-foundation.md`](DEV-20260724-02-phase-1-engineering-foundation.md) | Approved | Phase 1 工程基线与实施方案 |
@@ -26,6 +28,7 @@
 | DEV（Phase 5） | [`DEV-20260724-07-phase-5-profile-lab-responsive.md`](DEV-20260724-07-phase-5-profile-lab-responsive.md) | Approved | 公开资料模型、阅读密度实验、响应式与验证方案 |
 | DEV（Phase 6） | [`DEV-20260725-01-phase-6-seo-accessibility-quality.md`](DEV-20260725-01-phase-6-seo-accessibility-quality.md) | Approved | metadata、sitemap、robots、内容资产校验与质量验证方案 |
 | DEV（视觉刷新） | [`DEV-20260725-02-visual-refresh.md`](DEV-20260725-02-visual-refresh.md) | Approved | 表现层迁移、实验室删除与回归验证方案 |
+| DEV（首页 Demo） | [`DEV-20260811-01-home-editorial-demo.md`](DEV-20260811-01-home-editorial-demo.md) | Approved | 首页表现层、token、交互保留与验证方案 |
 | DEV（静态发布） | [`DEV-20260725-03-netlify-static-export.md`](DEV-20260725-03-netlify-static-export.md) | Approved | Netlify Drop 静态导出与旧路由清除方案 |
 | DEV（Phase 7） | [`DEV-20260725-04-phase-7-release-github-closure.md`](DEV-20260725-04-phase-7-release-github-closure.md) | Approved | GitHub 自动发布、公开验收、用量证据与 README 收尾方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
@@ -35,8 +38,10 @@
 | PLAN（Phase 5） | [`superpowers/plans/2026-07-24-phase-5-profile-lab-responsive.md`](superpowers/plans/2026-07-24-phase-5-profile-lab-responsive.md) | Completed | 公开资料、阅读密度实验、响应式与验证 |
 | PLAN（Phase 6） | [`superpowers/plans/2026-07-25-phase-6-seo-accessibility-quality.md`](superpowers/plans/2026-07-25-phase-6-seo-accessibility-quality.md) | Completed | SEO、可访问性、异常路径与质量验证逐任务计划 |
 | PLAN（视觉刷新） | [`superpowers/plans/2026-07-25-visual-refresh.md`](superpowers/plans/2026-07-25-visual-refresh.md) | Completed | 阅读画廊 UI、实验室移除、验证与文档收尾 |
+| PLAN（首页 Demo） | [`superpowers/plans/2026-08-11-home-editorial-demo.md`](superpowers/plans/2026-08-11-home-editorial-demo.md) | Completed | 首页编辑型视觉、交互回归、质量门禁与文档收尾 |
 | PLAN（Phase 7） | [`superpowers/plans/2026-07-25-phase-7-release-github-closure.md`](superpowers/plans/2026-07-25-phase-7-release-github-closure.md) | Completed | README、自动静态发布、公开验证与文档收尾 |
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
+| PROG（2026-08-11） | [`PROG-20260811.md`](PROG-20260811.md) | Active | 首页编辑型视觉 Demo 进度、验证证据和下一步 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 | BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Closed | Netlify Next 构建产物保留已删除的 `/lab` 路由，已通过静态导出修复 |
 
@@ -186,3 +191,4 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 - 2026-07-25：用户批准 `REQ-20260725-03` 与 `DEV-20260725-04`，将 Phase 7 定义为 Netlify GitHub 自动静态发布、公开地区验证、7 天流量观察和真实 GitHub README 收尾；当前仅建立需求与方案文档，尚未实施、提交、推送或部署。
 - 2026-07-25：用户确认开始 Phase 7。README 真实素材和项目首页更新已完成，并通过完整本地质量门禁；Netlify 已由用户在浏览器中连接 GitHub，地区与流量证据仍待补齐。
 - 2026-07-25：完成 `REQ-20260725-03`。GitHub—Netlify 自动静态发布、公开路由和两地访问验证已完成；用户通过 `BIZ-20260725-04` 明确豁免 Netlify 用量观察，未将未提供的数据作流量结论。
+- 2026-08-11：用户批准首页编辑型视觉 Demo 设计；在独立分支 `codex/home-editorial-demo` 完成暖白编辑目录首页、共享导航/页脚和内容列表表现层迁移。内容模型、MDX、搜索、分类、详情路由、关于页和 404 未改；`corepack pnpm check`、`git diff --check` 和本地 HTTP smoke check 通过。浏览器截图与点击级视口验收留给用户本地预览确认，未推送或部署。

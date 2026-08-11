@@ -1,6 +1,6 @@
 # Home Editorial Demo Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** 在不改变 Eelex Code Hub 首页内容、路由、搜索和分类行为的前提下，将首页实现为暖白纸张感、编辑目录式的视觉 demo。
 
@@ -53,7 +53,7 @@
 - Produces: `--eelex-color-*`、`--eelex-font-*`、`--eelex-text-*`、布局和圆角语义 token，供所有页面组件消费。
 - Preserves: Tailwind `@theme inline` 的 `bg-canvas`、`bg-surface`、`text-ink`、`text-muted`、`border-border`、`text-accent`、分类色、`font-sans`、`font-mono` 和 `rounded-panel` 映射。
 
-- [ ] **Step 1: 先更新 token 测试中的期望值**
+- [x] **Step 1: 先更新 token 测试中的期望值**
 
 将 `tests/design-tokens.test.ts` 的 `semanticTokens` 期望更新为：
 
@@ -62,7 +62,9 @@ const semanticTokens = {
   "--eelex-color-canvas": "#fdfcfc",
   "--eelex-color-surface": "#f5f3f1",
   "--eelex-color-ink": "#000000",
+  "--eelex-color-graphite": "#44403b",
   "--eelex-color-muted": "#777169",
+  "--eelex-color-ash": "#a59f97",
   "--eelex-color-border": "#ebe8e4",
   "--eelex-color-accent": "#000000",
   "--eelex-color-focus": "#0447ff",
@@ -109,13 +111,13 @@ const semanticTokens = {
 "--font-display": "var(--eelex-font-display)",
 ```
 
-- [ ] **Step 2: 运行 token 测试确认 RED**
+- [x] **Step 2: 运行 token 测试确认 RED**
 
 Run: `corepack pnpm vitest run tests/design-tokens.test.ts`
 
 Expected: FAIL，失败原因是 `src/app/globals.css` 仍声明旧 token 值；不得通过放宽断言或删除对比度测试来让测试通过。
 
-- [ ] **Step 3: 更新 `src/app/globals.css` 的 `:root` 与 `@theme inline`**
+- [x] **Step 3: 更新 `src/app/globals.css` 的 `:root` 与 `@theme inline`**
 
 保留现有分类色，替换基础 token，并新增 display font 映射。核心声明必须等价于：
 
@@ -124,7 +126,9 @@ Expected: FAIL，失败原因是 `src/app/globals.css` 仍声明旧 token 值；
   --eelex-color-canvas: #fdfcfc;
   --eelex-color-surface: #f5f3f1;
   --eelex-color-ink: #000000;
+  --eelex-color-graphite: #44403b;
   --eelex-color-muted: #777169;
+  --eelex-color-ash: #a59f97;
   --eelex-color-border: #ebe8e4;
   --eelex-color-accent: #000000;
   --eelex-color-focus: #0447ff;
@@ -171,9 +175,9 @@ Expected: FAIL，失败原因是 `src/app/globals.css` 仍声明旧 token 值；
 }
 ```
 
-Add the matching `--font-display: var(--eelex-font-display);` to `@theme inline`; leave the existing Tailwind color and radius aliases intact.
+Add the matching `--color-graphite: var(--eelex-color-graphite);`, `--color-ash: var(--eelex-color-ash);` and `--font-display: var(--eelex-font-display);` declarations to `@theme inline`; leave the existing Tailwind color and radius aliases intact.
 
-- [ ] **Step 4: Replace global body chrome with flat editorial foundation**
+- [x] **Step 4: Replace global body chrome with flat editorial foundation**
 
 Update the existing `html` and `body` rules so the page uses the eggshell canvas without the old purple/blue radial gradients:
 
@@ -228,7 +232,7 @@ Add focused reusable classes below the global interaction rules:
 }
 ```
 
-- [ ] **Step 5: Run token tests and formatting**
+- [x] **Step 5: Run token tests and formatting**
 
 Run: `corepack pnpm vitest run tests/design-tokens.test.ts`
 
@@ -238,7 +242,7 @@ Run: `corepack pnpm prettier --check src/app/globals.css tests/design-tokens.tes
 
 Expected: PASS.
 
-- [ ] **Step 6: Commit the token checkpoint**
+- [x] **Step 6: Commit the token checkpoint**
 
 ```bash
 git add src/app/globals.css tests/design-tokens.test.ts
@@ -260,7 +264,7 @@ git commit -m "feat: establish editorial home tokens"
 - Consumes: existing `usePathname()`, `navigation`, `publicProfile.contacts` and `#main-content` target.
 - Produces: unchanged navigation URLs and accessible current-page state with new editorial classes.
 
-- [ ] **Step 1: Add shell assertions before the implementation**
+- [x] **Step 1: Add shell assertions before the implementation**
 
 In `tests/app-shell.test.tsx`, keep the existing link assertions and add:
 
@@ -273,13 +277,13 @@ expect(markup).toContain('href="#main-content"');
 
 The test must continue to assert that `/lab` is absent and both `/` and `/about` links exist.
 
-- [ ] **Step 2: Run the shell test to confirm RED**
+- [x] **Step 2: Run the shell test to confirm RED**
 
 Run: `corepack pnpm vitest run tests/app-shell.test.tsx`
 
 Expected: FAIL because the new semantic classes are not present yet.
 
-- [ ] **Step 3: Update `SiteHeader` without changing navigation behavior**
+- [x] **Step 3: Update `SiteHeader` without changing navigation behavior**
 
 Keep the `navigation` array, `usePathname()`, `aria-current`, and skip link. Replace the outer classes with a static, minimal frame:
 
@@ -318,7 +322,7 @@ Keep the `navigation` array, `usePathname()`, `aria-current`, and skip link. Rep
 
 Retain the existing skip-link class string rather than introducing a new focus implementation.
 
-- [ ] **Step 4: Update `SiteFooter` as a matching editorial rule**
+- [x] **Step 4: Update `SiteFooter` as a matching editorial rule**
 
 Keep the contact mapping and external-link attributes. Add `eelex-site-footer`, use `border-t border-border`, and let the content wrap at mobile widths:
 
@@ -344,7 +348,7 @@ Keep the contact mapping and external-link attributes. Add `eelex-site-footer`, 
 </footer>
 ```
 
-- [ ] **Step 5: Run shell tests and formatting**
+- [x] **Step 5: Run shell tests and formatting**
 
 Run: `corepack pnpm vitest run tests/app-shell.test.tsx`
 
@@ -354,7 +358,7 @@ Run: `corepack pnpm prettier --check src/components/site-header.tsx src/componen
 
 Expected: PASS.
 
-- [ ] **Step 6: Commit the shell checkpoint**
+- [x] **Step 6: Commit the shell checkpoint**
 
 ```bash
 git add src/components/site-header.tsx src/components/site-footer.tsx tests/app-shell.test.tsx
@@ -376,7 +380,7 @@ git commit -m "feat: restyle editorial site frame"
 - Consumes: `getAllContent()`, `publicProfile.introduction`, `ContentDiscovery` props and existing category/search behavior.
 - Produces: same rendered content and filter interaction with a new semantic layout.
 
-- [ ] **Step 1: Extend homepage assertions before the implementation**
+- [x] **Step 1: Extend homepage assertions before the implementation**
 
 In the existing homepage test, keep all current expectations and add:
 
@@ -390,13 +394,13 @@ expect(markup).toContain("3 篇内容");
 
 Add a static source assertion that the `Home` component still calls `getAllContent()` and passes `items` to `<ContentDiscovery items={items} />`.
 
-- [ ] **Step 2: Run the homepage shell test to confirm RED**
+- [x] **Step 2: Run the homepage shell test to confirm RED**
 
 Run: `corepack pnpm vitest run tests/page-shells.test.tsx`
 
 Expected: FAIL only on the new semantic class assertions; existing content and link assertions must remain green.
 
-- [ ] **Step 3: Update `Home` with the approved structure**
+- [x] **Step 3: Update `Home` with the approved structure**
 
 Keep the existing metadata, `getAllContent()`, title, introduction and `ContentDiscovery`. Replace only layout classes/containers with:
 
@@ -430,7 +434,7 @@ Keep the existing metadata, `getAllContent()`, title, introduction and `ContentD
 
 The `EELEX / PERSONAL JOURNAL` eyebrow is a visual label only; it must not change existing content data or route behavior.
 
-- [ ] **Step 4: Update `ContentDiscovery` layout without touching filter state**
+- [x] **Step 4: Update `ContentDiscovery` layout without touching filter state**
 
 Keep these declarations unchanged:
 
@@ -507,7 +511,7 @@ const categoryClasses = {
 
 Remove only the old panel background/border classes from the wrapper; do not remove `aria-pressed`, the label, `aria-live`, or the empty state.
 
-- [ ] **Step 5: Run homepage tests and format**
+- [x] **Step 5: Run homepage tests and format**
 
 Run: `corepack pnpm vitest run tests/page-shells.test.tsx tests/content-search.test.ts`
 
@@ -517,7 +521,7 @@ Run: `corepack pnpm prettier --check src/app/page.tsx src/components/content-dis
 
 Expected: PASS.
 
-- [ ] **Step 6: Commit the homepage shell checkpoint**
+- [x] **Step 6: Commit the homepage shell checkpoint**
 
 ```bash
 git add src/app/page.tsx src/components/content-discovery.tsx tests/page-shells.test.tsx
@@ -538,7 +542,7 @@ git commit -m "feat: introduce editorial homepage layout"
 - Consumes: unchanged `ContentSummary` fields `slug`, `title`, `excerpt`, `publishedAt`, `category`, and `tags`.
 - Produces: an accessible `article` whose title still links to `/content/${item.slug}` and whose metadata remains visible.
 
-- [ ] **Step 1: Add content-row assertions**
+- [x] **Step 1: Add content-row assertions**
 
 In the existing `ContentCard` render test, add:
 
@@ -555,13 +559,13 @@ Keep the existing assertions for the category dot, category token and article li
 expect(cardSource).toMatch(/text-xl[^\n]*font-medium/);
 ```
 
-- [ ] **Step 2: Run the focused test to confirm RED**
+- [x] **Step 2: Run the focused test to confirm RED**
 
 Run: `corepack pnpm vitest run tests/page-shells.test.tsx`
 
 Expected: FAIL only on the missing `eelex-content-row` class.
 
-- [ ] **Step 3: Replace the card wrapper with the editorial row**
+- [x] **Step 3: Replace the card wrapper with the editorial row**
 
 Implement this structure while keeping all field expressions unchanged:
 
@@ -583,7 +587,7 @@ Implement this structure while keeping all field expressions unchanged:
     <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2" aria-label="标签">
       {item.tags.map((tag) => (
         <li className="font-mono text-[length:var(--eelex-text-meta)] text-ash" key={tag}>
-          #{tag}
+              {tag}
         </li>
       ))}
     </ul>
@@ -596,7 +600,7 @@ Implement this structure while keeping all field expressions unchanged:
 
 The category dot classes must retain the existing accessible colors and only use a small visual area. The `h3` element is a structural improvement from the previous nested `h2`; it does not change the visible title or link target.
 
-- [ ] **Step 4: Run content and format checks**
+- [x] **Step 4: Run content and format checks**
 
 Run: `corepack pnpm vitest run tests/page-shells.test.tsx tests/content-repository.test.ts tests/content-search.test.ts`
 
@@ -606,7 +610,7 @@ Run: `corepack pnpm prettier --check src/components/content-card.tsx tests/page-
 
 Expected: PASS.
 
-- [ ] **Step 5: Commit the content-list checkpoint**
+- [x] **Step 5: Commit the content-list checkpoint**
 
 ```bash
 git add src/components/content-card.tsx tests/page-shells.test.tsx
@@ -627,13 +631,13 @@ git commit -m "feat: render content as editorial directory"
 - Consumes: completed token, shell, homepage and content-list checkpoints.
 - Produces: a locally runnable homepage demo with evidence for behavior, build and responsive safety.
 
-- [ ] **Step 1: Run the complete automated quality gate**
+- [x] **Step 1: Run the complete automated quality gate**
 
 Run: `corepack pnpm check`
 
 Expected: Prettier check, Next type generation, TypeScript, ESLint, all Vitest tests and `next build` pass. Existing `src/content/repository.ts` unused-parameter warnings may remain as warnings only; no new lint error is acceptable.
 
-- [ ] **Step 2: Check repository diff hygiene**
+- [x] **Step 2: Check repository diff hygiene**
 
 Run: `git diff --check`
 
@@ -643,13 +647,13 @@ Run: `git status --short`
 
 Expected: only the intended source/test/documentation files are modified or untracked; `.codex/` must not be staged.
 
-- [ ] **Step 3: Start the local demo server**
+- [x] **Step 3: Start the local demo server**
 
 Run: `corepack pnpm dev`
 
 Expected: Next development server reports a local URL such as `http://localhost:3000` and the homepage renders without a runtime exception.
 
-- [ ] **Step 4: Inspect the homepage at the required viewport matrix**
+- [x] **Step 4: Inspect the homepage at the required viewport matrix**
 
 Check these states in the local preview:
 
@@ -667,7 +671,7 @@ Also verify:
 - Enable `prefers-reduced-motion`; no content-row transition or smooth scroll is required for correctness.
 - Open one existing content link and confirm the original `/content/[slug]` route remains reachable.
 
-- [ ] **Step 5: Commit any final fixes and record the final source diff**
+- [x] **Step 5: Commit any final fixes and record the final source diff**
 
 ```bash
 git add src/app/globals.css src/app/page.tsx src/components/site-header.tsx src/components/site-footer.tsx src/components/content-discovery.tsx src/components/content-card.tsx tests/design-tokens.test.ts tests/page-shells.test.tsx
@@ -693,27 +697,27 @@ Do not stage `.codex/`, build output, logs or dependency directories.
 - Consumes: the approved design spec, final diff, `corepack pnpm check` output, `git diff --check` output and local viewport evidence.
 - Produces: synchronized authoritative records proving scope, decision, implementation and verification.
 
-- [ ] **Step 1: Create the task REQ with concrete acceptance evidence**
+- [x] **Step 1: Create the task REQ with concrete acceptance evidence**
 
 Record `REQ-20260811-01` as `Done`, linked to `PRD.md`, the new BIZ and DEV, with scope limited to the homepage visual demo. Include the final commit(s), `corepack pnpm check`, `git diff --check`, viewport matrix and explicit statement that contents, routes, search and category behavior were unchanged.
 
-- [ ] **Step 2: Create the visual BIZ decision**
+- [x] **Step 2: Create the visual BIZ decision**
 
 Record `BIZ-20260811-01` as `Approved`, linked to the REQ and the superseded parts of `BIZ-20260725-03`. State that the user-provided ElevenLabs-style reference is translated into an Eelex editorial directory, not copied as a product marketing page.
 
-- [ ] **Step 3: Create the implementation DEV record**
+- [x] **Step 3: Create the implementation DEV record**
 
 Record `DEV-20260811-01` as `Approved`, linked to the REQ/BIZ. Document the unchanged data flow, modified files, no-dependency constraint, token source and validation strategy.
 
-- [ ] **Step 4: Append the dated progress record**
+- [x] **Step 4: Append the dated progress record**
 
 In `docs/PROG-20260811.md`, record completed work, automated checks, manual viewport checks, known lint warnings if still present, no deployment/push, and the next step of extending the visual language to other pages only after a separate user decision.
 
-- [ ] **Step 5: Update `docs/README.md` current index**
+- [x] **Step 5: Update `docs/README.md` current index**
 
 Add the new REQ, BIZ and DEV entries to the current authoritative index and add the new `PROG-20260811.md` entry. Preserve all prior records and mark any directly superseded visual statement through explicit linkage rather than deletion.
 
-- [ ] **Step 6: Run the final documentation and repository checks**
+- [x] **Step 6: Run the final documentation and repository checks**
 
 Run: `corepack pnpm check`
 
@@ -727,7 +731,7 @@ Run: `git status --short`
 
 Expected: no unintended files staged; `.codex/` remains untouched.
 
-- [ ] **Step 7: Commit documentation closeout**
+- [x] **Step 7: Commit documentation closeout**
 
 ```bash
 git add docs/REQ-20260811-01-home-editorial-demo.md docs/BIZ-20260811-01-home-editorial-demo.md docs/DEV-20260811-01-home-editorial-demo.md docs/PROG-20260811.md docs/README.md
