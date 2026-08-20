@@ -5,6 +5,10 @@ import { describe, expect, it } from "vitest";
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 
 describe("工程配置契约", () => {
+  it("使用 Eelex Blog 包名", () => {
+    expect(packageJson.name).toBe("eelex-blog");
+  });
+
   it("固定与 Node 24 对齐的工具版本和质量命令", () => {
     expect(packageJson.packageManager).toBe("pnpm@11.17.0");
     expect(packageJson.devDependencies["@types/node"]).toBe("24.13.3");

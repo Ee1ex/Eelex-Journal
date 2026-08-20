@@ -73,6 +73,8 @@ describe("页面骨架与真实内容链路", () => {
     expect(footer).toContain('href="https://github.com/Ee1ex"');
     expect(notFound).toContain('href="/#content"');
     expect(headerSource).not.toContain('href: "/lab"');
+    expect(headerSource).toContain("Eelex Blog");
+    expect(headerSource).not.toContain("Eelex Code Hub");
     expect(existsSync("src/app/lab/page.tsx")).toBe(false);
     expect(
       existsSync("src/components/lab/reading-density-experiment.tsx"),

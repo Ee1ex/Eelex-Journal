@@ -26,7 +26,8 @@ describe("应用壳", () => {
     expect(markup).toContain("项目</button>");
     expect(markup).toContain("关于</button>");
     expect(markup).toContain('href="/rss.xml">RSS</a>');
-    expect(markup).toContain("© 2026 Eelex Code Hub");
+    expect(markup).toContain("© 2026 Eelex Blog");
+    expect(markup).not.toContain("Eelex Code Hub");
   });
 
   it("提供空的全局 MDX 组件映射", () => {
