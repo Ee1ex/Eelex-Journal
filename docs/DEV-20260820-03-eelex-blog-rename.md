@@ -55,9 +55,12 @@ git diff origin/main...HEAD --check
 - 旧正式名称扫描只命中 `tests/app-shell.test.tsx`、`tests/engineering-config.test.ts` 与 `tests/page-shells.test.tsx` 中的负向断言；README、`package.json` 与 `src` 无残留。
 - 原工作树复核仍显示 `.codex/` 与 `public/eelex-avatar.png` 为未跟踪路径；隔离分支 `git ls-files` 未包含二者。
 - `git diff origin/main...HEAD --check` 无输出，退出码 0。
+- PR #11 首次 CI 的格式、类型、Lint、46 项测试、构建和 peer 检查全部通过，但 `pnpm audit --prod` 因 `js-yaml@3.15.0`、`nanoid@3.3.16` 与 `postcss@8.5.22` 的新公告失败。
+- 经用户批准追加最小安全修复：定向解析 `gray-matter>js-yaml@3.15.1`、`postcss>nanoid@3.3.18`，并把直接依赖与 `next>postcss` 更新为 `postcss@8.5.24`；未升级其他依赖。
+- 安全修复后 `corepack pnpm audit --prod` 输出 `No known vulnerabilities found`；完整 `corepack pnpm check` 再次通过，仍为 13 个测试文件、46 项测试、12 个静态页面和 4 条既有 warning。
 
 ## 未验证项
 
-- GitHub 仓库改名、Push、PR、CI、Merge 和 Netlify 自动部署尚未执行。
+- GitHub 分支与 PR #11 已创建；首次 CI 的生产依赖审计失败，修复提交、复跑 CI、Merge、仓库改名和 Netlify 生产部署尚未完成。
 - 线上站点、目标仓库 About 与旧仓库 URL 重定向尚未回读。
 - 未单独执行真实浏览器视觉回归；本次只改品牌文本，页面结构、样式、路由与内容未变。
