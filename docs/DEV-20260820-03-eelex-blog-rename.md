@@ -49,10 +49,15 @@ git diff origin/main...HEAD --check
 
 - 改名前基线 `corepack pnpm check`：13 个测试文件、44 项测试通过；类型与 12 个静态页面构建成功，存在 4 条既有 ESLint warning。
 - 新品牌定向测试：4 个测试文件、15 项测试通过。
-- README、完整质量门禁、旧名称扫描和原工作树保护证据将在最终 readiness 提交中追加。
+- README 合同更新后：4 个测试文件、16 项测试通过。
+- 改名后 `corepack pnpm check`：Prettier、Next typegen、TypeScript、ESLint、Vitest 与 Next build 全部退出 0；13 个测试文件、46 项测试通过，生成 12 个静态页面。
+- ESLint 仍报告 `src/content/repository.ts` 的 4 条既有未使用变量 warning；0 error，本次未扩大范围清理。
+- 旧正式名称扫描只命中 `tests/app-shell.test.tsx`、`tests/engineering-config.test.ts` 与 `tests/page-shells.test.tsx` 中的负向断言；README、`package.json` 与 `src` 无残留。
+- 原工作树复核仍显示 `.codex/` 与 `public/eelex-avatar.png` 为未跟踪路径；隔离分支 `git ls-files` 未包含二者。
+- `git diff origin/main...HEAD --check` 无输出，退出码 0。
 
 ## 未验证项
 
-- `corepack pnpm check` 尚未在完整改名 Diff 上执行。
 - GitHub 仓库改名、Push、PR、CI、Merge 和 Netlify 自动部署尚未执行。
 - 线上站点、目标仓库 About 与旧仓库 URL 重定向尚未回读。
+- 未单独执行真实浏览器视觉回归；本次只改品牌文本，页面结构、样式、路由与内容未变。

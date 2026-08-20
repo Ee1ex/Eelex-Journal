@@ -7,7 +7,7 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
-| REQ（Eelex Blog 改名） | [`REQ-20260820-06-eelex-blog-rename.md`](REQ-20260820-06-eelex-blog-rename.md) | In Progress | 正式品牌、包名与目标仓库身份统一 |
+| REQ（Eelex Blog 改名） | [`REQ-20260820-06-eelex-blog-rename.md`](REQ-20260820-06-eelex-blog-rename.md) | Done | 正式品牌、包名与目标仓库身份统一 |
 | REQ（静态滚动横幅） | [`REQ-20260820-05-static-scrolling-banner.md`](REQ-20260820-05-static-scrolling-banner.md) | Done | 取消波浪、底部同色渐隐与随页面滚动消失 |
 | REQ（横幅动效与裁切修正） | [`REQ-20260820-04-banner-motion-crop-github-mark.md`](REQ-20260820-04-banner-motion-crop-github-mark.md) | Done | GitHub 官方图标、默认纯色、波浪动效与横幅裁切 |
 | REQ（横幅与导航图标） | [`REQ-20260820-03-banner-icons-profile.md`](REQ-20260820-03-banner-icons-profile.md) | Done | 个人简介、弹层方向、导航图标与横幅水波纹 |
@@ -173,6 +173,7 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 
 ## 变更记录
 
+- 2026-08-20：完成 `REQ-20260820-06`。站点、SEO、包名、README 与当前治理文档已统一为 `Eelex Blog`；本地质量门禁通过，远程仓库改名、Push、PR 和部署未执行。
 - 2026-08-20：用户批准 `REQ-20260820-06` 与 `DEV-20260820-03`，正式品牌统一为 `Eelex Blog`，目标仓库名为 `eelex-blog`；远程仓库改名、Push 与 PR 仍未授权。
 - 2026-08-20：用户明确授权将已验收的新版本提交并快进推送至 `main`，接受其触发现有 Netlify 自动生产部署；发布结果以本轮 GitHub 远程回读为准。
 - 2026-08-20：完成 `REQ-20260820-05`。横幅波浪已完整移除，底部改为主题同色渐隐，横幅随页面滚动离开视口；未推送或部署。
