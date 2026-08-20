@@ -17,6 +17,12 @@ export function SiteFooter() {
               {contact.label}
             </a>
           ))}
+          <a className="hover:text-ink" href="/rss.xml">
+            RSS
+          </a>
+          <a className="hover:text-ink" href="/sitemap.xml">
+            Sitemap
+          </a>
           <span>© 2026 Eelex Code Hub</span>
         </div>
       </div>

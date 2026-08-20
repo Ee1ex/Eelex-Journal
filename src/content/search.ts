@@ -5,10 +5,10 @@ export type ContentFilter = {
   query: string;
 };
 
-export function filterContent(
-  items: readonly ContentSummary[],
+export function filterContent<T extends ContentSummary>(
+  items: readonly T[],
   filter: ContentFilter,
-): readonly ContentSummary[] {
+): readonly T[] {
   const query = filter.query.trim().toLocaleLowerCase("zh-CN");
 
   return items.filter((item) => {

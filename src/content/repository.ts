@@ -19,16 +19,37 @@ export type TableOfContentsItem = {
 };
 
 type ContentRecord = ContentSummary & {
+  wordCount: number;
+  readingMinutes: number;
   source: string;
   tableOfContents: readonly TableOfContentsItem[];
 };
 
 export type ContentCollection = {
-  items: readonly ContentSummary[];
-  getBySlug(slug: string): ContentSummary | undefined;
+  items: readonly ContentListItem[];
+  getBySlug(slug: string): ContentListItem | undefined;
   getSource(slug: string): string | undefined;
   getTableOfContents(slug: string): readonly TableOfContentsItem[];
 };
+
+export type ContentListItem = ContentSummary & {
+  wordCount: number;
+  readingMinutes: number;
+};
+
+export type ArchiveGroup = {
+  year: string;
+  items: readonly ContentListItem[];
+};
+
+function countReadableWords(source: string) {
+  const plainText = source
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/[#>*_`\-[\]()]/g, " ");
+
+  return plainText.match(/[\p{Script=Han}]|[A-Za-z0-9]+/gu)?.length ?? 0;
+}
 
 function getTableOfContents(source: string): readonly TableOfContentsItem[] {
   const slugger = new GithubSlugger();
@@ -101,9 +122,12 @@ function readRecord(directory: string, filename: string): ContentRecord {
   }
 
   validateBody(parsed.content, filePath);
+  const wordCount = countReadableWords(parsed.content);
 
   return {
     ...summary,
+    wordCount,
+    readingMinutes: Math.max(1, Math.ceil(wordCount / 300)),
     source: parsed.content,
     tableOfContents: getTableOfContents(parsed.content),
   };
@@ -156,4 +180,40 @@ export function getContentTableOfContents(slug: string) {
 
 export function getStaticContentParams() {
   return getAllContent().map(({ slug }) => ({ slug }));
+}
+
+export function getArchiveGroups(): readonly ArchiveGroup[] {
+  const groups = new Map<string, ContentListItem[]>();
+
+  for (const item of getAllContent()) {
+    const year = item.publishedAt.slice(0, 4);
+    groups.set(year, [...(groups.get(year) ?? []), item]);
+  }
+
+  return Array.from(groups, ([year, items]) => ({ year, items }));
+}
+
+export function getAdjacentContent(slug: string) {
+  const items = getAllContent();
+  const index = items.findIndex((item) => item.slug === slug);
+
+  return {
+    newer: index > 0 ? items[index - 1] : undefined,
+    older:
+      index >= 0 && index < items.length - 1 ? items[index + 1] : undefined,
+  };
+}
+
+export function getSiteStats() {
+  const items = getAllContent();
+  const categories = new Set(items.map((item) => item.category));
+  const tags = new Set(items.flatMap((item) => item.tags));
+
+  return {
+    posts: items.length,
+    categories: categories.size,
+    tags: tags.size,
+    totalWords: items.reduce((total, item) => total + item.wordCount, 0),
+    lastPublishedAt: items[0]?.publishedAt,
+  };
 }

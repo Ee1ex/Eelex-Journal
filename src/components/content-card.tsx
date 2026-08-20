@@ -1,46 +1,50 @@
+import Image from "next/image";
 import Link from "next/link";
 
-import type { ContentSummary } from "../content/schema";
+import type { ContentListItem } from "../content/repository";
 
-const categoryDotStyles = {
-  文章: "bg-category-article",
-  学习笔记: "bg-category-note",
-  工具分享: "bg-category-tool",
-} as const;
+export function ContentCard({ item }: { item: ContentListItem }) {
+  const cover = item.cover ?? {
+    src: "/content/reading-flow.svg",
+    alt: `${item.title} 的默认抽象封面`,
+  };
 
-export function ContentCard({ item }: { item: ContentSummary }) {
   return (
-    <article className="eelex-content-row grid gap-4 py-6 sm:grid-cols-[minmax(0,1fr)_10rem] sm:gap-8 sm:py-7">
-      <div className="min-w-0">
-        <div className="flex items-center gap-3 text-[length:var(--eelex-text-meta)] text-muted">
-          <span
-            aria-hidden="true"
-            className={`category-dot size-2 rounded-full ${categoryDotStyles[item.category]}`}
-          />
-          <span>{item.category}</span>
+    <article className="eelex-content-row rounded-panel border border-border bg-paper p-3 shadow-[var(--eelex-shadow-panel)] sm:grid sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-5 sm:p-4">
+      <Link
+        className="eelex-cover relative block aspect-[16/9] overflow-hidden rounded-[var(--eelex-radius-nested)] bg-surface-alt"
+        href={`/content/${item.slug}`}
+        tabIndex={-1}
+      >
+        <Image
+          alt={cover.alt}
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          fill
+          sizes="(max-width: 640px) 100vw, 192px"
+          src={cover.src}
+        />
+      </Link>
+      <div className="min-w-0 pt-4 sm:pt-1">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted">
+          <span className="eelex-soft-badge">{item.category}</span>
+          <time dateTime={item.publishedAt}>{item.publishedAt}</time>
+          <span>{item.wordCount} 字</span>
+          <span>{item.readingMinutes} 分钟</span>
         </div>
-        <h3 className="mt-3 text-xl leading-tight font-medium tracking-[-0.03em] text-ink sm:text-2xl">
-          <Link className="hover:text-accent" href={`/content/${item.slug}`}>
+        <h3 className="mt-3 text-xl leading-tight font-semibold tracking-[-0.035em] text-ink sm:text-2xl">
+          <Link className="hover:text-graphite" href={`/content/${item.slug}`}>
             {item.title}
           </Link>
         </h3>
-        <p className="mt-3 max-w-[var(--eelex-width-reading)] text-sm leading-7 text-muted">
-          {item.excerpt}
-        </p>
-        <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-2" aria-label="标签">
+        <p className="mt-3 text-sm leading-6 text-muted">{item.excerpt}</p>
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="标签">
           {item.tags.map((tag) => (
-            <li
-              className="font-mono text-[length:var(--eelex-text-meta)] text-ash"
-              key={tag}
-            >
-              {tag}
+            <li className="eelex-outline-badge" key={tag}>
+              #{tag}
             </li>
           ))}
         </ul>
       </div>
-      <p className="font-mono text-[length:var(--eelex-text-meta)] leading-relaxed text-muted sm:pt-1 sm:text-right">
-        <time dateTime={item.publishedAt}>{item.publishedAt}</time>
-      </p>
     </article>
   );
 }

@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 
-import type { ContentCategory, ContentSummary } from "../content/schema";
+import type { ContentListItem } from "../content/repository";
+import type { ContentCategory } from "../content/schema";
 import { filterContent } from "../content/search";
 import { ContentCard } from "./content-card";
 
@@ -23,26 +24,28 @@ const categoryClasses = {
 export function ContentDiscovery({
   items,
 }: {
-  items: readonly ContentSummary[];
+  items: readonly ContentListItem[];
 }) {
-  const [query, setQuery] = useState("");
   const [category, setCategory] = useState<(typeof categories)[number]>("全部");
   const results = useMemo(
-    () => filterContent(items, { category, query }),
-    [category, items, query],
+    () => filterContent(items, { category, query: "" }),
+    [category, items],
   );
 
   return (
     <div className="eelex-content-discovery">
-      <div className="grid gap-5 border-b border-border pb-6 sm:grid-cols-[1fr_minmax(16rem,22rem)] sm:items-end">
-        <div aria-label="内容分类" className="flex flex-wrap gap-x-5 gap-y-3">
+      <div className="eelex-category-strip eelex-panel overflow-x-auto p-3">
+        <div
+          aria-label="内容分类"
+          className="flex min-w-max items-center gap-2"
+        >
           {categories.map((item) => {
             const selected = category === item;
 
             return (
               <button
                 aria-pressed={selected}
-                className={`border-b pb-1 text-sm transition-colors ${selected ? `${categoryClasses[item]} font-medium` : "border-transparent text-muted hover:text-ink"}`}
+                className={`rounded-control border px-3 py-2 text-sm transition-colors ${selected ? `${categoryClasses[item]} bg-canvas font-medium` : "border-transparent text-muted hover:bg-canvas hover:text-ink"}`}
                 key={item}
                 onClick={() => setCategory(item)}
                 type="button"
@@ -52,22 +55,8 @@ export function ContentDiscovery({
             );
           })}
         </div>
-        <label className="sr-only" htmlFor="content-search">
-          搜索内容
-        </label>
-        <input
-          className="w-full rounded-[var(--eelex-radius-input)] border border-border bg-transparent px-3 py-2.5 text-sm text-ink outline-focus placeholder:text-ash"
-          id="content-search"
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="搜索标题、摘要、分类或标签"
-          type="search"
-          value={query}
-        />
       </div>
-      <p
-        aria-live="polite"
-        className="mt-4 font-mono text-[length:var(--eelex-text-meta)] text-muted"
-      >
+      <p aria-live="polite" className="sr-only">
         {results.length} 篇内容
       </p>
       {results.length === 0 ? (
@@ -75,7 +64,7 @@ export function ContentDiscovery({
           没有找到匹配的内容，试试更短的关键词或切换分类。
         </p>
       ) : (
-        <div className="mt-6">
+        <div className="mt-4 grid gap-4">
           {results.map((item) => (
             <ContentCard item={item} key={item.slug} />
           ))}

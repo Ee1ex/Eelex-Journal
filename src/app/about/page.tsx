@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 
 import { publicProfile } from "../../site/profile";
@@ -5,79 +6,77 @@ import { createPageTitle } from "../../site/seo";
 
 export const metadata: Metadata = {
   title: createPageTitle("关于我"),
-  description: "了解 Eelex 的学习方向、技能方向与联系方式。",
+  description: "了解 Eelex 的学习方向、技能方向、项目与联系方式。",
   alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
   return (
-    <main
-      className="mx-auto max-w-[var(--eelex-width-wide)] px-[var(--eelex-space-page-inline)] pt-12 pb-[var(--eelex-space-section)]"
-      id="main-content"
-      tabIndex={-1}
-    >
-      <section className="eelex-page-intro-card mb-10 rounded-panel border border-white/80 bg-surface/65 p-7 shadow-[var(--eelex-shadow-panel)] backdrop-blur sm:p-10">
-        <p className="text-sm font-semibold tracking-[0.14em] text-accent">
+    <main className="eelex-page-shell" id="main-content" tabIndex={-1}>
+      <section className="eelex-page-intro-card eelex-panel p-6 sm:p-8">
+        <p className="text-xs font-medium tracking-[0.08em] text-muted uppercase">
           ABOUT EELEX
         </p>
-        <h1 className="eelex-page-heading mt-4 text-[length:var(--eelex-text-page-title)] leading-[1.1] font-normal tracking-[0.01em] text-ink">
+        <h1 className="eelex-page-heading mt-3 text-[length:var(--eelex-text-page-title)] leading-[1.1] font-semibold tracking-[-0.055em] text-ink">
           关于我
         </h1>
-        <p className="eelex-page-intro mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+        <p className="eelex-page-intro mt-5 max-w-2xl text-base leading-7 text-muted">
           {publicProfile.introduction}
         </p>
       </section>
-      <section className="grid gap-5 pb-10 sm:grid-cols-[1.1fr_0.9fr]">
-        <article className="rounded-panel border border-white/80 bg-surface p-7 shadow-[var(--eelex-shadow-panel)] sm:p-10">
-          <div
-            aria-label={publicProfile.avatar.alt}
-            className="grid size-20 place-items-center rounded-[1.6rem] bg-[linear-gradient(145deg,var(--eelex-color-accent),#8270a8)] text-2xl font-medium text-surface shadow-[13px_16px_30px_rgba(46,51,85,0.22)]"
-            role="img"
-          >
-            {publicProfile.avatar.label}
-          </div>
-          <h2 className="mt-7 text-2xl font-medium tracking-[-0.05em] text-ink">
+      <section className="mt-4 grid gap-4 md:grid-cols-[18rem_minmax(0,1fr)]">
+        <article className="eelex-panel p-5">
+          <Image
+            alt={publicProfile.avatar.alt}
+            className="aspect-square w-full rounded-[var(--eelex-radius-nested)] object-cover"
+            height={512}
+            src={publicProfile.avatar.src}
+            width={512}
+          />
+          <h2 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-ink">
             {publicProfile.name}
           </h2>
-          <p className="mt-2 text-muted">{publicProfile.role}</p>
-          {publicProfile.contacts.map((contact) => (
-            <a
-              className="mt-5 inline-flex rounded-control bg-ink px-4 py-2.5 text-sm text-surface hover:bg-accent"
-              href={contact.href}
-              key={contact.href}
-              rel={contact.external ? "noreferrer" : undefined}
-              target={contact.external ? "_blank" : undefined}
-            >
-              {contact.label}
-            </a>
-          ))}
+          <p className="mt-2 text-sm text-muted">{publicProfile.role}</p>
+          <a
+            className="eelex-dark-button mt-5 justify-center"
+            href={publicProfile.feedback.href}
+            rel="noreferrer"
+            target="_blank"
+          >
+            反馈与联系
+          </a>
         </article>
-        <aside className="rounded-panel border border-white/80 bg-surface p-7 shadow-[var(--eelex-shadow-panel)] sm:p-10">
-          <div className="grid gap-5">
-            <div className="border-b border-border pb-5">
-              <h2 className="text-sm font-semibold tracking-[0.08em] text-accent">
-                当前学习方向
-              </h2>
-              <p className="mt-2 text-muted">
-                {publicProfile.learningFocus.join(" · ")}
-              </p>
+        <div className="grid gap-4">
+          <section className="eelex-panel p-6">
+            <h2 className="text-xl font-semibold text-ink">当前学习方向</h2>
+            <p className="mt-3 leading-7 text-muted">
+              {publicProfile.learningFocus.join(" · ")}
+            </p>
+          </section>
+          <section className="eelex-panel p-6">
+            <h2 className="text-xl font-semibold text-ink">技能方向</h2>
+            <p className="mt-3 leading-7 text-muted">
+              {publicProfile.skills.join(" · ")}
+            </p>
+          </section>
+          <section className="eelex-panel p-6">
+            <h2 className="text-xl font-semibold text-ink">项目与产品</h2>
+            <div className="mt-3 grid gap-2">
+              {publicProfile.projects.map((project) => (
+                <a
+                  className="eelex-outline-button justify-between"
+                  href={project.href}
+                  key={project.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span>{project.label}</span>
+                  <span className="text-muted">访问</span>
+                </a>
+              ))}
             </div>
-            <div className="border-b border-border pb-5">
-              <h2 className="text-sm font-semibold tracking-[0.08em] text-accent">
-                技能方向
-              </h2>
-              <p className="mt-2 text-muted">
-                {publicProfile.skills.join(" · ")}
-              </p>
-            </div>
-            <div>
-              <h2 className="text-sm font-semibold tracking-[0.08em] text-accent">
-                联系方式
-              </h2>
-              <p className="mt-2 text-muted">GitHub · Ee1ex</p>
-            </div>
-          </div>
-        </aside>
+          </section>
+        </div>
       </section>
     </main>
   );

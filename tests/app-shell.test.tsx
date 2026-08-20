@@ -21,9 +21,11 @@ describe("应用壳", () => {
     expect(markup).toContain("eelex-site-header");
     expect(markup).toContain("eelex-site-nav");
     expect(markup).toContain("eelex-site-footer");
-    expect(markup).toContain('href="/">内容</a>');
+    expect(markup).toContain("首页</a>");
     expect(markup).not.toContain('href="/lab"');
-    expect(markup).toContain('href="/about">关于</a>');
+    expect(markup).toContain("项目</button>");
+    expect(markup).toContain("关于</button>");
+    expect(markup).toContain('href="/rss.xml">RSS</a>');
     expect(markup).toContain("© 2026 Eelex Code Hub");
   });
 

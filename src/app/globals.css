@@ -1,59 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --eelex-color-canvas: #fdfcfc;
-  --eelex-color-surface: #f5f3f1;
-  --eelex-color-ink: #000000;
-  --eelex-color-graphite: #44403b;
-  --eelex-color-muted: #777169;
-  --eelex-color-ash: #a59f97;
-  --eelex-color-border: #ebe8e4;
-  --eelex-color-accent: #000000;
-  --eelex-color-focus: #0447ff;
-  --eelex-color-category-all: #000000;
-  --eelex-color-category-article: #2a5475;
-  --eelex-color-category-note: #805719;
-  --eelex-color-category-tool: #28695e;
-  --eelex-color-category-article-soft: #e2edf6;
-  --eelex-color-category-note-soft: #f6ead6;
-  --eelex-color-category-tool-soft: #dfeee8;
+  --eelex-color-canvas: #f5f5f5;
+  --eelex-color-paper: #ffffff;
+  --eelex-color-surface: #ffffff;
+  --eelex-color-surface-alt: #fafafa;
+  --eelex-color-ink: #0a0a0a;
+  --eelex-color-graphite: #171717;
+  --eelex-color-muted: #6b6b6b;
+  --eelex-color-ash: #8a8a8a;
+  --eelex-color-border: #e5e5e5;
+  --eelex-color-accent: #171717;
+  --eelex-color-focus: #525252;
+  --eelex-color-category-all: #171717;
+  --eelex-color-category-article: #313131;
+  --eelex-color-category-note: #525252;
+  --eelex-color-category-tool: #404040;
+  --eelex-color-category-article-soft: #f2f2f2;
+  --eelex-color-category-note-soft: #ededed;
+  --eelex-color-category-tool-soft: #f0f0f0;
   --eelex-font-display:
-    "Waldenburg", "Inter", ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC",
-    "Noto Sans CJK SC", sans-serif;
+    "Geist", "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
   --eelex-font-sans:
-    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    "Geist", "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
   --eelex-font-mono:
-    "Geist Mono", ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
-  --eelex-text-display: clamp(2.25rem, 5.6vw, 3rem);
-  --eelex-text-page-title: clamp(2rem, 5vw, 3rem);
-  --eelex-text-section-title: clamp(1.125rem, 1.8vw, 1.25rem);
-  --eelex-text-body: 0.9375rem;
+    "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  --eelex-text-display: clamp(2.25rem, 5vw, 3rem);
+  --eelex-text-page-title: clamp(2.25rem, 5vw, 3rem);
+  --eelex-text-section-title: clamp(1.25rem, 2vw, 1.5rem);
+  --eelex-text-body: 0.875rem;
   --eelex-text-small: 0.875rem;
-  --eelex-text-meta: 0.8125rem;
-  --eelex-leading-tight: 1.08;
+  --eelex-text-meta: 0.75rem;
+  --eelex-leading-tight: 1.1;
   --eelex-leading-body: 1.5;
-  --eelex-space-page-inline: clamp(1.25rem, 4vw, 2rem);
-  --eelex-space-section: clamp(4rem, 8vw, 6rem);
-  --eelex-space-stack: 2rem;
-  --eelex-radius-control: 9999px;
-  --eelex-radius-input: 4px;
-  --eelex-radius-panel: 20px;
-  --eelex-width-wide: 80rem;
-  --eelex-width-reading: 44rem;
+  --eelex-space-page-inline: clamp(0.75rem, 2vw, 1.5rem);
+  --eelex-space-section: clamp(3rem, 7vw, 5rem);
+  --eelex-space-stack: 1.5rem;
+  --eelex-radius-control: 18px;
+  --eelex-radius-input: 18px;
+  --eelex-radius-panel: 24px;
+  --eelex-radius-nested: 10px;
+  --eelex-width-wide: 90rem;
+  --eelex-width-reading: 48rem;
   --eelex-width-toc: 15rem;
-  --eelex-shadow-panel: 0 0 0 1px rgb(0 0 0 / 0.04);
+  --eelex-shadow-panel:
+    0 0 0 1px rgb(23 23 23 / 0.05), 0 1px 3px rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
   --eelex-duration-fast: 120ms;
   --eelex-duration-base: 180ms;
   --eelex-duration-slow: 240ms;
   --eelex-ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 
+html[data-theme="dark"] {
+  --eelex-color-canvas: #101010;
+  --eelex-color-paper: #181818;
+  --eelex-color-surface: #181818;
+  --eelex-color-surface-alt: #202020;
+  --eelex-color-ink: #fafafa;
+  --eelex-color-graphite: #e5e5e5;
+  --eelex-color-muted: #b3b3b3;
+  --eelex-color-ash: #929292;
+  --eelex-color-border: #303030;
+  --eelex-color-accent: #fafafa;
+  --eelex-color-focus: #d4d4d4;
+  --eelex-color-category-all: #fafafa;
+  --eelex-color-category-article: #f5f5f5;
+  --eelex-color-category-note: #d4d4d4;
+  --eelex-color-category-tool: #e5e5e5;
+  --eelex-shadow-panel:
+    0 0 0 1px rgb(255 255 255 / 0.05), 0 1px 3px rgb(0 0 0 / 0.45);
+}
+
 @theme inline {
   --color-canvas: var(--eelex-color-canvas);
+  --color-paper: var(--eelex-color-paper);
   --color-surface: var(--eelex-color-surface);
+  --color-surface-alt: var(--eelex-color-surface-alt);
   --color-ink: var(--eelex-color-ink);
   --color-graphite: var(--eelex-color-graphite);
   --color-muted: var(--eelex-color-muted);
@@ -80,57 +105,347 @@ html {
   background: var(--eelex-color-canvas);
   scroll-behavior: smooth;
 }
-
 body {
   min-width: 20rem;
-  background: var(--eelex-color-canvas);
+  min-height: 100vh;
+  background: transparent;
   color: var(--eelex-color-ink);
   font-family: var(--eelex-font-sans);
   font-size: var(--eelex-text-body);
   line-height: var(--eelex-leading-body);
 }
+.eelex-banner-wallpaper {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: 36rem;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--eelex-duration-slow) var(--eelex-ease-standard),
+    visibility 0s linear var(--eelex-duration-slow);
+  visibility: hidden;
+}
+html[data-wallpaper="banner"] .eelex-banner-wallpaper {
+  opacity: 1;
+  transition-delay: 0s;
+  visibility: visible;
+}
+.eelex-banner-image,
+.eelex-banner-scrim {
+  position: absolute;
+  inset: 0;
+}
+.eelex-banner-image {
+  background: #dceffc url("/eelex-banner-wallpaper.jpg") center 42% / cover
+    no-repeat;
+}
+.eelex-banner-scrim {
+  background: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.1) 0%,
+    transparent 48%,
+    color-mix(in srgb, var(--eelex-color-canvas) 24%, transparent) 66%,
+    color-mix(in srgb, var(--eelex-color-canvas) 72%, transparent) 84%,
+    var(--eelex-color-canvas) 100%
+  );
+}
+html[data-theme="dark"] .eelex-banner-scrim {
+  background: linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.18) 0%,
+    transparent 48%,
+    color-mix(in srgb, var(--eelex-color-canvas) 28%, transparent) 68%,
+    color-mix(in srgb, var(--eelex-color-canvas) 76%, transparent) 86%,
+    var(--eelex-color-canvas) 100%
+  );
+}
+body > main,
+.eelex-site-footer {
+  position: relative;
+  z-index: 1;
+}
+.eelex-site-header {
+  position: relative;
+  z-index: 40;
+}
+.eelex-home-shell {
+  transition: padding-top var(--eelex-duration-slow) var(--eelex-ease-standard);
+}
+html[data-wallpaper="banner"] .eelex-home-shell {
+  padding-top: 29rem;
+}
 
 a,
 button,
-input {
+input,
+summary {
   transition:
     color var(--eelex-duration-fast) var(--eelex-ease-standard),
     border-color var(--eelex-duration-fast) var(--eelex-ease-standard),
-    background-color var(--eelex-duration-fast) var(--eelex-ease-standard);
+    background-color var(--eelex-duration-fast) var(--eelex-ease-standard),
+    transform var(--eelex-duration-fast) var(--eelex-ease-standard);
 }
-
-button {
+button,
+summary {
   cursor: pointer;
 }
-
-.eelex-display {
-  font-family: var(--eelex-font-display);
-  font-weight: 300;
-  letter-spacing: -0.02em;
+summary {
+  list-style: none;
 }
-
-.eelex-editorial-rule {
-  border-color: var(--eelex-color-border);
+summary::-webkit-details-marker {
+  display: none;
 }
-
-.eelex-content-row {
-  border-top: 1px solid var(--eelex-color-border);
-  transition:
-    background-color var(--eelex-duration-fast) var(--eelex-ease-standard),
-    border-color var(--eelex-duration-fast) var(--eelex-ease-standard);
-}
-
-.eelex-content-row:last-child {
-  border-bottom: 1px solid var(--eelex-color-border);
-}
-
-.eelex-content-row:hover {
-  background: var(--eelex-color-surface);
-}
-
 :focus-visible {
   outline: 2px solid var(--eelex-color-focus);
   outline-offset: 3px;
+}
+
+.eelex-panel {
+  border: 1px solid var(--eelex-color-border);
+  border-radius: var(--eelex-radius-panel);
+  background: var(--eelex-color-paper);
+  box-shadow: var(--eelex-shadow-panel);
+}
+.eelex-page-shell {
+  width: min(100% - 2 * var(--eelex-space-page-inline), 64rem);
+  margin-inline: auto;
+  padding-block: 2rem var(--eelex-space-section);
+}
+.eelex-article-shell {
+  width: min(
+    100% - 2 * var(--eelex-space-page-inline),
+    var(--eelex-width-reading)
+  );
+  margin-inline: auto;
+  padding-block: 2rem var(--eelex-space-section);
+}
+.eelex-site-header {
+  isolation: isolate;
+}
+.eelex-nav-link,
+.eelex-icon-button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.42rem;
+  justify-content: center;
+  border-radius: var(--eelex-radius-control);
+  padding-inline: 0.85rem;
+  color: var(--eelex-color-muted);
+  font-size: 0.875rem;
+}
+.eelex-nav-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+.eelex-nav-link:hover,
+.eelex-nav-link[data-active="true"],
+.eelex-icon-button:hover {
+  background: var(--eelex-color-canvas);
+  color: var(--eelex-color-ink);
+}
+.eelex-popover[data-open="true"] > button,
+.eelex-mobile-menu[data-open="true"] > button {
+  background: var(--eelex-color-canvas);
+  color: var(--eelex-color-ink);
+}
+.eelex-dark-button,
+.eelex-outline-button {
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--eelex-radius-control);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.eelex-dark-button {
+  background: var(--eelex-color-ink);
+  color: var(--eelex-color-paper);
+}
+.eelex-dark-button:hover {
+  transform: translateY(-1px);
+}
+.eelex-outline-button {
+  border: 1px solid var(--eelex-color-border);
+  background: transparent;
+  color: var(--eelex-color-ink);
+}
+.eelex-outline-button:hover {
+  background: var(--eelex-color-canvas);
+}
+.eelex-setting-option {
+  min-height: 2.5rem;
+  border: 1px solid var(--eelex-color-border);
+  border-radius: var(--eelex-radius-nested);
+  padding: 0.45rem;
+  color: var(--eelex-color-muted);
+  font-size: 0.75rem;
+}
+.eelex-setting-option[aria-pressed="true"] {
+  background: var(--eelex-color-ink);
+  color: var(--eelex-color-paper);
+}
+.eelex-soft-badge,
+.eelex-outline-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--eelex-radius-control);
+  padding: 0.18rem 0.5rem;
+  font-size: 0.75rem;
+}
+.eelex-soft-badge {
+  background: var(--eelex-color-canvas);
+  color: var(--eelex-color-graphite);
+}
+.eelex-outline-badge {
+  border: 1px solid var(--eelex-color-border);
+  color: var(--eelex-color-muted);
+}
+.eelex-content-row {
+  transition:
+    transform var(--eelex-duration-base) var(--eelex-ease-standard),
+    box-shadow var(--eelex-duration-base) var(--eelex-ease-standard);
+}
+.eelex-content-row:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgb(23 23 23 / 0.07),
+    0 8px 20px rgb(0 0 0 / 0.08);
+}
+.eelex-content-row:hover .eelex-cover img {
+  transform: scale(1.025);
+}
+.eelex-category-strip {
+  scrollbar-width: none;
+}
+.eelex-category-strip::-webkit-scrollbar {
+  display: none;
+}
+.eelex-profile-sidebar {
+  order: 2;
+}
+.eelex-knowledge-layout > section {
+  order: 1;
+}
+.eelex-site-stats {
+  order: 3;
+}
+.eelex-prose {
+  color: var(--eelex-color-graphite);
+}
+.eelex-prose h2 {
+  margin-top: 2.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--eelex-color-ink);
+}
+.eelex-prose h3 {
+  margin-top: 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--eelex-color-ink);
+}
+.eelex-prose p,
+.eelex-prose li {
+  line-height: 1.9;
+}
+.eelex-prose p,
+.eelex-prose ul,
+.eelex-prose ol,
+.eelex-prose pre,
+.eelex-prose img {
+  margin-top: 1.25rem;
+}
+.eelex-prose ul,
+.eelex-prose ol {
+  padding-left: 1.5rem;
+}
+.eelex-prose ul {
+  list-style: disc;
+}
+.eelex-prose ol {
+  list-style: decimal;
+}
+.eelex-prose pre {
+  overflow-x: auto;
+  border-radius: var(--eelex-radius-nested);
+  background: #0a0a0a;
+  padding: 1.25rem;
+  color: #fafafa;
+}
+.eelex-prose img {
+  border: 1px solid var(--eelex-color-border);
+  border-radius: var(--eelex-radius-nested);
+}
+.eelex-adjacent-link {
+  display: grid;
+  gap: 0.25rem;
+  border-radius: var(--eelex-radius-nested);
+  padding: 0.75rem;
+  color: var(--eelex-color-ink);
+}
+.eelex-adjacent-link:hover {
+  background: var(--eelex-color-canvas);
+}
+.eelex-adjacent-link span {
+  font-size: 0.75rem;
+  color: var(--eelex-color-muted);
+}
+.eelex-adjacent-link strong {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.eelex-floating-action {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  min-width: 3rem;
+  min-height: 3rem;
+  border: 1px solid var(--eelex-color-border);
+  border-radius: 999px;
+  background: var(--eelex-color-paper);
+  box-shadow: var(--eelex-shadow-panel);
+  color: var(--eelex-color-ink);
+  font-size: 0.75rem;
+}
+
+@media (min-width: 64rem) {
+  .eelex-profile-sidebar {
+    order: 1;
+    position: sticky;
+    top: 6rem;
+  }
+  .eelex-knowledge-layout > section {
+    order: 2;
+  }
+  .eelex-site-stats {
+    order: 3;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .eelex-profile-sidebar,
+  .eelex-site-stats {
+    display: none;
+  }
+  .eelex-banner-wallpaper {
+    height: 19rem;
+  }
+  .eelex-banner-image {
+    background-position: center top;
+    background-size: 100% auto;
+  }
+  html[data-wallpaper="banner"] .eelex-home-shell {
+    padding-top: 15rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -142,7 +457,6 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
   .eelex-content-row {
     transition: none;
   }

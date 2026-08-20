@@ -17,12 +17,12 @@ describe("页面骨架与真实内容链路", () => {
 
     expect(markup).toContain('id="main-content"');
     expect(markup).toContain('id="content"');
-    expect(markup).toContain("eelex-home-intro");
-    expect(markup).toContain("eelex-content-section");
+    expect(markup).toContain("eelex-knowledge-layout");
+    expect(markup).toContain("eelex-profile-sidebar");
     expect(markup).toContain("eelex-content-discovery");
-    expect(markup).toContain("欢迎来到Eelex 的个人博客");
-    expect(markup).toContain("我的记录与思考");
-    expect(markup).toContain("搜索标题、摘要、分类或标签");
+    expect(markup).toContain("Eelex 的个人知识库");
+    expect(markup).toContain("站点统计");
+    expect(markup).toContain('aria-label="内容分类"');
     expect(markup).toContain("3 篇内容");
     expect(markup).toContain('aria-pressed="true"');
     expect(markup).not.toContain('disabled=""');
@@ -40,11 +40,10 @@ describe("页面骨架与真实内容链路", () => {
     );
     const cardSource = readFileSync("src/components/content-card.tsx", "utf8");
 
-    expect(home).toContain("eelex-display");
-    expect(home).toContain("eelex-text-section-title");
-    expect(about).toMatch(/eelex-page-heading[^>]*font-normal/);
-    expect(detailSource).toMatch(/eelex-text-page-title[^\n]*font-medium/);
-    expect(cardSource).toMatch(/text-xl[^\n]*font-medium/);
+    expect(home).toContain('<h1 class="sr-only">Eelex 的个人知识库</h1>');
+    expect(about).toMatch(/eelex-page-heading[^>]*font-semibold/);
+    expect(detailSource).toMatch(/eelex-text-page-title[^\n]*font-semibold/);
+    expect(cardSource).toMatch(/text-xl[^\n]*font-semibold/);
   });
 
   it("详情路由、关于我和 404 保持阅读画廊边界，实验室已移除", () => {
@@ -69,7 +68,7 @@ describe("页面骨架与真实内容链路", () => {
     expect(about).toContain("eelex-page-intro");
     expect(about).toContain("eelex-page-intro-card");
     expect(about).toContain("当前学习方向");
-    expect(about).toContain('aria-label="Eelex 的字母头像"');
+    expect(about).toContain('alt="Eelex 的 GitHub 头像"');
     expect(about).toContain('href="https://github.com/Ee1ex"');
     expect(footer).toContain('href="https://github.com/Ee1ex"');
     expect(notFound).toContain('href="/#content"');
@@ -80,8 +79,8 @@ describe("页面骨架与真实内容链路", () => {
     ).toBe(false);
     expect(existsSync("src/lab/reading-density.ts")).toBe(false);
     expect(card).toContain("eelex-content-row");
-    expect(card).toContain("category-dot");
-    expect(card).toContain("category-article");
-    expect(aboutSource).toContain("rounded-panel");
+    expect(card).toContain("eelex-cover");
+    expect(card).toContain("2026-07-20");
+    expect(aboutSource).toContain("eelex-panel");
   });
 });

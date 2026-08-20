@@ -7,6 +7,11 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
+| REQ（静态滚动横幅） | [`REQ-20260820-05-static-scrolling-banner.md`](REQ-20260820-05-static-scrolling-banner.md) | Done | 取消波浪、底部同色渐隐与随页面滚动消失 |
+| REQ（横幅动效与裁切修正） | [`REQ-20260820-04-banner-motion-crop-github-mark.md`](REQ-20260820-04-banner-motion-crop-github-mark.md) | Done | GitHub 官方图标、默认纯色、波浪动效与横幅裁切 |
+| REQ（横幅与导航图标） | [`REQ-20260820-03-banner-icons-profile.md`](REQ-20260820-03-banner-icons-profile.md) | Done | 个人简介、弹层方向、导航图标与横幅水波纹 |
+| REQ（导航与弹层修正） | [`REQ-20260820-02-navigation-popover-polish.md`](REQ-20260820-02-navigation-popover-polish.md) | Done | 导航对齐、弹层互斥、菜单分组、GitHub 头像与公告行为 |
+| REQ（参考博客体验） | [`REQ-20260820-01-reference-blog-experience.md`](REQ-20260820-01-reference-blog-experience.md) | Done | 知识库式全站体验、单列封面与静态扩展能力 |
 | REQ | [`REQ-20260724-05-phase-3-page-shells.md`](REQ-20260724-05-phase-3-page-shells.md) | Done | Phase 3 页面骨架与模拟内容 |
 | REQ（Phase 4） | [`REQ-20260724-06-phase-4-mdx-content-discovery.md`](REQ-20260724-06-phase-4-mdx-content-discovery.md) | Done | 真实 MDX 内容模型、内容发现与阅读链路 |
 | REQ（Phase 5） | [`REQ-20260724-07-phase-5-profile-lab-responsive.md`](REQ-20260724-07-phase-5-profile-lab-responsive.md) | Done | 公开个人资料、独立交互实验与响应式体验 |
@@ -18,6 +23,7 @@
 | BIZ（Phase 2） | [`BIZ-20260724-02-phase-2-product-design-decisions.md`](BIZ-20260724-02-phase-2-product-design-decisions.md) | Approved | 首页内容发现、轻量搜索与视觉方向 |
 | BIZ（视觉刷新） | [`BIZ-20260725-03-visual-refresh.md`](BIZ-20260725-03-visual-refresh.md) | Approved | 阅读画廊视觉基线、实验室取消与页面层级 |
 | BIZ（首页 Demo） | [`BIZ-20260811-01-home-editorial-demo.md`](BIZ-20260811-01-home-editorial-demo.md) | Approved | 首页暖白编辑目录视觉与全站扩展边界 |
+| BIZ（参考博客体验） | [`BIZ-20260820-01-reference-blog-scope.md`](BIZ-20260820-01-reference-blog-scope.md) | Approved | 参考站复刻边界、单列封面与商业扩展策略 |
 | BIZ（Phase 7） | [`BIZ-20260725-04-phase-7-observability-waiver.md`](BIZ-20260725-04-phase-7-observability-waiver.md) | Approved | 用户批准免除用量观察，完成发布闭环收尾 |
 | DEV | [`DEV-20260724-01-v1-architecture-roadmap.md`](DEV-20260724-01-v1-architecture-roadmap.md) | Approved | v1 架构、模块和阶段计划 |
 | DEV（Phase 1） | [`DEV-20260724-02-phase-1-engineering-foundation.md`](DEV-20260724-02-phase-1-engineering-foundation.md) | Approved | Phase 1 工程基线与实施方案 |
@@ -29,6 +35,8 @@
 | DEV（Phase 6） | [`DEV-20260725-01-phase-6-seo-accessibility-quality.md`](DEV-20260725-01-phase-6-seo-accessibility-quality.md) | Approved | metadata、sitemap、robots、内容资产校验与质量验证方案 |
 | DEV（视觉刷新） | [`DEV-20260725-02-visual-refresh.md`](DEV-20260725-02-visual-refresh.md) | Approved | 表现层迁移、实验室删除与回归验证方案 |
 | DEV（首页 Demo） | [`DEV-20260811-01-home-editorial-demo.md`](DEV-20260811-01-home-editorial-demo.md) | Approved | 首页表现层、token、交互保留与验证方案 |
+| DEV（参考博客体验） | [`DEV-20260820-01-reference-blog-implementation.md`](DEV-20260820-01-reference-blog-implementation.md) | Approved | 静态派生页面、全站壳、主题与阅读增强实施方案 |
+| DEV（横幅动效与裁切修正） | [`DEV-20260820-02-banner-motion-crop-github-mark.md`](DEV-20260820-02-banner-motion-crop-github-mark.md) | Approved | 官方 GitHub 图标、波浪降级与横幅深度实施方案 |
 | DEV（静态发布） | [`DEV-20260725-03-netlify-static-export.md`](DEV-20260725-03-netlify-static-export.md) | Approved | Netlify Drop 静态导出与旧路由清除方案 |
 | DEV（Phase 7） | [`DEV-20260725-04-phase-7-release-github-closure.md`](DEV-20260725-04-phase-7-release-github-closure.md) | Approved | GitHub 自动发布、公开验收、用量证据与 README 收尾方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
@@ -42,6 +50,7 @@
 | PLAN（Phase 7） | [`superpowers/plans/2026-07-25-phase-7-release-github-closure.md`](superpowers/plans/2026-07-25-phase-7-release-github-closure.md) | Completed | README、自动静态发布、公开验证与文档收尾 |
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
 | PROG（2026-08-11） | [`PROG-20260811.md`](PROG-20260811.md) | Active | 首页编辑型视觉 Demo 进度、验证证据和下一步 |
+| PROG（2026-08-20） | [`PROG-20260820.md`](PROG-20260820.md) | Completed | 参考博客体验改造进度与验证证据 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 | BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Closed | Netlify Next 构建产物保留已删除的 `/lab` 路由，已通过静态导出修复 |
 
@@ -161,6 +170,18 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 功能建议、范围外想法和尚未证实的异常不登记为 BUG。
 
 ## 变更记录
+
+- 2026-08-20：用户明确授权将已验收的新版本提交并快进推送至 `main`，接受其触发现有 Netlify 自动生产部署；发布结果以本轮 GitHub 远程回读为准。
+- 2026-08-20：完成 `REQ-20260820-05`。横幅波浪已完整移除，底部改为主题同色渐隐，横幅随页面滚动离开视口；未推送或部署。
+- 2026-08-20：用户批准 `REQ-20260820-05`，取消水波纹，保留静态横幅和同色渐隐，并让横幅随页面滚动离开视口；未授权推送或部署。
+- 2026-08-20：完成 `REQ-20260820-04`。GitHub 官方图标、默认纯色、新横幅裁切与持续水波纹已通过自动化及桌面/移动端浏览器验证；未推送或部署。
+- 2026-08-20：用户批准 `REQ-20260820-04` 与 `DEV-20260820-02`，修正 GitHub 图标、默认背景、波浪静止和横幅裁切；未授权推送或部署。
+- 2026-08-20：完成 `REQ-20260820-03`。个人简介、统一向右展开的项目/关于弹层、导航图标、用户横幅与四层 SVG 水波纹已通过自动化及桌面/移动端浏览器验证；未推送或部署。
+- 2026-08-20：用户批准 `REQ-20260820-03`，更新个人简介、统一弹层向右展开、增加导航图标，并使用用户上传图片实现横幅壁纸与分层水波纹；未授权推送或部署。
+- 2026-08-20：完成 `REQ-20260820-02`。导航与首页内容边缘实现 0px 对齐，项目/关于/显示/移动菜单互斥且支持空白点击、搜索聚焦与 Escape 关闭；归档/反馈完成重组，GitHub 真实头像与常驻公告通过自动化及桌面/移动端浏览器验证。
+- 2026-08-20：用户批准 `REQ-20260820-02`，修正导航对齐与弹层互斥，将归档/反馈收进项目/关于菜单，同步 GitHub 公开头像并移除公告关闭入口；未授权推送或部署。
+- 2026-08-20：完成 `REQ-20260820-01`。全站知识库式体验、单列封面文章、静态归档/搜索/RSS、显示设置与文章阅读增强通过本地自动化和桌面/移动端设计 QA；发布日期保留、日历移除，未推送或部署。
+- 2026-08-20：用户确认 `REQ-20260820-01`、`BIZ-20260820-01` 与 `DEV-20260820-01` 的完整功能范围；按 LEVEL 1 连续实施，未授权推送或部署。
 
 - 2026-07-24：建立 Phase 0 文档治理、权威索引和自动收尾门禁，关联 `REQ-20260724-01`。
 - 2026-07-24：Phase 0 验证通过，将当前 REQ 状态更新为 `Done`。
