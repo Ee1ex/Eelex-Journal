@@ -1,4 +1,4 @@
-export const siteName = "Eelex Code Hub";
+export const siteName = "Eelex Blog";
 
 export const defaultDescription = "一个关于代码、设计与学习的个人空间。";
 

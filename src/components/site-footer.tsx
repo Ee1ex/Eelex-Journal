@@ -4,7 +4,7 @@ export function SiteFooter() {
   return (
     <footer className="eelex-site-footer px-[var(--eelex-space-page-inline)] pt-10 pb-12">
       <div className="mx-auto flex max-w-[var(--eelex-width-wide)] flex-col gap-3 border-t border-border pt-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-        <span>Eelex Code Hub</span>
+        <span>Eelex Blog</span>
         <div className="flex flex-wrap gap-x-4 gap-y-1">
           {publicProfile.contacts.map((contact) => (
             <a
@@ -23,7 +23,7 @@ export function SiteFooter() {
           <a className="hover:text-ink" href="/sitemap.xml">
             Sitemap
           </a>
-          <span>© 2026 Eelex Code Hub</span>
+          <span>© 2026 Eelex Blog</span>
         </div>
       </div>
     </footer>

@@ -68,7 +68,7 @@ export function SiteHeader({ items }: { items: readonly ContentListItem[] }) {
             className="mr-auto text-sm font-semibold tracking-[-0.03em] text-ink"
             href="/"
           >
-            Eelex Code Hub
+            Eelex Blog
           </Link>
           <nav
             aria-label="主导航"
