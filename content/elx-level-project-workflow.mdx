@@ -1,0 +1,144 @@
+---
+slug: elx-level-project-workflow
+title: ELX Level：给 AI 编程项目选择刚好的流程强度
+excerpt: 一套面向个人开发者的四级项目工作流 Skill，用分级执行、项目记忆和安全 Gate，让 AI 既能持续推进，也知道什么时候必须停下来确认。
+publishedAt: 2026-08-20
+category: 工具分享
+tags: [AI 编程, Codex, 项目工作流, 开源工具]
+cover: /content/elx-level-workflow-cover.png
+coverAlt: 开发者通过四个逐级增强的工作阶段管理 AI 编程项目
+---
+
+当 AI 开始真正参与一个项目，难题往往不再是“它会不会写代码”，而是另外几件事：它该先做方案还是直接实现？哪些操作可以连续执行？换一个会话之后，怎样继续理解项目？遇到发布、权限和数据操作时，又该在什么地方停下来？
+
+我为这些问题做了一个开源 Skill：**ELX Level**。
+
+它是一套面向个人开发者的四级项目工作流。核心思路不是让所有项目都变得更重，而是先判断项目真正承担的责任，再选择刚好的流程强度：简单项目保持轻快，长期运营项目补齐治理，已有仓库尊重原有规则，复杂自动化则保留更明确的负责人确认。
+
+![ELX Level 将 AI 编程项目组织为四个逐级增强的工作阶段](/content/elx-level-workflow-cover.png)
+
+项目源码与下载地址：
+
+- [在 GitHub 查看和下载 ELX Level](https://github.com/Ee1ex/elx-level)
+- [下载 ELX Level v2.0](https://github.com/Ee1ex/elx-level/releases/tag/v2.0)
+
+## 为什么要给 AI 编程分级
+
+同一套流程并不适合所有项目。
+
+做一个离线脚本，如果每一步都先写完整 PRD、技术方案和阶段报告，流程本身会比开发更重；但如果正在维护带账号、云端数据和生产部署的在线产品，只靠一句“直接做完”又很容易漏掉权限、备份、回滚和验证。
+
+ELX Level 解决的是这种“流程强度不匹配”的问题。它不按代码行数或功能多少判断项目，而是看开发者正在承担什么责任。
+
+| LEVEL       | 责任模式                 | 适合的项目                                                     |
+| ----------- | ------------------------ | -------------------------------------------------------------- |
+| **LEVEL 1** | 快速开发与完整项目记忆   | 离线工具、脚本、Skill、插件、原型、静态页面和版本化下载物      |
+| **LEVEL 2** | 完整 PVS 持续运营        | 带账号、权限、云端数据、服务、部署、监控、备份或长期支持的产品 |
+| **LEVEL 3** | 已有、团队与开源项目改进 | 参与他人、团队、公司或开源仓库的修复、优化和功能开发           |
+| **LEVEL 4** | 复杂自动化参考与路由     | 大型产品、多系统编排、复杂自动化和多人协作                     |
+
+这里有一个很重要的区别：**持续更新不等于持续运营**。
+
+一个静态网站或离线工具，即使以后还会发布新版本，通常仍然属于 LEVEL 1。只有当你开始长期承担用户、权限、线上数据、服务可用性、监控、备份、回滚和支持责任时，项目才通常进入 LEVEL 2。
+
+![ELX Level 选择路径：根据已有仓库、线上运营责任和复杂自动化逐步判断](/content/elx-level-decision-flow.svg)
+
+## 它不只是四个标签
+
+分级只是入口。ELX Level 真正想建立的是一套 AI 可以长期接管、但不会越过安全边界的工作方式。
+
+### 1. 普通工作连续推进
+
+LEVEL 1–3 面向用户只展示三种执行策略：
+
+- `AUTO`：已确认范围内连续实现、测试和记录
+- `CONFIRM`：缺少负责人决定，或即将发生高影响操作
+- `MANUAL_ONLY`：AI 只准备证据、方案和命令，不替用户执行
+
+这意味着普通进度、测试通过和功能完成不会不断打断开发；真正涉及方向、权限、公开交付或不可逆影响时，流程才会停下来。
+
+### 2. 给项目留下可接管的记忆
+
+ELX Level 把项目记忆分成两层。
+
+第一层记录“项目现在是什么”，包括目标、范围、架构、模块、调用关系、数据、依赖、构建、测试和交付方式。第二层记录“项目为什么变成这样”，包括需求、决定、进度、Bug、变更记录、版本记录和验证证据。
+
+这样做的价值不是多写文档，而是让下一次会话或另一个 Agent 能从事实继续，而不是重新猜测项目。
+
+### 3. 把高风险动作留给人确认
+
+批量删除、生产数据、密钥、支付、账号权限、不可逆迁移、生产部署、公开发布、对外发送、Merge 和 Release 等动作，始终保留人工确认。
+
+GitHub 交付也遵循相同边界：先只读核对远端状态和验证证据，再集中确认远程操作，执行后重新读取 GitHub 结果。界面上的“成功”提示不直接等于交付完成。
+
+## 如何选择适合自己的 LEVEL
+
+可以按下面的顺序判断：
+
+1. 如果你正在参与一个已有、团队或开源仓库，优先选择 **LEVEL 3**。
+2. 如果项目需要上线，并且你要长期负责用户、数据和服务，选择 **LEVEL 2**。
+3. 如果它是离线、静态或可重新打包下载的交付物，默认选择 **LEVEL 1**。
+4. 如果项目涉及大型产品、多系统编排或复杂自动化，再考虑 **LEVEL 4**。
+
+LEVEL 表示责任模式，不是能力高低，也不是项目越大数字就一定越高。第一次选择 LEVEL，以及项目责任发生变化时，都应由项目负责人确认。
+
+## 3 分钟开始使用
+
+ELX Level 支持 Codex、Claude Code 和 Cursor。下面以 Windows、Codex、项目级安装和 LEVEL 1 为例。
+
+先克隆项目：
+
+```powershell
+git clone https://github.com/Ee1ex/elx-level.git
+Set-Location elx-level
+```
+
+设置目标项目路径，并先运行 Dry Run 查看将要发生的变化：
+
+```powershell
+$ProjectPath = 'D:\path\to\your-project'
+./scripts/install.ps1 -Platform codex -Scope project -ProjectPath $ProjectPath -DryRun
+```
+
+确认输出无误后执行安装：
+
+```powershell
+./scripts/install.ps1 -Platform codex -Scope project -ProjectPath $ProjectPath
+```
+
+然后初始化项目，并查看当前状态：
+
+```powershell
+python "$ProjectPath\.codex\skills\elx-level\scripts\workflow.py" init --project $ProjectPath --level 1
+python "$ProjectPath\.codex\skills\elx-level\scripts\workflow.py" status --project $ProjectPath
+```
+
+初始化后，项目中会生成 `.elx-level/state.json` 和 `docs/elx-level/STATUS.md`，用于保存当前等级、状态和可读进度。
+
+![ELX Level 从判断责任、Dry Run、安装初始化到持续执行和 GitHub 交付的使用流程](/content/elx-level-usage-flow.svg)
+
+如果希望安装到 Codex 用户级 Skill 目录，可以使用：
+
+```powershell
+./scripts/install.ps1 -Platform codex -Scope user -DryRun
+./scripts/install.ps1 -Platform codex -Scope user
+```
+
+macOS 或 Linux 可使用对应的 `install.sh`：
+
+```sh
+./scripts/install.sh --platform claude-code --scope user --dry-run
+./scripts/install.sh --platform claude-code --scope user
+```
+
+建议始终先执行 Dry Run，再进行真实安装。四个等级的完整规则，以项目根目录中的 [`LEVEL.md`](https://github.com/Ee1ex/elx-level/blob/main/LEVEL.md) 为准。
+
+## 一个更自然的 AI 协作节奏
+
+我希望 ELX Level 带来的不是更多仪式，而是一种更自然的协作节奏：开始前把责任说清楚，开发中让普通工作连续推进，关键决定由人负责，完成后留下足够的事实和验证证据。
+
+对于小项目，它应该足够轻；对于需要长期负责的产品，它也应该知道哪些东西不能省。流程的价值不在于文件数量，而在于下一步更明确、风险更可控、项目更容易继续。
+
+ELX Level 目前以 MIT License 开源，当前正式版本为 v2.0。如果你也在使用 AI 开发个人项目，可以从这里开始：
+
+**[查看源码、安装说明并下载 ELX Level](https://github.com/Ee1ex/elx-level)**

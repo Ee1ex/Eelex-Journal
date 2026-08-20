@@ -74,6 +74,7 @@ describe("Phase 6 SEO metadata", () => {
     expect(sitemap?.map((entry) => entry.url)).toEqual([
       "https://harmonious-sprite-8b742a.netlify.app/",
       "https://harmonious-sprite-8b742a.netlify.app/about",
+      "https://harmonious-sprite-8b742a.netlify.app/content/elx-level-project-workflow",
       "https://harmonious-sprite-8b742a.netlify.app/content/designing-readable-interfaces",
       "https://harmonious-sprite-8b742a.netlify.app/content/weekly-learning-notes-01",
       "https://harmonious-sprite-8b742a.netlify.app/content/spacing-scale-checklist",

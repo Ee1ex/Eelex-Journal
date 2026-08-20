@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">ELX Level 选择路径</title>
+  <desc id="desc">依次判断是否为已有仓库、是否承担线上运营责任、是否属于静态交付，以及是否涉及复杂多系统自动化。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#16202a" flood-opacity=".10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#2387b8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" rx="36" fill="#f7f5f1"/>
+  <text x="72" y="82" fill="#17212b" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="36" font-weight="700">怎样选择适合项目的 LEVEL？</text>
+  <text x="72" y="124" fill="#65717c" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20">判断项目承担的责任，而不是只看代码量或功能数量</text>
+
+  <g filter="url(#shadow)" font-family="Arial,'Microsoft YaHei',sans-serif">
+    <rect x="72" y="180" width="252" height="132" rx="24" fill="#fff" stroke="#dce2e6"/>
+    <circle cx="112" cy="222" r="18" fill="#dff2fb"/>
+    <path d="M103 222h18m-9-9v18" stroke="#2387b8" stroke-width="3" stroke-linecap="round"/>
+    <text x="143" y="218" fill="#17212b" font-size="22" font-weight="700">已有或开源仓库？</text>
+    <text x="96" y="268" fill="#65717c" font-size="18">尊重现有规则、回归与交接</text>
+
+    <rect x="474" y="180" width="252" height="132" rx="24" fill="#fff" stroke="#dce2e6"/>
+    <circle cx="514" cy="222" r="18" fill="#fff0d1"/>
+    <path d="M506 222l6 6 11-14" fill="none" stroke="#b87918" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="545" y="218" fill="#17212b" font-size="22" font-weight="700">承担线上运营责任？</text>
+    <text x="498" y="268" fill="#65717c" font-size="18">用户、数据、服务与可用性</text>
+
+    <rect x="876" y="180" width="252" height="132" rx="24" fill="#fff" stroke="#dce2e6"/>
+    <circle cx="916" cy="222" r="18" fill="#e7e8ff"/>
+    <path d="M908 229l8-15 8 15z" fill="none" stroke="#5d5aba" stroke-width="3" stroke-linejoin="round"/>
+    <text x="947" y="218" fill="#17212b" font-size="22" font-weight="700">复杂多系统自动化？</text>
+    <text x="900" y="268" fill="#65717c" font-size="18">大型编排、多人和外部能力</text>
+  </g>
+
+  <path d="M324 246h136" fill="none" stroke="#2387b8" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M726 246h136" fill="none" stroke="#2387b8" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="382" y="230" fill="#2387b8" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" font-weight="700">否</text>
+  <text x="784" y="230" fill="#2387b8" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="17" font-weight="700">否</text>
+
+  <g font-family="Arial,'Microsoft YaHei',sans-serif">
+    <path d="M198 312v80" stroke="#17212b" stroke-width="3" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+    <text x="214" y="356" fill="#65717c" font-size="17">是</text>
+    <rect x="72" y="408" width="252" height="142" rx="24" fill="#17212b"/>
+    <text x="96" y="454" fill="#fff" font-size="25" font-weight="700">LEVEL 3</text>
+    <text x="96" y="490" fill="#d9e1e7" font-size="19">已有、团队与开源改进</text>
+    <text x="96" y="522" fill="#93a3af" font-size="16">最小兼容修改 + 受影响回归</text>
+
+    <path d="M600 312v80" stroke="#17212b" stroke-width="3" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+    <text x="616" y="356" fill="#65717c" font-size="17">是</text>
+    <rect x="474" y="408" width="252" height="142" rx="24" fill="#2387b8"/>
+    <text x="498" y="454" fill="#fff" font-size="25" font-weight="700">LEVEL 2</text>
+    <text x="498" y="490" fill="#edf9ff" font-size="19">完整 PVS 持续运营</text>
+    <text x="498" y="522" fill="#c7e9f8" font-size="16">部署、监控、备份与回滚</text>
+
+    <path d="M1002 312v80" stroke="#17212b" stroke-width="3" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+    <text x="1018" y="356" fill="#65717c" font-size="17">是</text>
+    <rect x="876" y="408" width="252" height="142" rx="24" fill="#5d5aba"/>
+    <text x="900" y="454" fill="#fff" font-size="25" font-weight="700">LEVEL 4</text>
+    <text x="900" y="490" fill="#f2f1ff" font-size="19">复杂自动化参考与路由</text>
+    <text x="900" y="522" fill="#d9d7ff" font-size="16">先分析，再由负责人确认实施</text>
+
+    <rect x="474" y="580" width="252" height="58" rx="18" fill="#fff" stroke="#dce2e6"/>
+    <text x="600" y="616" text-anchor="middle" fill="#17212b" font-size="19" font-weight="700">其余静态 / 离线项目 → LEVEL 1</text>
+  </g>
+</svg>

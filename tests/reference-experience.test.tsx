@@ -42,7 +42,7 @@ describe("REQ-20260820-01 参考博客体验", () => {
     expect(markup).toContain("eelex-site-stats");
     expect(markup).not.toContain("日历");
     expect(card).toContain("eelex-cover");
-    expect(card).toContain("2026-07-20");
+    expect(card).toContain(getAllContent()[0].publishedAt);
   });
 
   it("公开导航包含归档、项目、反馈、搜索和显示设置", () => {

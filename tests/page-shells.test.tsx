@@ -23,7 +23,7 @@ describe("页面骨架与真实内容链路", () => {
     expect(markup).toContain("Eelex 的个人知识库");
     expect(markup).toContain("站点统计");
     expect(markup).toContain('aria-label="内容分类"');
-    expect(markup).toContain("3 篇内容");
+    expect(markup).toContain(`${getAllContent().length} 篇内容`);
     expect(markup).toContain('aria-pressed="true"');
     expect(markup).not.toContain('disabled=""');
     expect(markup).toContain('href="/content/designing-readable-interfaces"');
@@ -82,7 +82,7 @@ describe("页面骨架与真实内容链路", () => {
     expect(existsSync("src/lab/reading-density.ts")).toBe(false);
     expect(card).toContain("eelex-content-row");
     expect(card).toContain("eelex-cover");
-    expect(card).toContain("2026-07-20");
+    expect(card).toContain(getAllContent()[0].publishedAt);
     expect(aboutSource).toContain("eelex-panel");
   });
 });

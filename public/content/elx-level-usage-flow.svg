@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">ELX Level 使用流程</title>
+  <desc id="desc">从判断责任、Dry Run、安装初始化、持续执行到验证和 GitHub 交付的完整流程。</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-15%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="9" stdDeviation="12" flood-color="#15202a" flood-opacity=".10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0l10 5-10 5z" fill="#2387b8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="675" rx="36" fill="#f7f5f1"/>
+  <text x="72" y="82" fill="#17212b" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="36" font-weight="700">从安装到交付：一次完整的使用循环</text>
+  <text x="72" y="124" fill="#65717c" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20">普通工作连续推进，高影响动作回到人手中确认</text>
+
+  <path d="M160 294h880" fill="none" stroke="#b9ddec" stroke-width="8" stroke-linecap="round"/>
+  <g fill="none" stroke="#2387b8" stroke-width="4" marker-end="url(#arrow)">
+    <path d="M264 294h90"/>
+    <path d="M466 294h90"/>
+    <path d="M668 294h90"/>
+    <path d="M870 294h90"/>
+  </g>
+
+  <g filter="url(#shadow)" font-family="Arial,'Microsoft YaHei',sans-serif">
+    <g transform="translate(70 190)">
+      <rect width="194" height="208" rx="24" fill="#fff" stroke="#dce2e6"/>
+      <circle cx="97" cy="70" r="36" fill="#dff2fb"/>
+      <path d="M80 72l12 12 24-30" fill="none" stroke="#2387b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="97" y="136" text-anchor="middle" fill="#17212b" font-size="22" font-weight="700">判断责任</text>
+      <text x="97" y="168" text-anchor="middle" fill="#65717c" font-size="16">确认 LEVEL</text>
+    </g>
+    <g transform="translate(272 190)">
+      <rect width="194" height="208" rx="24" fill="#fff" stroke="#dce2e6"/>
+      <circle cx="97" cy="70" r="36" fill="#fff0d1"/>
+      <path d="M78 63h38M78 76h28M78 89h32" stroke="#b87918" stroke-width="5" stroke-linecap="round"/>
+      <text x="97" y="136" text-anchor="middle" fill="#17212b" font-size="22" font-weight="700">先 Dry Run</text>
+      <text x="97" y="168" text-anchor="middle" fill="#65717c" font-size="16">预览写入范围</text>
+    </g>
+    <g transform="translate(474 190)">
+      <rect width="194" height="208" rx="24" fill="#fff" stroke="#dce2e6"/>
+      <circle cx="97" cy="70" r="36" fill="#e9f4ec"/>
+      <path d="M79 58h36v26H79zM88 51v7m18-7v7M89 91h16" fill="none" stroke="#44845b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="97" y="136" text-anchor="middle" fill="#17212b" font-size="22" font-weight="700">安装与初始化</text>
+      <text x="97" y="168" text-anchor="middle" fill="#65717c" font-size="16">建立状态与项目记忆</text>
+    </g>
+    <g transform="translate(676 190)">
+      <rect width="194" height="208" rx="24" fill="#fff" stroke="#dce2e6"/>
+      <circle cx="97" cy="70" r="36" fill="#e7e8ff"/>
+      <path d="M76 70h42M97 49v42" stroke="#5d5aba" stroke-width="5" stroke-linecap="round"/>
+      <text x="97" y="136" text-anchor="middle" fill="#17212b" font-size="22" font-weight="700">连续执行</text>
+      <text x="97" y="168" text-anchor="middle" fill="#65717c" font-size="16">实现、测试、记录</text>
+    </g>
+    <g transform="translate(878 190)">
+      <rect width="252" height="208" rx="24" fill="#17212b"/>
+      <circle cx="126" cy="70" r="36" fill="#fff0d1"/>
+      <path d="M109 70l12 12 24-30" fill="none" stroke="#b87918" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="126" y="136" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">验证与交付 Gate</text>
+      <text x="126" y="168" text-anchor="middle" fill="#b9c5ce" font-size="16">确认后写入 GitHub</text>
+    </g>
+  </g>
+
+  <g font-family="Arial,'Microsoft YaHei',sans-serif">
+    <rect x="70" y="462" width="1060" height="130" rx="24" fill="#fff" stroke="#dce2e6"/>
+    <rect x="94" y="488" width="122" height="50" rx="15" fill="#17212b"/>
+    <text x="155" y="520" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">AUTO</text>
+    <text x="236" y="520" fill="#52606b" font-size="18">普通实现与验证持续推进</text>
+    <rect x="510" y="488" width="146" height="50" rx="15" fill="#fff0d1"/>
+    <text x="583" y="520" text-anchor="middle" fill="#8b5b11" font-size="18" font-weight="700">CONFIRM</text>
+    <text x="676" y="520" fill="#52606b" font-size="18">方向、权限与外部写入先确认</text>
+    <path d="M94 562h1012" stroke="#edf0f2"/>
+    <text x="94" y="578" fill="#65717c" font-size="16">结果回读：Commit、分支、CI 与发布状态都以远端事实为准</text>
+  </g>
+</svg>
