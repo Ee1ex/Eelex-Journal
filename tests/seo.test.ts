@@ -30,20 +30,20 @@ describe("Phase 6 SEO metadata", () => {
   it("提供统一的站点名称、默认简介和标题规则", async () => {
     const seo = await loadSeoModule();
 
-    expect(seo?.siteName).toBe("Eelex Code Hub");
+    expect(seo?.siteName).toBe("Eelex Blog");
     expect(seo?.defaultDescription).toBe(
       "一个关于代码、设计与学习的个人空间。",
     );
-    expect(seo?.createPageTitle("关于我")).toBe("关于我 | Eelex Code Hub");
+    expect(seo?.createPageTitle("关于我")).toBe("关于我 | Eelex Blog");
   });
 
   it("为公开静态页面、详情页和 404 声明页面级 metadata", async () => {
     expect(HomePage.metadata).toMatchObject({
-      title: "Eelex Code Hub",
+      title: "Eelex Blog",
       description: "一个关于代码、设计与学习的个人空间。",
     });
     expect(AboutPage.metadata).toMatchObject({
-      title: "关于我 | Eelex Code Hub",
+      title: "关于我 | Eelex Blog",
       alternates: { canonical: "/about" },
     });
     expect(NotFoundPage.metadata).toMatchObject({
@@ -58,7 +58,7 @@ describe("Phase 6 SEO metadata", () => {
 
     expect(metadata).toMatchObject({
       description: "从信息层级、留白和文字密度出发，让阅读路径更自然。",
-      title: "让界面更易阅读的三个小决定 | Eelex Code Hub",
+      title: "让界面更易阅读的三个小决定 | Eelex Blog",
     });
   });
 

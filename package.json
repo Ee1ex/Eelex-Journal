@@ -1,5 +1,5 @@
 {
-  "name": "eelex-journal",
+  "name": "eelex-blog",
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@11.17.0",
@@ -39,7 +39,7 @@
     "eslint": "9.39.5",
     "eslint-config-next": "16.2.11",
     "eslint-config-prettier": "10.1.8",
-    "postcss": "8.5.22",
+    "postcss": "8.5.24",
     "prettier": "3.9.6",
     "prettier-plugin-tailwindcss": "0.8.1",
     "tailwindcss": "4.3.3",
