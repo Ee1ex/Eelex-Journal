@@ -1,14 +1,16 @@
-# Eelex Code Hub
+# Eelex Blog
 
 > A personal hub for code, design, and learning.
 
-Eelex Code Hub 是一个以中文记录代码、界面设计与持续学习的个人阅读空间。你可以在这里浏览文章、学习笔记与工具分享，也能了解 Eelex 的技术方向与个人资料。
+Eelex Blog 是一个以中文记录代码、界面设计与持续学习的个人博客。你可以在这里浏览文章、学习笔记与工具分享，也能了解 Eelex 的技术方向与个人资料。
 
 [访问在线站点](https://harmonious-sprite-8b742a.netlify.app/)
 
-![Eelex Code Hub 桌面端首页，展示欢迎卡片、内容分类和搜索](docs/assets/phase-7/home-desktop.png)
+[GitHub 仓库](https://github.com/Ee1ex/eelex-blog)
 
-![Eelex Code Hub 移动端内容页，展示文章标题、标签和阅读插图](docs/assets/phase-7/content-mobile.png)
+![Eelex Blog 桌面端首页，展示欢迎卡片、内容分类和搜索](docs/assets/phase-7/home-desktop.png)
+
+![Eelex Blog 移动端内容页，展示文章标题、标签和阅读插图](docs/assets/phase-7/content-mobile.png)
 
 ## 你可以在这里找到
 

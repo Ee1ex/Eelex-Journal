@@ -1,12 +1,13 @@
 # 文档治理与当前索引
 
-本文档规定 Eelex Code Hub 的文档分类、权威关系、状态流转、历史保留和自动收尾规则。
+本文档规定 Eelex Blog 的文档分类、权威关系、状态流转、历史保留和自动收尾规则。
 
 ## 当前权威文档
 
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
+| REQ（Eelex Blog 改名） | [`REQ-20260820-06-eelex-blog-rename.md`](REQ-20260820-06-eelex-blog-rename.md) | In Progress | 正式品牌、包名与目标仓库身份统一 |
 | REQ（静态滚动横幅） | [`REQ-20260820-05-static-scrolling-banner.md`](REQ-20260820-05-static-scrolling-banner.md) | Done | 取消波浪、底部同色渐隐与随页面滚动消失 |
 | REQ（横幅动效与裁切修正） | [`REQ-20260820-04-banner-motion-crop-github-mark.md`](REQ-20260820-04-banner-motion-crop-github-mark.md) | Done | GitHub 官方图标、默认纯色、波浪动效与横幅裁切 |
 | REQ（横幅与导航图标） | [`REQ-20260820-03-banner-icons-profile.md`](REQ-20260820-03-banner-icons-profile.md) | Done | 个人简介、弹层方向、导航图标与横幅水波纹 |
@@ -38,6 +39,7 @@
 | DEV（参考博客体验） | [`DEV-20260820-01-reference-blog-implementation.md`](DEV-20260820-01-reference-blog-implementation.md) | Approved | 静态派生页面、全站壳、主题与阅读增强实施方案 |
 | DEV（横幅动效与裁切修正） | [`DEV-20260820-02-banner-motion-crop-github-mark.md`](DEV-20260820-02-banner-motion-crop-github-mark.md) | Approved | 官方 GitHub 图标、波浪降级与横幅深度实施方案 |
 | DEV（静态发布） | [`DEV-20260725-03-netlify-static-export.md`](DEV-20260725-03-netlify-static-export.md) | Approved | Netlify Drop 静态导出与旧路由清除方案 |
+| DEV（Eelex Blog 改名） | [`DEV-20260820-03-eelex-blog-rename.md`](DEV-20260820-03-eelex-blog-rename.md) | Approved | 品牌改名、验证、远程仓库改名与回滚准备 |
 | DEV（Phase 7） | [`DEV-20260725-04-phase-7-release-github-closure.md`](DEV-20260725-04-phase-7-release-github-closure.md) | Approved | GitHub 自动发布、公开验收、用量证据与 README 收尾方案 |
 | PLAN（P2 前置） | [`superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md`](superpowers/plans/2026-07-24-p2-preflight-engineering-hardening.md) | Completed | P2 前置工程加固逐任务实施计划 |
 | PLAN（Phase 2） | [`superpowers/plans/2026-07-24-phase-2-design-foundation.md`](superpowers/plans/2026-07-24-phase-2-design-foundation.md) | Completed | 设计 token RED/GREEN、质量门禁与收尾计划 |
@@ -171,6 +173,7 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 
 ## 变更记录
 
+- 2026-08-20：用户批准 `REQ-20260820-06` 与 `DEV-20260820-03`，正式品牌统一为 `Eelex Blog`，目标仓库名为 `eelex-blog`；远程仓库改名、Push 与 PR 仍未授权。
 - 2026-08-20：用户明确授权将已验收的新版本提交并快进推送至 `main`，接受其触发现有 Netlify 自动生产部署；发布结果以本轮 GitHub 远程回读为准。
 - 2026-08-20：完成 `REQ-20260820-05`。横幅波浪已完整移除，底部改为主题同色渐隐，横幅随页面滚动离开视口；未推送或部署。
 - 2026-08-20：用户批准 `REQ-20260820-05`，取消水波纹，保留静态横幅和同色渐隐，并让横幅随页面滚动离开视口；未授权推送或部署。

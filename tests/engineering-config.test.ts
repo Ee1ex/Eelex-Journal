@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
@@ -7,6 +8,14 @@ const packageJson = JSON.parse(readFileSync("package.json", "utf8"));
 describe("工程配置契约", () => {
   it("使用 Eelex Blog 包名", () => {
     expect(packageJson.name).toBe("eelex-blog");
+  });
+
+  it("README 使用 Eelex Blog 品牌和目标仓库", () => {
+    const readme = readFileSync(resolve(process.cwd(), "README.md"), "utf8");
+
+    expect(readme).toContain("# Eelex Blog");
+    expect(readme).not.toContain("Eelex Code Hub");
+    expect(readme).toContain("Ee1ex/eelex-blog");
   });
 
   it("固定与 Node 24 对齐的工具版本和质量命令", () => {
