@@ -384,6 +384,41 @@ summary::-webkit-details-marker {
   border: 1px solid var(--eelex-color-border);
   border-radius: var(--eelex-radius-nested);
 }
+.eelex-prose table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid var(--eelex-color-border);
+  border-radius: var(--eelex-radius-nested);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.eelex-prose thead {
+  background: var(--eelex-color-surface-alt);
+}
+.eelex-prose th,
+.eelex-prose td {
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--eelex-color-border);
+  text-align: left;
+  vertical-align: top;
+}
+.eelex-prose th {
+  font-weight: 600;
+  color: var(--eelex-color-ink);
+  white-space: nowrap;
+}
+.eelex-prose td {
+  color: var(--eelex-color-graphite);
+  white-space: normal;
+  word-break: break-word;
+}
+.eelex-prose tbody tr:nth-child(even) {
+  background: var(--eelex-color-surface-alt);
+}
 .eelex-adjacent-link {
   display: grid;
   gap: 0.25rem;
