@@ -1,0 +1,161 @@
+---
+slug: elx-cncolor
+title: 用 elx-cncolor 为设计注入中国风灵魂：一个传统色卡识别与配色 Skill
+excerpt: 从色卡图片抽取中国传统色名与 HEX/RGB，按色系智能选配国风配色——内置 111 色库与可维护校验工具链的 Agent Skill。
+publishedAt: 2026-08-22
+category: 开源项目
+tags: [中国风, 配色, Skill, 开源工具]
+cover: /content/cncolor-cover.png
+coverAlt: 中国风传统色卡艺术封面，宣纸底色上排列胭脂、竹青、月白、黛蓝等传统色块
+---
+
+做中国风设计时，你一定遇到过这些场景：
+
+> "这张色卡上的颜色叫什么？HEX 是多少？"
+> "春节海报该用什么红才不土？"
+> "国风 UI 的主色和辅色怎么搭才有层次感？"
+
+传统色的美在于名字——**胭脂**不是随便哪个 `#FF0000`，**竹青**也不是 `#00FF00`。但每次都要翻资料、查 HEX、猜 RGB，效率极低且容易出错。
+
+**elx-cncolor** 就是为此而生的 Agent Skill：从色卡图片中逐行识别中国传统色名与参数，沉淀为结构化色库，再按「主色 / 辅色 / 强调色 / 背景 / 文字」的角色自动推荐配色方案。
+
+## ✨ 核心能力
+
+| 能力 | 说明 |
+|------|------|
+| 🖼️ **逐行识别色卡** | 把色卡图片的每一行当作一条记录，识别中文颜色名 + HEX + RGB |
+| ✅ **程序化校验** | 自动校验 HEX↔RGB 一致性，矛盾项标记 `needs_review`，绝不静默乱改 |
+| 📚 **结构化色库** | 111 条国风色，每条含 `category` 色系、`pinyin` 拼音、来源图片与行号、别名 |
+| 🎨 **智能选色** | 按「主色 / 辅色 / 强调色 / 背景 / 文字」角色，先用 `category` 锁定色系候选再挑选 |
+| 🔧 **可维护** | 内置校验、渲染、单测，一条 `make all` 守住数据质量 |
+
+## 📊 色库一览
+
+当前收录 **111** 种颜色，覆盖 11 个色系：
+
+| 色系 | 数量 | 色系 | 数量 | 色系 | 数量 |
+|------|:----:|------|:----:|------|:----:|
+| 🟢 绿 | 25 | 🔴 红 | 19 | ⚪ 白 | 8 |
+| 🔵 蓝 | 14 | ⚪ 青 | 14 | 🟡 黄 | 9 |
+| 🟣 紫 | 7 | 🟠 橙 | 6 | 🟤 棕 | 4 |
+| ⬛ 黑 | 2 | 🔘 灰 | 3 | | |
+
+![传统色卡展示](/content/cncolor-swatches.png)
+
+### 部分代表色
+
+| 颜色 | 色系 | HEX | 意境 |
+|------|:----:|-----|------|
+| 胭脂 | 红 | `#9D2932` | 妆容之红，浓而不艳 |
+| 竹青 | 绿 | `#789262` | 新竹初生之翠 |
+| 黛 | 蓝 | `#484163` | 远山如黛的沉静 |
+| 月白 | 青 | `#D7ECF1` | 月光映照的微蓝 |
+| 牙色 | 橙 | `#EFDEB0` | 温润如牙的自然米黄 |
+| 青莲 | 紫 | `#7F1CAD` | 青莲出水的幽紫 |
+| 海棠红 | 红 | `#DB5A6B` | 海棠初绽的柔红 |
+| 靛青 | 蓝 | `#177CB0` | 染布靛蓝的沉稳 |
+
+> 完整 111 色见 [GitHub 仓库](https://github.com/Ee1ex/elx-cncolor) 的 `references/palette.md`。
+
+## 🎯 如何使用
+
+将 `elx-cncolor` 目录放入 Agent 可发现的 skills 目录后，直接提出需求即可触发：
+
+```text
+请从这张色卡图片中识别所有颜色名、HEX 和 RGB。
+请使用中国风颜色库，为清明节湖边亭子设计一组绿色配色。
+请用中国传统色为春节团圆饭场景生成配色方案。
+```
+
+当请求涉及**图片取色、中国传统色、中国风 UI、国风品牌或东方审美配色**时，Agent 会自动参考本库并输出：
+
+```json
+{
+  "name_zh": "牙色",
+  "hex": "#EFDEB0",
+  "rgb": {"r": 239, "g": 222, "b": 176},
+  "category": "黄",
+  "pinyin": "yase",
+  "source": {"file": "source.jpg", "row": 2},
+  "needs_review": false,
+  "aliases": []
+}
+```
+
+配色建议按以下角色组织：
+
+| 角色 | 内容 |
+|------|------|
+| 主色 | 画面或界面的主要视觉色 |
+| 辅色 | 补充氛围和层次的颜色 |
+| 强调色 | 按钮、印章、节庆元素或视觉焦点 |
+| 背景色 | 纸张感、留白或空间基底 |
+| 文字色 | 保证清晰度和对比度的深色 |
+
+## 🏗️ 技术细节
+
+### 文件结构
+
+```text
+elx-cncolor/
+├─ Makefile                      # 统一入口（validate / render / test / all）
+├─ SKILL.md                      # Skill 定义与触发规则
+├─ README.md                     # 项目文档
+├─ agents/openai.yaml            # Codex 平台元数据（其他运行时忽略）
+├─ references/
+│  ├─ palette.json               # 机器可读色库（111 条，含 category + pinyin）
+│  └─ palette.md                 # 人工浏览版（含色系 / 拼音 / 别名列）
+└─ scripts/
+   ├─ validate_palette.py        # 校验字段 / HEX / RGB / 分类 / 重名
+   ├─ render_palette.py          # 由 JSON 重新生成 Markdown
+   └─ test_*.py ×3               # 三套单测（校验 / 数据 / 一致性）
+```
+
+### 本地维护
+
+```bash
+make validate    # 校验 palette.json 全部记录
+make render      # 重新生成 palette.md
+make test        # 运行单元测试
+make all         # 依次执行 validate → render → test
+```
+
+每条颜色记录包含以下字段：
+
+- **name_zh** — 中文颜色名（保留原始命名）
+- **hex** — 大写 `#RRGGBB`
+- **rgb** — `{r, g, b}` 整数三元组
+- **category** — 由 HEX 色相自动推导的色系（11 类之一），用于筛选
+- **pinyin** — 颜色名拼音（离线静态生成），用于拼音检索
+- **source** — 来源图片文件名与行号
+- **needs_review** — 是否待人工复核（低清 / 歧义 / 矛盾）
+- **aliases** — 别名与其他 HEX 候选
+
+## 📜 项目演进
+
+这个 Skill 从最初的一个简单色卡抽取脚本，经过多轮优化成长为现在的形态：
+
+1. **P0 — 版本管理修复**：将 `.git` 从脱节的目录移回真实代码仓库，修复 `render_palette.py` 的路径 bug（cwd 依赖 → 基于 `__file__` 解析）
+2. **P1 — 数据质量增强**：新增 `category` 色系分类（111 条全部回填）、重复色名检查（同名异色告警）、`category` 必填校验
+3. **P2 — 工程化打磨**：回填 `pinyin` 拼音字段、`palette.md` 展示别名/备注列、新增 `Makefile` 统一入口、标注平台耦合说明
+4. **改名**：从 `chinese-color-palette` 改名为 `elx-cncolor`，统一 `elx-` 前缀命名规范
+
+每一轮改动都通过了完整的校验链（`validate` + 单测）后才提交，确保数据质量始终可控。
+
+## 🔗 获取方式
+
+```bash
+git clone https://github.com/Ee1ex/elx-cncolor.git
+cd elx-cncolor
+make all          # 验证一切正常
+```
+
+将目录放入你的 Agent skills 目录即可开始使用。
+
+## 许可证
+
+本项目中的 skill、脚本和整理后的颜色数据用于个人与项目内的设计辅助。图片及原始色卡内容的权利归其相应权利人所有。
+
+---
+
+- ⭐ [GitHub](https://github.com/Ee1ex/elx-cncolor) · 🐛 [反馈问题](https://github.com/Ee1ex/elx-cncolor/issues)
