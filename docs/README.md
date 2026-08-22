@@ -7,6 +7,7 @@
 | 类型 | 当前文档 | 状态 | 用途 |
 | --- | --- | --- | --- |
 | PRD | [`PRD.md`](PRD.md) | Approved | 当前有效的产品基线 |
+| REQ（移除示范文章） | [`REQ-20260823-01-remove-demo-articles.md`](REQ-20260823-01-remove-demo-articles.md) | Done | 删除 3 篇初始示范文章，仅保留两篇 ELX 正式内容 |
 | REQ（Eelex Blog 改名） | [`REQ-20260820-06-eelex-blog-rename.md`](REQ-20260820-06-eelex-blog-rename.md) | Done | 正式品牌、包名与目标仓库身份统一 |
 | REQ（静态滚动横幅） | [`REQ-20260820-05-static-scrolling-banner.md`](REQ-20260820-05-static-scrolling-banner.md) | Done | 取消波浪、底部同色渐隐与随页面滚动消失 |
 | REQ（横幅动效与裁切修正） | [`REQ-20260820-04-banner-motion-crop-github-mark.md`](REQ-20260820-04-banner-motion-crop-github-mark.md) | Done | GitHub 官方图标、默认纯色、波浪动效与横幅裁切 |
@@ -53,6 +54,7 @@
 | PROG | [`PROG-20260725.md`](PROG-20260725.md) | Active | 当前进度、证据和下一步 |
 | PROG（2026-08-11） | [`PROG-20260811.md`](PROG-20260811.md) | Active | 首页编辑型视觉 Demo 进度、验证证据和下一步 |
 | PROG（2026-08-20） | [`PROG-20260820.md`](PROG-20260820.md) | Completed | 参考博客体验改造进度与验证证据 |
+| PROG（2026-08-23） | [`PROG-20260823.md`](PROG-20260823.md) | Completed | 移除初始示范文章的实施、验证与待发布状态 |
 | BUG | [`BUG-20260724-01-windows-line-endings-break-format-check.md`](BUG-20260724-01-windows-line-endings-break-format-check.md) | Closed | Windows Git checkout 换行缺陷已通过 `.gitattributes` 修复并完成 `main` 根目录终验 |
 | BUG | [`BUG-20260725-01-netlify-stale-lab-route.md`](BUG-20260725-01-netlify-stale-lab-route.md) | Closed | Netlify Next 构建产物保留已删除的 `/lab` 路由，已通过静态导出修复 |
 
@@ -173,6 +175,8 @@ Phase 完成时，PROG 还必须追加 Phase 目标、DoD 逐项结果、验证�
 
 ## 变更记录
 
+- 2026-08-23：完成 `REQ-20260823-01`。3 篇初始示范文章已删除，页面、RSS、sitemap 和静态详情路由只保留 ELX Level 与 ELX-CNCOLOR；完整本地质量门禁通过，Push 与自动生产部署仍待执行前确认。
+- 2026-08-23：用户确认 `REQ-20260823-01`，删除 3 篇初始示范文章，仅保留 ELX Level 与 ELX-CNCOLOR；以 GitHub `main@bef6d3a` 为实施基线，Push 与自动生产部署仍待执行前确认。
 - 2026-08-20：完成 ELX Level 项目介绍文章、专属封面与两张流程说明图的本地实现和验证；用户要求发布至 `Ee1ex/eelex-blog` `main` 并接受其触发现有 Netlify 自动部署，远端结果待 GitHub 回读确认。
 - 2026-08-20：完成 `REQ-20260820-06`。站点、SEO、包名、README 与当前治理文档已统一为 `Eelex Blog`；本地质量门禁通过，远程仓库改名、Push、PR 和部署未执行。
 - 2026-08-20：用户批准 `REQ-20260820-06` 与 `DEV-20260820-03`，正式品牌统一为 `Eelex Blog`，目标仓库名为 `eelex-blog`；远程仓库改名、Push 与 PR 仍未授权。

@@ -52,13 +52,15 @@ describe("Phase 6 SEO metadata", () => {
 
     const metadata = ContentPage.generateMetadata
       ? await ContentPage.generateMetadata({
-          params: Promise.resolve({ slug: "designing-readable-interfaces" }),
+          params: Promise.resolve({ slug: "elx-cncolor" }),
         })
       : undefined;
 
     expect(metadata).toMatchObject({
-      description: "从信息层级、留白和文字密度出发，让阅读路径更自然。",
-      title: "让界面更易阅读的三个小决定 | Eelex Blog",
+      description:
+        "从色卡图片抽取中国传统色名与 HEX/RGB，按色系智能选配国风配色——内置 111 色库与可维护校验工具链的 Agent Skill。",
+      title:
+        "用 elx-cncolor 为设计注入中国风灵魂：一个传统色卡识别与配色 Skill | Eelex Blog",
     });
   });
 
@@ -74,10 +76,8 @@ describe("Phase 6 SEO metadata", () => {
     expect(sitemap?.map((entry) => entry.url)).toEqual([
       "https://harmonious-sprite-8b742a.netlify.app/",
       "https://harmonious-sprite-8b742a.netlify.app/about",
+      "https://harmonious-sprite-8b742a.netlify.app/content/elx-cncolor",
       "https://harmonious-sprite-8b742a.netlify.app/content/elx-level-project-workflow",
-      "https://harmonious-sprite-8b742a.netlify.app/content/designing-readable-interfaces",
-      "https://harmonious-sprite-8b742a.netlify.app/content/weekly-learning-notes-01",
-      "https://harmonious-sprite-8b742a.netlify.app/content/spacing-scale-checklist",
     ]);
     expect(robots).toMatchObject({
       rules: { allow: "/", userAgent: "*" },

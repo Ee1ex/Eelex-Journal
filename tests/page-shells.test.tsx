@@ -26,7 +26,13 @@ describe("页面骨架与真实内容链路", () => {
     expect(markup).toContain(`${getAllContent().length} 篇内容`);
     expect(markup).toContain('aria-pressed="true"');
     expect(markup).not.toContain('disabled=""');
-    expect(markup).toContain('href="/content/designing-readable-interfaces"');
+    expect(markup).toContain('href="/content/elx-cncolor"');
+    expect(markup).toContain('href="/content/elx-level-project-workflow"');
+    expect(markup).not.toContain(
+      'href="/content/designing-readable-interfaces"',
+    );
+    expect(markup).not.toContain('href="/content/weekly-learning-notes-01"');
+    expect(markup).not.toContain('href="/content/spacing-scale-checklist"');
     expect(homeSource).toContain("getAllContent()");
     expect(homeSource).toContain("<ContentDiscovery items={items} />");
   });
